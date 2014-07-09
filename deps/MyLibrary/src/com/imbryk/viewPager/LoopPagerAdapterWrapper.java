@@ -42,7 +42,7 @@ public class LoopPagerAdapterWrapper extends PagerAdapter {
         mBoundaryCaching = flag;
     }
 
-    LoopPagerAdapterWrapper(PagerAdapter adapter) {
+    public LoopPagerAdapterWrapper(PagerAdapter adapter) {
         this.mAdapter = adapter;
     }
 
