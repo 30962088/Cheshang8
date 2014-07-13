@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
+    >
+    
+
+    <LinearLayout 
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#fff"
+        android:gravity="center">
+        
+        <TextView 
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="北京"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:layout_marginLeft="25dp"
+            />
+        
+        <ImageView 
+            android:id="@+id/selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/city_selected"
+            android:layout_marginRight="25dp"/>
+        
+    </LinearLayout>
+    
+</FrameLayout>

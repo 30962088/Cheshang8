@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 
 import com.cheshang8.app.R;
+import com.cheshang8.app.SelectCityActivity;
 import com.cheshang8.app.adapter.TabIndexAdapter;
 import com.cheshang8.app.adapter.TabIndexAdapter.Model;
 import com.cheshang8.app.widget.TabIndexHeaderView;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
@@ -34,10 +36,20 @@ public class TabIndexFragment extends Fragment{
 		return inflater.inflate(R.layout.tab_index_layout, null);
 	}
 	
+	
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
+		
+		view.findViewById(R.id.btn_city).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SelectCityActivity.open(getActivity());
+				
+			}
+		});
 		
 		ListView listView = (ListView) view.findViewById(R.id.listview);
 		

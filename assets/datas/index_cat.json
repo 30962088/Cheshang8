@@ -1,0 +1,25 @@
+[{
+	"img":"assets://images/ii_1.png",
+	"name":"洗车"
+},{
+	"img":"assets://images/ii_2.png",
+	"name":"美容"
+},{
+	"img":"assets://images/ii_3.png",
+	"name":"装饰"
+},{
+	"img":"assets://images/ii_4.png",
+	"name":"养护"
+},{
+	"img":"assets://images/ii_5.png",
+	"name":"改装"
+},{
+	"img":"assets://images/ii_6.png",
+	"name":"快修"
+},{
+	"img":"assets://images/ii_7.png",
+	"name":"车险"
+},{
+	"img":"assets://images/ii_8.png",
+	"name":"救援"
+}]
