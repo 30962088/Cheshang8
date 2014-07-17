@@ -1,0 +1,8 @@
+[{
+	"name":"洗车",
+	"icon":"assets://images/is_1.png",
+	"list":[{
+		"name":"人工洗车",
+		"price":15
+	}]
+}]
