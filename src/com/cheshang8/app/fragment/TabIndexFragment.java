@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 
 import com.cheshang8.app.R;
+import com.cheshang8.app.SearchActivity;
 import com.cheshang8.app.SelectCityActivity;
 import com.cheshang8.app.adapter.TabIndexAdapter;
 import com.cheshang8.app.adapter.TabIndexAdapter.Model;
@@ -47,6 +48,15 @@ public class TabIndexFragment extends Fragment{
 			@Override
 			public void onClick(View v) {
 				SelectCityActivity.open(getActivity());
+				
+			}
+		});
+		
+		view.findViewById(R.id.search_btn).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				SearchActivity.open(getActivity());
 				
 			}
 		});
