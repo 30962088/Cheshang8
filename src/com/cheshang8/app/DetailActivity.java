@@ -3,6 +3,7 @@ package com.cheshang8.app;
 import com.cheshang8.app.fragment.DetailCommentFragment;
 import com.cheshang8.app.fragment.DetailMainFragment;
 import com.cheshang8.app.fragment.DetailServiceFragment;
+import com.cheshang8.app.utils.BitmapLoader;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 
 public class DetailActivity extends FragmentActivity implements OnClickListener {
 
@@ -26,6 +28,9 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 		findViewById(R.id.tab2).setOnClickListener(this);
 		findViewById(R.id.tab3).setOnClickListener(this);
 		findViewById(R.id.tab4).setOnClickListener(this);
+		ImageView img = (ImageView) findViewById(R.id.img);
+		BitmapLoader.displayImage(this, "https://raw.githubusercontent.com/zimengle/Static/master/Images/0.jpg", img);
+		findViewById(R.id.tab1).performClick();
 	}
 
 	private Fragment[] fragments;

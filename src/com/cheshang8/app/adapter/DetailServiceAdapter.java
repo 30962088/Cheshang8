@@ -139,24 +139,21 @@ public class DetailServiceAdapter extends BaseAdapter {
 			}
 			
 			
-		} else {
-			
-			switch (type) {
-			case TYPE_SEPARATOR:
-				SepHolder sepHolder = (SepHolder) convertView.getTag();
-				BitmapLoader.displayImage(context,render.icon, sepHolder.icon);
-				sepHolder.name.setText(render.name);
-				break;
-
-			case TYPE_MAIN:
-				MainHolder mainHolder = (MainHolder) convertView.getTag();
-				mainHolder.name.setText(render.name);
-				mainHolder.price.setText(render.price);
-				break;
-			}
-			
 		}
+		
+		switch (type) {
+		case TYPE_SEPARATOR:
+			SepHolder sepHolder = (SepHolder) convertView.getTag();
+			BitmapLoader.displayImage(context,render.icon, sepHolder.icon);
+			sepHolder.name.setText(render.name);
+			break;
 
+		case TYPE_MAIN:
+			MainHolder mainHolder = (MainHolder) convertView.getTag();
+			mainHolder.name.setText(render.name);
+			mainHolder.price.setText(""+render.price);
+			break;
+		}
 		
 
 		return convertView;

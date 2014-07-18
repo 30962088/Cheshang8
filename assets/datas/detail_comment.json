@@ -5,5 +5,29 @@
 	"phone":"1385648****",
 	"time":"2014-7-6",
 	"detail":"好评！",
-	"icons":["https://raw.githubusercontent.com/zimengle/Static/master/Images/0.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/1.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/2.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/3.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/4.jpg"]
+	"icons":["https://raw.githubusercontent.com/zimengle/Static/master/Images/2.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/3.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/4.jpg"]
+},{
+	"icon":"assets://images/is_1.png",
+	"type":"洗车",
+	"star":4,
+	"phone":"1385648****",
+	"time":"2014-7-6",
+	"detail":"好评！",
+	"icons":["https://raw.githubusercontent.com/zimengle/Static/master/Images/2.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/3.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/4.jpg"]
+},{
+	"icon":"assets://images/is_1.png",
+	"type":"洗车",
+	"star":4,
+	"phone":"1385648****",
+	"time":"2014-7-6",
+	"detail":"好评！",
+	"icons":["https://raw.githubusercontent.com/zimengle/Static/master/Images/2.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/3.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/4.jpg"]
+},{
+	"icon":"assets://images/is_1.png",
+	"type":"洗车",
+	"star":4,
+	"phone":"1385648****",
+	"time":"2014-7-6",
+	"detail":"好评！",
+	"icons":["https://raw.githubusercontent.com/zimengle/Static/master/Images/2.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/3.jpg","https://raw.githubusercontent.com/zimengle/Static/master/Images/4.jpg"]
 }]

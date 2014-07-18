@@ -5,4 +5,30 @@
 		"name":"人工洗车",
 		"price":15
 	}]
+},{
+	"name":"美容",
+	"icon":"assets://images/is_2.png",
+	"list":[{
+		"name":"打蜡",
+		"price":50
+	},{
+		"name":"封釉",
+		"price":300
+	},{
+		"name":"内饰清洁",
+		"price":480
+	}]
+},{
+	"name":"装饰",
+	"icon":"assets://images/is_3.png",
+	"list":[{
+		"name":"玻璃贴膜",
+		"price":1800
+	},{
+		"name":"倒车雷达",
+		"price":300
+	},{
+		"name":"汽车导航",
+		"price":480
+	}]
 }]

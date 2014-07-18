@@ -7,11 +7,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:background="#73e048" >
 
         <ImageView
-            android:layout_width="90dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:scaleType="centerInside"
             android:paddingTop="10dp"
@@ -26,7 +26,15 @@
             android:text="商户详情"
             android:textColor="#fff"
             android:textSize="18sp"
-            android:layout_marginRight="90dp" />
+             />
+        
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:src="@drawable/detail_star_selector" />
     
     </LinearLayout>
     
@@ -37,9 +45,10 @@
         android:padding="10dp">
         
         <ImageView 
+            android:id="@+id/img"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:src="@drawable/ic_launcher"
+            android:layout_marginBottom="10dp"
             android:scaleType="centerCrop"/>
         
         
@@ -53,30 +62,38 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:text="简介"
+                android:textColor="@color/detal_tab_color_selector"
+                android:background="@drawable/detal_tab_bg_selector"
                 android:gravity="center"
                 android:textSize="14sp"/>
             <TextView 
                 android:id="@+id/tab2"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:textColor="@color/detal_tab_color_selector"
+                android:background="@drawable/detal_tab_bg_selector"
                 android:layout_height="match_parent"
-                android:text="简介"
+                android:text="服务(3)"
                 android:gravity="center"
                 android:textSize="14sp"/>
             <TextView 
                 android:id="@+id/tab3"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:textColor="@color/detal_tab_color_selector"
+                android:background="@drawable/detal_tab_bg_selector"
                 android:layout_height="match_parent"
-                android:text="简介"
+                android:text="商品(1)"
                 android:gravity="center"
                 android:textSize="14sp"/>
             <TextView 
                 android:id="@+id/tab4"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:textColor="@color/detal_tab_color_selector"
+                android:background="@drawable/detal_tab_bg_selector"
                 android:layout_height="match_parent"
-                android:text="简介"
+                android:text="评论(5)"
                 android:gravity="center"
                 android:textSize="14sp"/>
             
@@ -86,6 +103,7 @@
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="#fff"
             android:layout_weight="1"></FrameLayout>
         
     </LinearLayout>
