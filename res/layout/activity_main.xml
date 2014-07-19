@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <FrameLayout
-        android:id="@+id/center"
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >
@@ -18,6 +18,7 @@
         android:baselineAligned="false" >
 
         <LinearLayout
+            android:id="@+id/tab1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -40,6 +41,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/tab2"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -62,6 +64,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/tab3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -84,6 +87,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/tab4"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
