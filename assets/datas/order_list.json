@@ -1,0 +1,33 @@
+[{
+	"thumbnail":"assets://images/testimg.png",
+	"time":"2014-02-05",
+	"name":"车之友  朝阳路店",
+	"type":"人工洗车",
+	"price":15,
+	"no":"0987654321",
+	"status":0
+},{
+	"thumbnail":"assets://images/testimg.png",
+	"time":"2014-01-27",
+	"name":"爱义行（珠市口店）",
+	"type":"玻璃贴膜",
+	"price":50,
+	"no":"6842225987",
+	"status":1
+},{
+	"thumbnail":"assets://images/testimg.png",
+	"time":"2014-01-27",
+	"name":"爱义行（珠市口店）",
+	"type":"玻璃贴膜",
+	"price":50,
+	"no":"6842225987",
+	"status":2
+},{
+	"thumbnail":"assets://images/testimg.png",
+	"time":"2014-01-27",
+	"name":"爱义行（珠市口店）",
+	"type":"玻璃贴膜",
+	"price":50,
+	"no":"6842225987",
+	"status":3
+}]
