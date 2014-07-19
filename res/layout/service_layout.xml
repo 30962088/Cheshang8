@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#73e048" >
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="70dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="服务详情"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+
+        <RelativeLayout
+            android:id="@+id/close"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:gravity="center" >
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/icon_close" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#efefef" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="#fff">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="[电脑洗车]"
+                        android:textColor="#000"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥"
+                            android:textColor="#ff0000"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="20"
+                            android:textColor="#ff0000"
+                            android:textSize="30sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="原价：￥45"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="17dp"
+                            android:text="节省：￥25"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:text="立即购买"
+                    android:textColor="#fff"
+                    android:background="#ff0000"
+                    android:textSize="14sp" 
+                    android:padding="5dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"/>
+                
+                
+            </RelativeLayout>
+            
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#efefef"/>
+            
+            <RelativeLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:background="#fff">
+                
+                <LinearLayout 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    
+                    <LinearLayout 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="5dp">
+                        
+                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="硬件设施"
+                            android:textColor="#ff0000"
+                            android:textSize="14sp" />
+                         
+                         <com.cheshang8.app.widget.CarStarView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content">
+                             
+                         </com.cheshang8.app.widget.CarStarView>
+                        
+                    </LinearLayout>
+                    
+                    <LinearLayout 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+                        
+                         <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="硬件设施"
+                            android:textColor="#ff0000"
+                            android:textSize="14sp" />
+                         
+                         <com.cheshang8.app.widget.CarStarView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content">
+                             
+                         </com.cheshang8.app.widget.CarStarView>
+                        
+                    </LinearLayout>
+                    
+                </LinearLayout>
+                
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dp"
+                    android:text="查看评价"
+                    android:textColor="#fff"
+                    android:background="#ff0000"
+                    android:textSize="14sp" 
+                    android:padding="5dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+                
+            </RelativeLayout>
+            
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" 
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="车之友  朝阳路店"
+                    android:textColor="#000"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/icon_loc_1"
+                    android:ellipsize="end"
+                    android:drawablePadding="5dp"
+                    android:singleLine="true"
+                    android:text="地址：朝阳区朝阳路太平庄甲1号(民航医院对面)"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+                
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="营业时间：8:00-19:00"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+                
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="预约电话：010-63864400"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+                
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" 
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="服务说明："
+                    android:textColor="#000"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="北京车之友自上世纪九十年代成立以来，一直奉行“特色技术、全面服务”的经营宗旨，在汽车服务领域不断开拓创新。从前后挡整张贴膜技术的倡导普及到汽车封釉、底盘装甲、汽车镀膜的引进推广，从客户回访到客户综合信息系统的建立，无不体现了车之友对技术革新的孜孜以求和对服务质量的精益求精。经过多年的发展与沉淀，今后的车之友更加专注于汽车美容、贴膜、洗车、轮胎等领域的发展与服务。让车之友在这些项目上表现出更强的竞争力，为您提供专业的技术，温馨的服务！"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
