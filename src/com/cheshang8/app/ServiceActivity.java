@@ -18,6 +18,7 @@ public class ServiceActivity extends FragmentActivity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.service_layout);
 		findViewById(R.id.pay_btn).setOnClickListener(this);
+		findViewById(R.id.comment_btn).setOnClickListener(this);
 	}
 	@Override
 	public void onClick(View v) {
@@ -25,7 +26,9 @@ public class ServiceActivity extends FragmentActivity implements OnClickListener
 		case R.id.pay_btn:
 			SubmitActivity.open(this);
 			break;
-
+		case R.id.comment_btn:
+			CommentListActivity.open(this);
+			break;
 		default:
 			break;
 		}

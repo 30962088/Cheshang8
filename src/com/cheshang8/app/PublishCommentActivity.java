@@ -8,12 +8,16 @@ import java.util.List;
 import com.cheshang8.app.adapter.CommentImgAdapter;
 import com.cheshang8.app.adapter.CommentImgAdapter.Model;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.GridView;
 
 public class PublishCommentActivity extends FragmentActivity {
-
+	public static void open(Context context){
+		context.startActivity(new Intent(context, PublishCommentActivity.class));
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
