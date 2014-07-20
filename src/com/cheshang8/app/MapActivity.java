@@ -38,6 +38,8 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -45,7 +47,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class MapActivity extends FragmentActivity {
-
+	public static void open(Context context){
+		context.startActivity(new Intent(context, MapActivity.class));
+	}
 	private MapView mMapView;
 	private LocationClient mLocClient;
 	private BaiduMap mBaiduMap;

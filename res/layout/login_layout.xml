@@ -125,6 +125,7 @@
             android:textSize="16sp"/>
         
         <TextView 
+            android:id="@+id/reg_btn"
             android:layout_marginLeft="33dp"
             android:background="@drawable/shape_login_btn"
             android:layout_width="110dp"

@@ -25,7 +25,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-public class MyCarActivity extends Activity {
+public class MyCarActivity extends Activity implements OnClickListener{
 	
 	public static void open(Context context){
 		context.startActivity(new Intent(context, MyCarActivity.class));
@@ -37,7 +37,8 @@ public class MyCarActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.my_car_layout);
-		
+		findViewById(R.id.right_nav_btn).setOnClickListener(this);
+		findViewById(R.id.add_car_btn).setOnClickListener(this);
 		ListView listView = (ListView) findViewById(R.id.listview);
 		try {
 			List<MyCarListAdapter.Model> list = new Gson().fromJson(
@@ -59,6 +60,17 @@ public class MyCarActivity extends Activity {
 		}
 	}
 	
-	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.right_nav_btn:
+			CarInfoActivity.open(this);
+			break;
+		case R.id.add_car_btn:
+			CarInfoActivity.open(this);
+			break;
+		}
+		
+	}
 
 }

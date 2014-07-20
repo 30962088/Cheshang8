@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -27,7 +29,9 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 public class SelectPhotoActivity extends FragmentActivity {
-
+	public static void open(Context context){
+		context.startActivity(new Intent(context, SelectPhotoActivity.class));
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

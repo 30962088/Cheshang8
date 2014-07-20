@@ -12,13 +12,17 @@ import com.google.gson.Gson;
 
 import com.google.gson.reflect.TypeToken;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.widget.ListView;
 
 public class PaySuccessActivity extends FragmentActivity {
-
+	public static void open(Context context){
+		context.startActivity(new Intent(context, PaySuccessActivity.class));
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

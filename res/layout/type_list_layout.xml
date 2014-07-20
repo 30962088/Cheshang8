@@ -13,30 +13,20 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:scaleType="centerInside"
             android:src="@drawable/icon_nav_left" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="我的爱车"
+            android:text="洗车"
             android:textColor="#fff"
-            android:textSize="18sp"
-             />
-        
-        <ImageView
-            android:id="@+id/right_nav_btn"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:src="@drawable/ii_z3" />
-    
+            android:textSize="18sp" />
     </LinearLayout>
 
     <ListView 
@@ -44,28 +34,12 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:listSelector="#00000000"
         android:divider="#efefef"
-        android:dividerHeight="10dp"
+        android:listSelector="#00000000"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:clipToPadding="false"
-        android:scrollbarStyle="outsideOverlay">
-        
-    </ListView>
-    
-    <TextView 
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/add_car_btn"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:text="添加车辆"
-        android:gravity="center"
-        android:textColor="#fff"
-        android:background="#73e048"
-        android:textSize="18sp"/>
+        android:scrollbarStyle="outsideOverlay"
+        android:dividerHeight="8dp"></ListView>
 
 </LinearLayout>

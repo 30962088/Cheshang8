@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
+import com.cheshang8.app.DetailActivity;
 import com.cheshang8.app.R;
+import com.cheshang8.app.ServiceActivity;
 import com.cheshang8.app.adapter.DetailServiceAdapter;
 import com.cheshang8.app.adapter.DetailServiceAdapter.Model;
 
@@ -19,6 +21,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 
@@ -50,6 +54,15 @@ public class DetailServiceFragment extends Fragment{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				ServiceActivity.open(getActivity());
+				
+			}
+		});
 	}
 
 	private void init() throws Exception {

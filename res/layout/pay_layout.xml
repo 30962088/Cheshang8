@@ -317,6 +317,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/bank_btn"
                             android:layout_width="match_parent"
                             android:layout_height="54dp"
                             android:gravity="center_vertical" >
@@ -594,6 +595,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/pay_btn"
                 android:layout_width="135dp"
                 android:layout_height="match_parent"
                 android:background="#ff0000"

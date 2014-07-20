@@ -49,7 +49,7 @@
                     android:background="@drawable/ii_n9" >
 
                     <com.makeramen.PhotoView
-                        android:id="@+id/img"
+                        android:id="@+id/avatar"
                         android:layout_width="67dp"
                         android:layout_height="67dp"
                         android:layout_centerVertical="true"
@@ -60,18 +60,20 @@
                     </com.makeramen.PhotoView>
 
                     <TextView
+                        android:id="@+id/login_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@id/img"
+                        android:layout_alignTop="@id/avatar"
                         android:layout_marginLeft="26dp"
                         android:layout_marginTop="5dp"
-                        android:layout_toRightOf="@id/img"
+                        android:layout_toRightOf="@id/avatar"
                         android:text="点击登录"
                         android:textColor="#efefef"
                         android:textSize="14sp" />
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/all_order3_btn"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
                     android:background="#efefef"
@@ -103,6 +105,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/all_order2_btn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
@@ -127,6 +130,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/all_order1_btn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
@@ -151,6 +155,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/all_order_btn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -180,8 +185,9 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical" >
-
+					
                     <TextView
+                        android:id="@+id/my_car_btn"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
@@ -197,6 +203,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/car_guanjia_btn"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
@@ -212,6 +219,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/msg_btn"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
@@ -222,11 +230,12 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="25dp"
                         android:paddingRight="25dp"
-                        android:text="违章查询"
+                        android:text="个人消息"
                         android:textColor="#000"
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/zhuanshu_btn"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
@@ -237,7 +246,7 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="25dp"
                         android:paddingRight="25dp"
-                        android:text="我的收藏"
+                        android:text="专属包养"
                         android:textColor="#000"
                         android:textSize="14sp" />
 

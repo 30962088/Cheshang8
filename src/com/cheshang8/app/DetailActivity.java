@@ -5,6 +5,8 @@ import com.cheshang8.app.fragment.DetailMainFragment;
 import com.cheshang8.app.fragment.DetailServiceFragment;
 import com.cheshang8.app.utils.BitmapLoader;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -16,6 +18,10 @@ import android.widget.ImageView;
 
 public class DetailActivity extends FragmentActivity implements OnClickListener {
 
+	public static void open(Context context){
+		context.startActivity(new Intent(context, DetailActivity.class));
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

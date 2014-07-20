@@ -22,6 +22,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class ListActivity extends Activity implements OnClickListener,OnStateChange,OnStateChange2{
@@ -39,6 +41,7 @@ public class ListActivity extends Activity implements OnClickListener,OnStateCha
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_layout);
+		findViewById(R.id.nav_right_btn).setOnClickListener(this);
 		locBtn = findViewById(R.id.loc_btn);
 		locBtn.setOnClickListener(this);
 		sortBtn = findViewById(R.id.sort_btn);
@@ -62,6 +65,15 @@ public class ListActivity extends Activity implements OnClickListener,OnStateCha
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				
+				DetailActivity.open(ListActivity.this);
+			}
+		});
 	}
 	
 	private CatTwoDialog twoDialog;
@@ -71,6 +83,9 @@ public class ListActivity extends Activity implements OnClickListener,OnStateCha
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.nav_right_btn:
+			MapActivity.open(this);
+			break;
 		case R.id.loc_btn:
 			if(twoDialog == null){
 				twoDialog = new CatTwoDialog(this,v);

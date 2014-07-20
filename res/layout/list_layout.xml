@@ -28,7 +28,7 @@
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/search_btn"
+            android:id="@+id/nav_right_btn"
             android:layout_width="90dp"
             android:layout_height="match_parent"
             android:paddingTop="8dp"

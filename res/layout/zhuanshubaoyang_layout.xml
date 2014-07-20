@@ -23,12 +23,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="养车管家"
+            android:text="专属保养"
             android:textColor="#fff"
             android:textSize="18sp" />
 
         <ImageView
-            android:id="@+id/right_nav_btn"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:paddingBottom="10dp"
@@ -66,21 +65,6 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp" >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="#fff"
-                android:drawableRight="@drawable/ii_n7"
-                android:gravity="center_vertical"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:text="专属保养"
-                android:textColor="#000"
-                android:textSize="14sp" >
-            </TextView>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -92,32 +76,28 @@
                 android:paddingRight="25dp" >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="年检提醒"
+                    android:text="车型"
                     android:textColor="#000"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_marginLeft="22dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="倒计时？天"
-                    android:textColor="#000"
-                    android:textSize="22sp" />
-                
-                <CheckBox 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox_selector"/>
+                    android:text="2010款"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+                
+                
                 
             </LinearLayout>
             
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_marginBottom="1dp"
+                android:layout_marginBottom="10dp"
                 android:background="#fff"
                 android:drawableRight="@drawable/ii_n7"
                 android:gravity="center_vertical"
@@ -125,26 +105,77 @@
                 android:paddingRight="25dp" >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="消分提醒"
+                    android:text="购车日期"
                     android:textColor="#000"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:layout_marginLeft="22dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2012-07"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+                
+                
+                
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="10dp"
+                android:background="#fff"
+                android:drawableRight="@drawable/ii_n7"
+                android:gravity="center_vertical"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp" >
+
+                <TextView
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="倒计时150天"
+                    android:text="里程数"
                     android:textColor="#000"
-                    android:textSize="22sp" />
-                
-                <CheckBox 
-                    android:checked="true"
+                    android:textSize="14sp" />
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox_selector"/>
+                    android:text="60000公里"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+                
+                
+                
+            </LinearLayout>
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp">
+                
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:text="查看保养方案"
+                    android:background="#ff0000"
+                    android:textColor="#fff"
+                    android:gravity="center"
+                    android:textSize="16sp" />
+                
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:text="查看历史保养方案"
+                    android:background="#fff"
+                    android:textColor="#000"
+                    android:gravity="center"
+                    android:textSize="16sp" />
                 
             </LinearLayout>
             

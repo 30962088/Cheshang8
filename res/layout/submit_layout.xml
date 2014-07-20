@@ -29,231 +29,247 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" 
-        android:padding="10dp"
-        android:background="#efefef"
-        android:clipToPadding="false"
-        android:scrollbarStyle="outsideOverlay">
+        android:layout_height="match_parent" >
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:background="#efefef"
+            android:clipToPadding="false"
+            android:padding="10dp"
+            android:scrollbarStyle="outsideOverlay" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fff"
                 android:orientation="vertical" >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="26dp"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="20dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ii_p1"
-                        android:drawablePadding="5dp"
-                        android:text="服务信息"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#f2f2f1" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="10dp" >
+                    android:background="#fff"
+                    android:orientation="vertical" >
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="玻璃贴膜"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="威固V70前挡膜+威固K37车身膜"
-                        android:textColor="#898989"
-                        android:textSize="12sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="bottom" >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="top"
-                            android:layout_marginTop="5dp"
-                            android:text="￥"
-                            android:textColor="#ff0000"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="20"
-                            android:textColor="#ff0000"
-                            android:textSize="36sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="原价：￥45    节省：￥25"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="#fff"
-                android:orientation="vertical" >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="26dp"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="20dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ii_p2"
-                        android:drawablePadding="5dp"
-                        android:text="商家信息"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#f2f2f1" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="20dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="10dp"
-                    android:gravity="center_vertical" >
-
-                    <ImageView
-                        android:layout_width="72dp"
-                        android:layout_height="47dp"
-                        android:layout_marginRight="5dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/testimg" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="车之友  朝阳路店"
+                            android:drawableLeft="@drawable/ii_p1"
+                            android:drawablePadding="5dp"
+                            android:text="服务信息"
                             android:textColor="#000"
-                            android:textSize="16dp" />
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#f2f2f1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingBottom="15dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingTop="10dp" >
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:singleLine="true"
-                            android:text="地址：朝阳区朝阳路太平庄甲1号(民航医院对面)"
+                            android:text="玻璃贴膜"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="威固V70前挡膜+威固K37车身膜"
+                            android:textColor="#898989"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:layout_marginTop="5dp"
+                                android:text="￥"
+                                android:textColor="#ff0000"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textColor="#ff0000"
+                                android:textSize="36sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="原价：￥45    节省：￥25"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="#fff"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ii_p2"
+                            android:drawablePadding="5dp"
+                            android:text="商家信息"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#f2f2f1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:paddingTop="10dp" >
+
+                        <ImageView
+                            android:layout_width="72dp"
+                            android:layout_height="47dp"
+                            android:layout_marginRight="5dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/testimg" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical" >
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="车之友  朝阳路店"
+                                android:textColor="#000"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="地址：朝阳区朝阳路太平庄甲1号(民航医院对面)"
+                                android:textColor="#000"
+                                android:textSize="12dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="预约电话：010-63864400"
+                                android:textColor="#000"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="#fff"
+                    android:orientation="vertical" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="26dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/ii_p3"
+                            android:drawablePadding="5dp"
+                            android:text="您的手机号"
+                            android:textColor="#000"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#f2f2f1" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="36dp"
+                        android:paddingRight="20dp" >
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="158****1121"
                             android:textColor="#000"
                             android:textSize="12dp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="预约电话：010-63864400"
-                            android:textColor="#000"
+                            android:drawablePadding="5dp"
+                            android:drawableRight="@drawable/ii_p4"
+                            android:text="绑定新手机号"
+                            android:textColor="#898989"
                             android:textSize="12dp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="#fff"
-                android:orientation="vertical" >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="26dp"
-                    android:gravity="center_vertical"
-                    android:paddingLeft="20dp" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ii_p3"
-                        android:drawablePadding="5dp"
-                        android:text="您的手机号"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                </RelativeLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#f2f2f1" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="28dp"
-                    android:gravity="center_vertical" 
-                    android:paddingLeft="36dp"
-                    android:paddingRight="20dp">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:text="158****1121"
-                        android:textColor="#000"
-                        android:textSize="12dp" />
-                    
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="绑定新手机号"
-                        android:textColor="#898989"
-                        android:textSize="12dp"
-                        android:drawablePadding="5dp"
-                        android:drawableRight="@drawable/ii_p4" />
-                    
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+        
+        <TextView 
+            android:id="@+id/submit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:text="提交订单"
+            android:textColor="#fff"
+            android:background="#ff0000"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textSize="18sp"/>
+        
+    </RelativeLayout>
 
 </LinearLayout>
