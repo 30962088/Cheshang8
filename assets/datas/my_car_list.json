@@ -1,0 +1,11 @@
+[{
+	"icon":"assets://images/car_auto.png",
+	"name":"奥迪Q3",
+	"star":true,
+	"percent":0.3
+},{
+	"icon":"assets://images/car_benz.png",
+	"name":"奔驰E系列",
+	"star":false,
+	"percent":0.9
+}]
