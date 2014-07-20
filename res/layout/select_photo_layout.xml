@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#efefef"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#73e048" >
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_nav_left" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="选择头像"
+            android:textColor="#fff"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:background="@drawable/shape_input1"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="12dp"
+        android:text="系统头像"
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:layout_margin="10dp" />
+    
+    <GridView 
+        android:layout_margin="10dp"
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="4"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"></GridView>
+    
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="10dp">
+        
+        <TextView 
+            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上传自拍头像"
+            android:textSize="16sp"
+            android:textColor="#000"
+            android:drawableLeft="@drawable/ii_b3"/>
+        
+    </RelativeLayout>
+
+</LinearLayout>
