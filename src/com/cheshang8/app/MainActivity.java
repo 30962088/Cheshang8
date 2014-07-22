@@ -3,6 +3,9 @@ package com.cheshang8.app;
 import com.cheshang8.app.fragment.TabIndexFragment;
 import com.cheshang8.app.fragment.TabZoneFragment;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,6 +16,12 @@ import android.view.View.OnClickListener;
 
 public class MainActivity extends FragmentActivity implements OnClickListener{
 
+	public static void open(Context context){
+		Intent intent = new Intent(context, MainActivity.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		context.startActivity(intent);
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

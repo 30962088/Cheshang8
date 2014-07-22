@@ -23,9 +23,9 @@ public class TabIndexAdapter extends BaseAdapter{
 		private String desc;
 		private String company;
 		private String address;
-		private float location;
+		private String location;
 		public Model(String group, String img, int star, String title,
-				String desc, String company, String address, float location) {
+				String desc, String company, String address, String location) {
 			super();
 			this.group = group;
 			this.img = img;

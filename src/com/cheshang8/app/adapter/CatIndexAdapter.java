@@ -27,6 +27,12 @@ public class CatIndexAdapter extends BaseAdapter{
 			this.img = img;
 			this.name = name;
 		}
+		public Model(String name) {
+			super();
+			this.name = name;
+			img = "assets://images/ii_1.png";
+		}
+		
 		
 	}
 	

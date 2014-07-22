@@ -27,6 +27,8 @@ public class TabIndexHeaderView extends FrameLayout {
 
 	private Fragment fragment;
 
+	private GridView gridView;
+
 	public TabIndexHeaderView(Context context, Fragment fragment) {
 		super(context);
 		this.fragment = fragment;
@@ -44,18 +46,18 @@ public class TabIndexHeaderView extends FrameLayout {
 	private void init() throws JsonSyntaxException, IOException {
 		LayoutInflater.from(getContext()).inflate(R.layout.tab_index_header,
 				this);
-		fragment.getChildFragmentManager().beginTransaction()
-				.replace(R.id.slider_container, SliderFragment.newInstance())
-				.commit();
 
-		List<Model> list = new Gson().fromJson(
-				IOUtils.toString(getContext().getAssets().open(
-						"datas/index_cat.json")), new TypeToken<List<Model>>() {
-				}.getType());
+	}
 
-		GridView gridView = (GridView) findViewById(R.id.gridview);
+	public void setData(List<SliderFragment.Model> models,List<CatIndexAdapter.Model> models2) {
+		fragment.getChildFragmentManager()
+				.beginTransaction()
+				.replace(R.id.slider_container,
+						SliderFragment.newInstance(models)).commit();
+		
+		gridView = (GridView) findViewById(R.id.gridview);
 
-		gridView.setAdapter(new CatIndexAdapter(getContext(), list));
+		gridView.setAdapter(new CatIndexAdapter(getContext(), models2));
 
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 
@@ -63,10 +65,10 @@ public class TabIndexHeaderView extends FrameLayout {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				TypeListActivity.open(getContext());
-				
+
 			}
 		});
-
+		
 	}
 
 }

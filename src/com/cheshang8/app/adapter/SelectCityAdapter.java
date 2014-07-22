@@ -16,11 +16,22 @@ public class SelectCityAdapter extends BaseAdapter{
 
 	public static class Model{
 		
-		private List<String> list;
+		public static class Col{
+			private int id;
+			private String name;
+			public Col(int id, String name) {
+				super();
+				this.id = id;
+				this.name = name;
+			}
+			
+		}
+		
+		private List<Col> list;
 		
 		private Integer selected;
 
-		public Model(List<String> list, Integer selected) {
+		public Model(List<Col> list, Integer selected) {
 			super();
 			this.list = list;
 			this.selected = selected;
@@ -83,7 +94,7 @@ public class SelectCityAdapter extends BaseAdapter{
 		}
 		
 		
-		holder.name.setText(model.list.get(position));
+		holder.name.setText(model.list.get(position).name);
 		holder.selected.setVisibility(View.GONE);
 		if(model.selected == position){
 			holder.selected.setVisibility(View.VISIBLE);

@@ -18,14 +18,25 @@
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="XPe4zX6moga5lxvoVBi5U29t" />
+        
+        
         <activity
-            android:name="com.cheshang8.app.MainActivity"
+            android:name="SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
             </intent-filter>
         </activity>
         <activity

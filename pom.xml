@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.mengle</groupId>
-	<artifactId>lucky</artifactId>
+	<groupId>com.cheshang8</groupId>
+	<artifactId>app</artifactId>
 	<version>0.0.1</version>
 	<packaging>apk</packaging>
-	<name>lucky</name>
+	<name>cheshang8</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -27,7 +27,11 @@
 			<artifactId>universal-image-loader</artifactId>
 			<version>1.9.0</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.2.1</version>
+		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -43,6 +47,13 @@
 			<artifactId>ormlite-android</artifactId>
 			<version>4.48</version>
 		</dependency>
+		<dependency>
+			<groupId>com.loopj.android</groupId>
+			<artifactId>android-async-http</artifactId>
+			<version>1.4.5</version>
+		</dependency>
+
+
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -64,6 +75,15 @@
 					<sdk>
 						<platform>16</platform>
 					</sdk>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 		</plugins>

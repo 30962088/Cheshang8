@@ -8,8 +8,12 @@ import org.apache.commons.io.IOUtils;
 import com.cheshang8.app.R;
 import com.cheshang8.app.SearchActivity;
 import com.cheshang8.app.SelectCityActivity;
+import com.cheshang8.app.adapter.CatIndexAdapter;
 import com.cheshang8.app.adapter.TabIndexAdapter;
 import com.cheshang8.app.adapter.TabIndexAdapter.Model;
+import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
+import com.cheshang8.app.network.IndexDataRequest;
+import com.cheshang8.app.network.IndexDataRequest.Result;
 import com.cheshang8.app.widget.TabIndexHeaderView;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -37,6 +41,10 @@ public class TabIndexFragment extends Fragment{
 		return inflater.inflate(R.layout.tab_index_layout, null);
 	}
 	
+	private ListView listView;
+	
+	private TabIndexHeaderView headerView;
+	
 	
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -61,28 +69,37 @@ public class TabIndexFragment extends Fragment{
 			}
 		});
 		
-		ListView listView = (ListView) view.findViewById(R.id.listview);
+		headerView = new TabIndexHeaderView(getActivity(), this);
 		
-		listView.addHeaderView(new TabIndexHeaderView(getActivity(), this));
+		listView = (ListView) view.findViewById(R.id.listview);
 		
-		try {
-			List<Model> list = new Gson().fromJson(
-					IOUtils.toString(getActivity().getAssets().open(
-							"datas/index_list.json")),
-					new TypeToken<List<Model>>() {
-					}.getType());
-			
-			TabIndexAdapter adapter = new TabIndexAdapter(getActivity(), list);
-			
-			listView.setAdapter(adapter);
-			
-		} catch (JsonSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		listView.addHeaderView(headerView);
+	
+		request();
+		
+	
+	}
+	
+	private void request(){
+		IndexDataRequest request = new IndexDataRequest(new IndexDataRequest.Params(1));
+		
+		request.request(new SimpleRequestHandler(){
+			@Override
+			public void onSuccess(Object object) {
+				IndexDataRequest.Result result = (Result) object;
+				List<SliderFragment.Model> sliderList = Result.Banner.toList(result.getBanners());
+				List<CatIndexAdapter.Model> catList = Result.Category.toList(result.getCategories());
+				List<TabIndexAdapter.Model> indexList = Result.Recommend.toList(result.getRecommends());
+				TabIndexAdapter adapter = new TabIndexAdapter(getActivity(), indexList);
+				
+				listView.setAdapter(adapter);
+				
+				headerView.setData(sliderList, catList);
+				
+				
+			}
+		});
+		
 		
 	}
 	
