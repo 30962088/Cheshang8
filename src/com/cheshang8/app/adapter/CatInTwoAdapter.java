@@ -20,14 +20,22 @@ import android.widget.TextView;
 public class CatInTwoAdapter extends BaseAdapter{
 	
 	public static class Model{
-		
+		private int id;
 		private String name;
 		private int count;
-		public Model(String name, int count) {
+		public Model(int id, String name, int count) {
 			super();
+			this.id = id;
 			this.name = name;
 			this.count = count;
 		}
+		public int getId() {
+			return id;
+		}
+		public String getName() {
+			return name;
+		}
+		
 		
 		
 	}

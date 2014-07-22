@@ -5,6 +5,7 @@ import java.util.List;
 
 
 import com.cheshang8.app.R;
+import com.cheshang8.app.network.ShopsRequest.Params.Sort;
 
 
 
@@ -23,9 +24,28 @@ public class CatSortAdapter extends BaseAdapter{
 		
 		private String name;
 		
+		private int type;
+		
 		public Model(String name) {
 			super();
 			this.name = name;
+		}
+		
+		public Sort getSort(){
+			Sort sort = Sort.DEFAULT;
+			switch (type) {
+			case 1:
+				sort = Sort.DEFAULT;
+				break;
+			case 2:
+				sort = Sort.PRICE;
+				break;
+			case 3:
+				sort = Sort.STAR;
+				break;
+			
+			}
+			return sort;
 		}
 		
 		

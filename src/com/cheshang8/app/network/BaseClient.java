@@ -34,20 +34,25 @@ public abstract class BaseClient implements HttpResponseHandler{
 		@Override
 		public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
 			String json = new String(arg2);
-			try {
-				JSONObject object = new JSONObject(json);
-				int error = object.getInt("err");
-				if(error ==0){
-					String data = object.getString("data");
-					requestHandler.onSuccess(handler.onSuccess(data));
-				}else{
-					handler.onError(error);
-					requestHandler.onError(error);
+			if(json.startsWith("[")){
+				requestHandler.onSuccess(handler.onSuccess(json));
+			}else{
+				try {
+					JSONObject object = new JSONObject(json);
+					int error = object.getInt("err");
+					if(error ==0){
+						String data = object.getString("data");
+						requestHandler.onSuccess(handler.onSuccess(data));
+					}else{
+						handler.onError(error);
+						requestHandler.onError(error);
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			
 			
 		}
 		

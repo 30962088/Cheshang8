@@ -1,16 +1,22 @@
 package com.cheshang8.app;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
-
 import com.cheshang8.app.adapter.SearchItemAdapter;
 import com.cheshang8.app.adapter.SearchItemAdapter.Model;
+import com.cheshang8.app.network.ShopsRequest;
+import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
+import com.cheshang8.app.network.ShopsRequest.Params.Sort;
+import com.cheshang8.app.network.ShopsRequest.Result;
 import com.cheshang8.app.widget.CatSortDialog;
 import com.cheshang8.app.widget.CatSortDialog.OnStateChange2;
+import com.cheshang8.app.widget.CatSortDialog.SortCallback;
 import com.cheshang8.app.widget.CatTwoDialog;
+import com.cheshang8.app.widget.CatTwoDialog.Callback;
 import com.cheshang8.app.widget.CatTwoDialog.OnStateChange;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -23,61 +29,76 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class ListActivity extends Activity implements OnClickListener,OnStateChange,OnStateChange2{
-	
-	public static void open(Context context){
+public class ListActivity extends Activity implements OnClickListener,
+		OnStateChange, OnStateChange2 {
+
+	public static void open(Context context) {
 		context.startActivity(new Intent(context, ListActivity.class));
 	}
-	
-	private View locBtn;
-	
+
+	private TextView locBtn;
+
 	private View sortBtn;
-	
+
+	private ListView listView;
+
+	private SearchItemAdapter adapter;
+
+	private List<Model> list = new ArrayList<SearchItemAdapter.Model>();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_layout);
 		findViewById(R.id.nav_right_btn).setOnClickListener(this);
-		locBtn = findViewById(R.id.loc_btn);
+		locBtn = (TextView) findViewById(R.id.loc_btn);
 		locBtn.setOnClickListener(this);
 		sortBtn = findViewById(R.id.sort_btn);
 		sortBtn.setOnClickListener(this);
-		ListView listView = (ListView) findViewById(R.id.listview);
-		try {
-			List<Model> list = new Gson().fromJson(
-					IOUtils.toString(getAssets().open(
-							"datas/search_result.json")),
-					new TypeToken<List<Model>>() {
-					}.getType());
-			
-			SearchItemAdapter adapter = new SearchItemAdapter(this, list);
-			
-			listView.setAdapter(adapter);
-			
-		} catch (JsonSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		listView = (ListView) findViewById(R.id.listview);
+
+		adapter = new SearchItemAdapter(this, list);
+
+		listView.setAdapter(adapter);
+
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
-				
+
 				DetailActivity.open(ListActivity.this);
 			}
 		});
+		request();
 	}
 	
-	private CatTwoDialog twoDialog;
+	private Sort sort = Sort.DEFAULT;
 	
+	private Integer dist1;
+	
+	private Integer dist2;
+	
+	private void request(){
+		ShopsRequest request = new ShopsRequest(new ShopsRequest.Params(1,dist1,dist2,sort));
+		request.request(new SimpleRequestHandler(){
+			@Override
+			public void onSuccess(Object object) {
+				List<Result> results = (List<Result>) object;
+				list.clear();
+				list.addAll(Result.toList(results));
+				adapter.notifyDataSetChanged();
+			}
+		});
+	}
+
+	private CatTwoDialog twoDialog;
+
 	private CatSortDialog sortDialog;
 
 	@Override
@@ -87,17 +108,37 @@ public class ListActivity extends Activity implements OnClickListener,OnStateCha
 			MapActivity.open(this);
 			break;
 		case R.id.loc_btn:
-			if(twoDialog == null){
-				twoDialog = new CatTwoDialog(this,v);
+			if (twoDialog == null) {
+				twoDialog = new CatTwoDialog(this, v);
+				twoDialog.setCallback(new Callback() {
+					
+					@Override
+					public void oncallback(String name,int id) {
+						locBtn.setText(name+"^");
+						dist2 = id;
+						request();
+						
+					}
+				});
+				twoDialog.setData(1);
 				twoDialog.setOnStateChange(this);
 			}
 			twoDialog.toggle();
-			
+
 			break;
 
 		case R.id.sort_btn:
-			if(sortDialog == null){
-				sortDialog = new CatSortDialog(this,v);
+			if (sortDialog == null) {
+				sortDialog = new CatSortDialog(this, v);
+				sortDialog.setCallback(new SortCallback() {
+					
+					@Override
+					public void oncallback(com.cheshang8.app.adapter.CatSortAdapter.Model model) {
+						sort = model.getSort();
+						request();
+						
+					}
+				});
 				sortDialog.setOnStateChange(this);
 			}
 			sortDialog.toggle();
@@ -105,31 +146,31 @@ public class ListActivity extends Activity implements OnClickListener,OnStateCha
 		default:
 			break;
 		}
-		
+
 	}
 
 	@Override
 	public void ondismiss() {
 		locBtn.setSelected(false);
-		
+
 	}
 
 	@Override
 	public void onshow() {
 		locBtn.setSelected(true);
-		
+
 	}
 
 	@Override
 	public void ondismiss2() {
 		sortBtn.setSelected(false);
-		
+
 	}
 
 	@Override
 	public void onshow2() {
 		sortBtn.setSelected(true);
-		
+
 	}
 
 }

@@ -26,6 +26,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
@@ -55,6 +57,18 @@ public class CatSortDialog implements OnClickListener{
 		}
 	}
 	
+	public static interface SortCallback{
+		public void oncallback(Model model);
+	}
+	
+	private SortCallback callback;
+	
+	private List<Model> list;
+	
+	public void setCallback(SortCallback callback) {
+		this.callback = callback;
+	}
+	
 	private void init() throws JsonSyntaxException, IOException{
 	
 			
@@ -63,7 +77,7 @@ public class CatSortDialog implements OnClickListener{
 				null);
 	
 		
-		final List<Model> list = new Gson().fromJson(
+		list = new Gson().fromJson(
 				IOUtils.toString(context.getAssets().open(
 						"datas/cat_sort.json")),
 				new TypeToken<List<Model>>() {
@@ -73,6 +87,20 @@ public class CatSortDialog implements OnClickListener{
 		listView = (ListView) view.findViewById(R.id.listview);
 		
 		listView.setAdapter(new CatSortAdapter(context, list));
+		
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				Model model = list.get(position);
+				if(callback != null){
+					callback.oncallback(model);
+				}
+				dismiss();
+				
+			}
+		});
 		
 		mPopupWindow = new PopupWindow(view, LayoutParams.MATCH_PARENT,
 				LayoutParams.MATCH_PARENT, true);
