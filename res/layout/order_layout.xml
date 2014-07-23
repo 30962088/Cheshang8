@@ -46,6 +46,7 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:id="@+id/time"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:background="#fff"
@@ -64,6 +65,7 @@
                     android:padding="18dp" >
 
                     <TextView
+                        android:id="@+id/no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
@@ -72,6 +74,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/consume_no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
@@ -92,6 +95,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/status"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -144,6 +148,7 @@
                     android:paddingTop="10dp" >
 
                     <ImageView
+                        android:id="@+id/thumbnail"
                         android:layout_width="72dp"
                         android:layout_height="47dp"
                         android:layout_marginRight="5dp"
@@ -157,6 +162,7 @@
                         android:orientation="vertical" >
 
                         <TextView
+                            android:id="@+id/title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="车之友  朝阳路店"
@@ -164,6 +170,7 @@
                             android:textSize="16dp" />
 
                         <TextView
+                            android:id="@+id/address"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
@@ -173,6 +180,7 @@
                             android:textSize="12dp" />
 
                         <TextView
+                            android:id="@+id/phone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="预约电话：010-63864400"
@@ -192,6 +200,7 @@
                     android:paddingTop="10dp" >
 
                     <TextView
+                        android:id="@+id/service"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="玻璃贴膜"
@@ -199,6 +208,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:id="@+id/service_detail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="威固V70前挡膜+威固K37车身膜"
@@ -220,6 +230,7 @@
                             android:textSize="18sp" />
 
                         <TextView
+                            android:id="@+id/price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20"
@@ -228,6 +239,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/price0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="原价：￥45    节省：￥25"
@@ -275,6 +287,7 @@
                             android:textSize="14dp" />
 
                         <TextView
+                            android:id="@+id/price1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="￥20"
@@ -297,6 +310,7 @@
                             android:textSize="14dp" />
 
                         <TextView
+                            android:id="@+id/price2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="￥5"
@@ -319,6 +333,7 @@
                             android:textSize="14dp" />
 
                         <TextView
+                            android:id="@+id/price3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="￥15"
@@ -327,6 +342,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/pay_from"
                         android:layout_width="match_parent"
                         android:layout_height="34dp"
                         android:gravity="center_vertical"
@@ -337,6 +353,7 @@
                         android:textSize="14dp" />
 
                     <TextView
+                        android:id="@+id/fapiao"
                         android:layout_width="match_parent"
                         android:layout_height="34dp"
                         android:gravity="center_vertical"
