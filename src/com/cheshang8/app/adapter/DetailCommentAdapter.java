@@ -31,6 +31,17 @@ public class DetailCommentAdapter extends BaseAdapter{
 		private String time;
 		private String detail;
 		private List<String> icons;
+		public Model(String icon, String type, int star, String phone,
+				String time, String detail, List<String> icons) {
+			super();
+			this.icon = icon;
+			this.type = type;
+			this.star = star;
+			this.phone = phone;
+			this.time = time;
+			this.detail = detail;
+			this.icons = icons;
+		}
 		
 		
 	}

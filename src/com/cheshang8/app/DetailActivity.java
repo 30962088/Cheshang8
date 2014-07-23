@@ -126,7 +126,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 				fragments = new Fragment[] { DetailMainFragment.newInstance(context,model),
 						DetailServiceFragment.newInstance(context,list,result.getShop().getId()),
 						new Fragment(),
-						DetailCommentFragment.newInstance(context)};
+						DetailCommentFragment.newInstance(context,result.getShop().getId())};
 				tab2.setText("服务("+result.getShop().getServices_count()+")");
 				tab3.setText("商品("+result.getShop().getProducts_count()+")");
 				tab4.setText("评论("+result.getShop().getComment_count()+")");
