@@ -23,13 +23,19 @@ public class TypeListAdapter extends BaseAdapter{
 	
 	public static class Model{
 		
+		private String id;
+		
 		private String text;
 
-		private Model(String text) {
+		public Model(String id, String text) {
 			super();
+			this.id = id;
 			this.text = text;
 		}
 
+		public String getId() {
+			return id;
+		}
 		
 		
 		

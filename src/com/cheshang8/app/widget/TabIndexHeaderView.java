@@ -49,7 +49,7 @@ public class TabIndexHeaderView extends FrameLayout {
 
 	}
 
-	public void setData(List<SliderFragment.Model> models,List<CatIndexAdapter.Model> models2) {
+	public void setData(List<SliderFragment.Model> models,final List<CatIndexAdapter.Model> models2) {
 		fragment.getChildFragmentManager()
 				.beginTransaction()
 				.replace(R.id.slider_container,
@@ -62,9 +62,10 @@ public class TabIndexHeaderView extends FrameLayout {
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				TypeListActivity.open(getContext());
+				CatIndexAdapter.Model model = models2.get(position);
+				TypeListActivity.open(getContext(),model.getId());
 
 			}
 		});

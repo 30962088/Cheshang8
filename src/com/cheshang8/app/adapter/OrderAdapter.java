@@ -25,7 +25,9 @@ public class OrderAdapter extends BaseAdapter {
 			待支付("待支付","立即支付",Color.parseColor("#ff0000")),
 			待体验("待体验","立即退款",Color.parseColor("#f49e17")),
 			已完成("已完成","立即评价",Color.parseColor("#73e048")),
-			已退款("已退款",null,Color.parseColor("#898989"));
+			退款中("退款中",null,Color.parseColor("#f49e17")),
+			退款完成("退款完成",null,Color.parseColor("#898989")),
+			退款失败("退款失败",null,Color.parseColor("#ff0000"));
 			
 			private String btn;
 			
@@ -59,12 +61,22 @@ public class OrderAdapter extends BaseAdapter {
 		private String type;
 		private int price;
 		private String no;
-		private int status;
-		public Model() {
-			// TODO Auto-generated constructor stub
+		private Status status;
+		
+		public Model(String thumbnail, String time, String name, String type,
+				int price, String no, Status status) {
+			super();
+			this.thumbnail = thumbnail;
+			this.time = time;
+			this.name = name;
+			this.type = type;
+			this.price = price;
+			this.no = no;
+			this.status = status;
 		}
+
 		public Status getStatus() {
-			return new Status[]{Status.待支付,Status.待体验,Status.已完成,Status.已退款}[status];
+			return status;
 		}
 		
 

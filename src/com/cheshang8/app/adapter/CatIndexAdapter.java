@@ -20,17 +20,17 @@ import android.widget.TextView;
 public class CatIndexAdapter extends BaseAdapter{
 	
 	public static class Model{
+		private String id;
 		private String img;
 		private String name;
-		public Model(String img, String name) {
+		public Model(String id, String img, String name) {
 			super();
+			this.id = id;
 			this.img = img;
 			this.name = name;
 		}
-		public Model(String name) {
-			super();
-			this.name = name;
-			img = "assets://images/ii_1.png";
+		public String getId() {
+			return id;
 		}
 		
 		

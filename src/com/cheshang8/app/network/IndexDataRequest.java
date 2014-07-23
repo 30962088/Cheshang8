@@ -40,11 +40,12 @@ public class IndexDataRequest extends BaseClient{
 		}
 		
 		public static class Category{
-			private int id;
+			private String id;
 			private String name;
 			private int pid;
+			private String icon;
 			public CatIndexAdapter.Model toModel(){
-				return new CatIndexAdapter.Model(name);
+				return new CatIndexAdapter.Model(id,icon,name);
 			}
 			public static List<CatIndexAdapter.Model> toList(List<Category> results){
 				List<CatIndexAdapter.Model> list = new ArrayList<CatIndexAdapter.Model>();

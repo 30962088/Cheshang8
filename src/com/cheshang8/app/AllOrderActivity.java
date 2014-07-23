@@ -1,10 +1,14 @@
 package com.cheshang8.app;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
 import com.cheshang8.app.adapter.OrderAdapter;
+import com.cheshang8.app.network.OrdersRequest;
+import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
+import com.cheshang8.app.network.OrdersRequest.Result;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -20,28 +24,34 @@ import android.widget.ListView;
 
 public class AllOrderActivity extends FragmentActivity {
 	public static void open(Context context){
-		context.startActivity(new Intent(context, AllOrderActivity.class));
+		Intent intent = new Intent(context, AllOrderActivity.class);
+		
+		context.startActivity(intent);
 	}
+	
+	
+	
+	private ListView listView;
+	
+	private OrderAdapter adapter;
+	
+	private List<OrderAdapter.Model> list = new ArrayList<OrderAdapter.Model>();
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.all_order_layout);
-		ListView listView = (ListView) findViewById(R.id.listview);
-		try {
-			List<OrderAdapter.Model> list = new Gson().fromJson(
-					IOUtils.toString(getAssets().open(
-							"datas/order_list.json")),
-					new TypeToken<List<OrderAdapter.Model>>() {
-					}.getType());
+		listView = (ListView) findViewById(R.id.listview);
+		
 			
-			OrderAdapter adapter = new OrderAdapter(this, list);
 			
-			listView.setAdapter(adapter);
+		adapter = new OrderAdapter(this, list);
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		listView.setAdapter(adapter);
+			
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -49,6 +59,20 @@ public class AllOrderActivity extends FragmentActivity {
 					long arg3) {
 				OrderActivity.open(AllOrderActivity.this);
 				
+			}
+		});
+		request();
+	}
+	
+	private void request(){
+		OrdersRequest request = new OrdersRequest();
+		request.request(new SimpleRequestHandler(){
+			@Override
+			public void onSuccess(Object object) {
+				List<Result> result = (List<Result>) object;
+				list.clear();
+				list.addAll(Result.toList(result));
+				adapter.notifyDataSetChanged();
 			}
 		});
 	}

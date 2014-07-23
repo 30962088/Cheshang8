@@ -15,7 +15,7 @@ import com.cheshang8.app.network.CityListRequest.Result;
 import com.google.gson.Gson;
 import com.loopj.android.http.RequestParams;
 
-public class ServiceRequest extends BaseClient{
+public class OrderRequest extends BaseClient{
 
 	public static class Result{
 		
@@ -23,12 +23,11 @@ public class ServiceRequest extends BaseClient{
 		
 		private Shop shop;
 		
-		private Service service;
+		private Order order;
 		
-		public ServiceActivity.Model toModel(){
-			return new ServiceActivity.Model(service.getName(), service.getPrice_origin(), service.getPrice_discount(), service.getEnv_rating(), service.getRating(), 
-					shop.getShop_name(), shop.getShop_address(), shop.getTime(), StringUtils.join(shop.getShop_phones()," "), shop.getDescription());
-		}
+		
+		
+		
 	}
 	
 	
@@ -37,7 +36,7 @@ public class ServiceRequest extends BaseClient{
 	
 	private String shop_id;
 	
-	public ServiceRequest(String id, String shop_id) {
+	public OrderRequest(String id, String shop_id) {
 		this.id = id;
 		this.shop_id = shop_id;
 	}
@@ -71,7 +70,7 @@ public class ServiceRequest extends BaseClient{
 	@Override
 	protected String getUrl() {
 		// TODO Auto-generated method stub
-		return "/data/service.php";
+		return "/data/order.php";
 	}
 
 	@Override
