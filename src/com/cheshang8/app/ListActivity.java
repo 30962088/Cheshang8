@@ -42,7 +42,7 @@ public class ListActivity extends Activity implements OnClickListener,
 
 	private TextView locBtn;
 
-	private View sortBtn;
+	private TextView sortBtn;
 
 	private ListView listView;
 
@@ -58,7 +58,7 @@ public class ListActivity extends Activity implements OnClickListener,
 		findViewById(R.id.nav_right_btn).setOnClickListener(this);
 		locBtn = (TextView) findViewById(R.id.loc_btn);
 		locBtn.setOnClickListener(this);
-		sortBtn = findViewById(R.id.sort_btn);
+		sortBtn = (TextView) findViewById(R.id.sort_btn);
 		sortBtn.setOnClickListener(this);
 		listView = (ListView) findViewById(R.id.listview);
 
@@ -69,10 +69,10 @@ public class ListActivity extends Activity implements OnClickListener,
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-
-				DetailActivity.open(ListActivity.this);
+				Model model = list.get(position);
+				DetailActivity.open(ListActivity.this,model.getId());
 			}
 		});
 		request();
@@ -134,6 +134,7 @@ public class ListActivity extends Activity implements OnClickListener,
 					
 					@Override
 					public void oncallback(com.cheshang8.app.adapter.CatSortAdapter.Model model) {
+						sortBtn.setText(model.getName()+"^");
 						sort = model.getSort();
 						request();
 						

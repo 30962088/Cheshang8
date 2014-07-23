@@ -1,8 +1,15 @@
 package com.cheshang8.app;
 
+import java.util.List;
+
+import com.cheshang8.app.adapter.DetailServiceAdapter;
 import com.cheshang8.app.fragment.DetailCommentFragment;
 import com.cheshang8.app.fragment.DetailMainFragment;
 import com.cheshang8.app.fragment.DetailServiceFragment;
+import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
+import com.cheshang8.app.network.ShopRequest;
+import com.cheshang8.app.network.ShopRequest.Result;
+import com.cheshang8.app.network.ShopRequest.Result.Service;
 import com.cheshang8.app.utils.BitmapLoader;
 
 import android.content.Context;
@@ -15,28 +22,48 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class DetailActivity extends FragmentActivity implements OnClickListener {
 
-	public static void open(Context context){
-		context.startActivity(new Intent(context, DetailActivity.class));
+	public static void open(Context context,String id){
+		Intent intent = new Intent(context, DetailActivity.class);
+		intent.putExtra("id", id);
+		context.startActivity(intent);
 	}
+	
+	private String id;
+	
+	private Context context;
+	
+	private TextView tab1;
+	
+	private TextView tab2;
+	
+	private TextView tab3;
+	
+	private TextView tab4;
+	
+	private ImageView img;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		fragments = new Fragment[] { DetailMainFragment.newInstance(this),
-				DetailServiceFragment.newInstance(this),
-				DetailServiceFragment.newInstance(this),
-				DetailCommentFragment.newInstance(this), };
+		id = getIntent().getStringExtra("id");
+		context = this;
 		setContentView(R.layout.detail_layout);
-		findViewById(R.id.tab1).setOnClickListener(this);
-		findViewById(R.id.tab2).setOnClickListener(this);
-		findViewById(R.id.tab3).setOnClickListener(this);
-		findViewById(R.id.tab4).setOnClickListener(this);
-		ImageView img = (ImageView) findViewById(R.id.img);
-		BitmapLoader.displayImage(this, "https://raw.githubusercontent.com/zimengle/Static/master/Images/0.jpg", img);
-		findViewById(R.id.tab1).performClick();
+		tab1 = (TextView) findViewById(R.id.tab1);
+		tab1.setOnClickListener(this);
+		tab2 = (TextView) findViewById(R.id.tab2);
+		tab2.setOnClickListener(this);
+		tab3 = (TextView) findViewById(R.id.tab3);
+		tab3.setOnClickListener(this);
+		tab4 = (TextView) findViewById(R.id.tab4);
+		tab4.setOnClickListener(this);
+		
+		img = (ImageView) findViewById(R.id.img);
+		
+		request();
 	}
 
 	private Fragment[] fragments;
@@ -83,6 +110,31 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 
 		}
 		lastView = v;
+	}
+	
+	private void request(){
+		
+		ShopRequest request = new ShopRequest(id);
+		
+		request.request(new SimpleRequestHandler(){
+			@Override
+			public void onSuccess(Object object) {
+				ShopRequest.Result result = (Result) object;
+				List<DetailServiceAdapter.Model> list = Service.toList(result.getServices());
+				DetailMainFragment.Model model = result.getShop().toModel();
+				BitmapLoader.displayImage(context, result.getShop().getLogo(), img);
+				fragments = new Fragment[] { DetailMainFragment.newInstance(context,model),
+						DetailServiceFragment.newInstance(context,list,result.getShop().getId()),
+						new Fragment(),
+						DetailCommentFragment.newInstance(context)};
+				tab2.setText("服务("+result.getShop().getServices_count()+")");
+				tab3.setText("商品("+result.getShop().getProducts_count()+")");
+				tab4.setText("评论("+result.getShop().getComment_count()+")");
+				tab1.performClick();
+			}
+		});
+		
+		
 	}
 
 }

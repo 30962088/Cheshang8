@@ -17,6 +17,7 @@ import android.widget.TextView;
 public class SearchItemAdapter extends BaseAdapter{
 
 	public static class Model{
+		private String id;
 		private String thumbnail;
 		private int star;
 		private String title;
@@ -26,9 +27,11 @@ public class SearchItemAdapter extends BaseAdapter{
 		private int price_old;
 		private int comment;
 		private String loc;
-		public Model(String thumbnail, int star, String title, String address,
-				String type, int price, int price_old, int comment, String loc) {
+		public Model(String id, String thumbnail, int star, String title,
+				String address, String type, int price, int price_old,
+				int comment, String loc) {
 			super();
+			this.id = id;
 			this.thumbnail = thumbnail;
 			this.star = star;
 			this.title = title;
@@ -38,6 +41,10 @@ public class SearchItemAdapter extends BaseAdapter{
 			this.price_old = price_old;
 			this.comment = comment;
 			this.loc = loc;
+		}
+		
+		public String getId() {
+			return id;
 		}
 		
 		

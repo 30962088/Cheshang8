@@ -18,14 +18,16 @@ import android.widget.TextView;
 
 public class DetailServiceAdapter extends BaseAdapter {
 
-	private static final int TYPE_MAIN = 0;
+	public static final int TYPE_MAIN = 0;
 
-	private static final int TYPE_SEPARATOR = 1;
+	public static final int TYPE_SEPARATOR = 1;
 
-	private static final int TYPE_COUNT = 2;
+	public static final int TYPE_COUNT = 2;
 
 	public static class Model {
 
+		private String id;
+		
 		private String name;
 
 		private String icon;
@@ -34,15 +36,36 @@ public class DetailServiceAdapter extends BaseAdapter {
 
 		public static class Col {
 
+			private String id;
+			
 			private String name;
 
 			private int price;
 
+			public Col(String id, String name, int price) {
+				this.id = id;
+				this.name = name;
+				this.price = price;
+			}
+			
+			
+
 		}
+
+		public Model(String name, String icon, List<Col> list) {
+			super();
+			this.name = name;
+			this.icon = icon;
+			this.list = list;
+		}
+		
+		
 
 	}
 	
 	public static class Render{
+		
+		private String id;
 		
 		private String name;
 		
@@ -52,16 +75,27 @@ public class DetailServiceAdapter extends BaseAdapter {
 		
 		private int type;
 
-		public Render(String name, String icon, Integer price, int type) {
+		
+		
+		public Render(String id, String name, String icon, Integer price,
+				int type) {
 			super();
+			this.id = id;
 			this.name = name;
 			this.icon = icon;
 			this.price = price;
 			this.type = type;
 		}
+
+
+
+		public int getType() {
+			return type;
+		}
 		
-		
-		
+		public String getId() {
+			return id;
+		}
 	}
 
 	private Context context;
@@ -77,12 +111,16 @@ public class DetailServiceAdapter extends BaseAdapter {
 		toRenders();
 	}
 	
+	public List<Render> getRenders() {
+		return renders;
+	}
+	
 	private void toRenders(){
 		renders = new ArrayList<DetailServiceAdapter.Render>();
 		for(Model model : list){
-			renders.add(new Render(model.name, model.icon, null, TYPE_SEPARATOR));
+			renders.add(new Render(model.id, model.name, model.icon, null, TYPE_SEPARATOR));
 			for(Col col : model.list){
-				renders.add(new Render(col.name, null, col.price, TYPE_MAIN));
+				renders.add(new Render(col.id,col.name, null, col.price, TYPE_MAIN));
 			}
 		}
 	}
@@ -93,9 +131,9 @@ public class DetailServiceAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public Object getItem(int position) {
+	public Render getItem(int position) {
 		// TODO Auto-generated method stub
-		return list.get(position);
+		return renders.get(position);
 	}
 
 	@Override

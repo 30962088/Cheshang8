@@ -31,6 +31,10 @@ public class CatSortAdapter extends BaseAdapter{
 			this.name = name;
 		}
 		
+		public String getName() {
+			return name;
+		}
+		
 		public Sort getSort(){
 			Sort sort = Sort.DEFAULT;
 			switch (type) {

@@ -17,7 +17,7 @@ public class ShopsRequest extends BaseClient{
 
 	public static class Result{
 		private String logo;
-		private int id;
+		private String id;
 		private float rating;
 		private String distance;
 		private int price_origin;
@@ -29,7 +29,7 @@ public class ShopsRequest extends BaseClient{
 		public String getLogo() {
 			return logo;
 		}
-		public int getId() {
+		public String getId() {
 			return id;
 		}
 		public float getRating() {
@@ -57,7 +57,7 @@ public class ShopsRequest extends BaseClient{
 			return shop_phones;
 		}
 		public SearchItemAdapter.Model toModel(){
-			return new SearchItemAdapter.Model(logo, (int)rating, shop_name, shop_address, "", price_discount, price_origin, comment_count, distance);
+			return new SearchItemAdapter.Model(id, logo, (int)rating, shop_name, shop_address, "", price_discount, price_origin, comment_count, distance);
 		}
 		
 		public static List<SearchItemAdapter.Model> toList(List<Result> results){

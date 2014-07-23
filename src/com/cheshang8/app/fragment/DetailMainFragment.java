@@ -1,15 +1,8 @@
 package com.cheshang8.app.fragment;
 
-import java.io.IOException;
-import java.util.List;
 
-import org.apache.commons.io.IOUtils;
 
 import com.cheshang8.app.R;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,20 +13,9 @@ import android.widget.TextView;
 
 public class DetailMainFragment extends Fragment{
 
-	public static DetailMainFragment newInstance(Context context){
+	public static DetailMainFragment newInstance(Context context,Model model){
 		DetailMainFragment fragment  = new DetailMainFragment();
-		try {
-			Model model = new Gson().fromJson(
-					IOUtils.toString(context.getAssets().open(
-							"datas/detail_main.json")),Model.class);
-			fragment.model = model;
-		} catch (JsonSyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		fragment.model = model;
 		return fragment;
 	}
 	

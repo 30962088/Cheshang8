@@ -59,6 +59,7 @@
                     android:orientation="vertical" >
 
                     <TextView
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="[电脑洗车]"
@@ -77,6 +78,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/price_origin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20"
@@ -89,6 +91,7 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
+                            android:id="@+id/price_discount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="原价：￥45"
@@ -96,6 +99,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/price_reduce"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="17dp"
@@ -154,6 +158,7 @@
                             android:textSize="14sp" />
                          
                          <com.cheshang8.app.widget.CarStarView
+                             android:id="@+id/env_rating"
                              android:layout_width="wrap_content"
                              android:layout_height="wrap_content">
                              
@@ -174,6 +179,7 @@
                             android:textSize="14sp" />
                          
                          <com.cheshang8.app.widget.CarStarView
+                             android:id="@+id/rating"
                              android:layout_width="wrap_content"
                              android:layout_height="wrap_content">
                              
