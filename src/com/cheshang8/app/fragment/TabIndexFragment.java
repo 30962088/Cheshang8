@@ -14,6 +14,7 @@ import com.cheshang8.app.adapter.TabIndexAdapter.Model;
 import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
 import com.cheshang8.app.network.IndexDataRequest;
 import com.cheshang8.app.network.IndexDataRequest.Result;
+import com.cheshang8.app.network.IndexDataRequest.Result.Promotion;
 import com.cheshang8.app.widget.TabIndexHeaderView;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -94,7 +95,7 @@ public class TabIndexFragment extends Fragment{
 				
 				listView.setAdapter(adapter);
 				
-				headerView.setData(sliderList, catList);
+				headerView.setData(sliderList, catList,Promotion.toList(result.getPromotions()));
 				
 				
 			}

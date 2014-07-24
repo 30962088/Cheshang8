@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 
 
+import com.cheshang8.app.adapter.AdIndexAdapter;
 import com.cheshang8.app.adapter.CatIndexAdapter;
 import com.cheshang8.app.adapter.SelectCityAdapter.Model.Col;
 import com.cheshang8.app.adapter.TabIndexAdapter;
@@ -60,6 +61,16 @@ public class IndexDataRequest extends BaseClient{
 			private String img;
 			private String target_page;
 			private String target_id;
+			public AdIndexAdapter.Model toModel(){
+				return new AdIndexAdapter.Model(target_id, img);
+			}
+			public static List<AdIndexAdapter.Model> toList(List<Promotion> results){
+				List<AdIndexAdapter.Model> list = new ArrayList<AdIndexAdapter.Model>();
+				for(Promotion result : results){
+					list.add(result.toModel());
+				}
+				return list;
+			}
 		}
 		
 		public static class Recommend{
@@ -78,7 +89,7 @@ public class IndexDataRequest extends BaseClient{
 			private Shop shop;
 			public TabIndexAdapter.Model toModel(){
 				
-				return new TabIndexAdapter.Model(null, shop.logo, (int)shop.rating, title, description, shop.shop_name, shop.shop_address,shop.distance);
+				return new TabIndexAdapter.Model(shop.logo, shop.shop_name, shop.shop_address, shop.distance);
 			}
 			public static List<TabIndexAdapter.Model> toList(List<Recommend> results){
 				List<TabIndexAdapter.Model> list = new ArrayList<TabIndexAdapter.Model>();
@@ -109,7 +120,9 @@ public class IndexDataRequest extends BaseClient{
 			return recommends;
 		}
 		
-		
+		public List<Promotion> getPromotions() {
+			return promotions;
+		}
 	}
 	
 	public static class Params{

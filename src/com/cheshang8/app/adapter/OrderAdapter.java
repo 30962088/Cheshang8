@@ -29,6 +29,8 @@ public class OrderAdapter extends BaseAdapter {
 			退款完成("退款完成",null,Color.parseColor("#898989")),
 			退款失败("退款失败",null,Color.parseColor("#ff0000"));
 			
+			private String id;
+			
 			private String btn;
 			
 			private String text;
@@ -75,6 +77,10 @@ public class OrderAdapter extends BaseAdapter {
 			this.status = status;
 		}
 
+		
+		public String getNo() {
+			return no;
+		}
 		public Status getStatus() {
 			return status;
 		}

@@ -5,8 +5,10 @@
     
 	<ImageView 
 	    android:id="@+id/img"
+	    android:background="#02bbfb"
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
-	    android:scaleType="centerCrop"/>
+	    android:scaleType="centerInside"
+	    android:src="@drawable/launcher"/>
     
 </FrameLayout>

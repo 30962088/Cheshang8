@@ -142,4 +142,9 @@ public class Shop {
 	public String getId() {
 		return id;
 	}
+	
+	public String getPhoneText(){
+		return StringUtils.join(shop_phones, " ");
+	}
+	
 }

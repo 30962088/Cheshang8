@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 
 import com.cheshang8.app.R;
 import com.cheshang8.app.TypeListActivity;
+import com.cheshang8.app.adapter.AdIndexAdapter;
 import com.cheshang8.app.adapter.CatIndexAdapter;
 import com.cheshang8.app.adapter.CatIndexAdapter.Model;
 import com.cheshang8.app.fragment.SliderFragment;
@@ -28,6 +29,8 @@ public class TabIndexHeaderView extends FrameLayout {
 	private Fragment fragment;
 
 	private GridView gridView;
+	
+	private GridView adGridView;
 
 	public TabIndexHeaderView(Context context, Fragment fragment) {
 		super(context);
@@ -49,7 +52,7 @@ public class TabIndexHeaderView extends FrameLayout {
 
 	}
 
-	public void setData(List<SliderFragment.Model> models,final List<CatIndexAdapter.Model> models2) {
+	public void setData(List<SliderFragment.Model> models,final List<CatIndexAdapter.Model> models2,List<AdIndexAdapter.Model> models3) {
 		fragment.getChildFragmentManager()
 				.beginTransaction()
 				.replace(R.id.slider_container,
@@ -69,6 +72,10 @@ public class TabIndexHeaderView extends FrameLayout {
 
 			}
 		});
+		
+		adGridView = (GridView) findViewById(R.id.adgrid);
+		
+		adGridView.setAdapter(new AdIndexAdapter(getContext(), models3));
 		
 	}
 

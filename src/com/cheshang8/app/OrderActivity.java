@@ -3,6 +3,9 @@ package com.cheshang8.app;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 import com.cheshang8.app.fragment.TabIndexFragment;
 import com.cheshang8.app.fragment.TabZoneFragment;
+import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
+import com.cheshang8.app.network.OrderRequest;
+import com.cheshang8.app.network.OrderRequest.Result;
 import com.cheshang8.app.utils.BitmapLoader;
 
 import android.content.Context;
@@ -18,18 +21,38 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class OrderActivity extends FragmentActivity implements OnClickListener{
-	public static void open(Context context){
-		context.startActivity(new Intent(context, OrderActivity.class));
+	public static void open(Context context,String id){
+		Intent intent = new Intent(context, OrderActivity.class);
+		intent.putExtra("id", id);
+		context.startActivity(intent);
 	}
 	
 	private Context context;
 	
+	private String id;
+	
+	private ViewHolder holder;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		id = getIntent().getStringExtra("id");
 		context = this;
 		setContentView(R.layout.order_layout);
+		holder = new ViewHolder();
 		findViewById(R.id.pay_btn).setOnClickListener(this);
+		request();
+	}
+	private void request() {
+		OrderRequest request = new OrderRequest(id);
+		request.request(new SimpleRequestHandler(){
+			@Override
+			public void onSuccess(Object object) {
+				OrderRequest.Result result = (Result) object;
+				holder.setModel(result.toModel());
+			}
+		});
+		
 	}
 	@Override
 	public void onClick(View v) {
@@ -114,7 +137,7 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 		private String no;
 		private String consume_no;
 		private Status status;
-		private Status pay_btn;
+
 		private String thumbnail; 
 		private String title;
 		private String address;
@@ -129,8 +152,7 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 		private int price3;
 		private String pay_from;
 		private String fapiao;
-		public Model(String time, String no, String consume_no, Status status,
-				Status pay_btn, String thumbnail, String title, String address,
+		public Model(String time, String no, String consume_no, Status status,String thumbnail, String title, String address,
 				String phone, String service, String service_detail, int price,
 				int price0, int price0_0, int price1, int price2, int price3,
 				String pay_from, String fapiao) {
@@ -139,7 +161,7 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 			this.no = no;
 			this.consume_no = consume_no;
 			this.status = status;
-			this.pay_btn = pay_btn;
+
 			this.thumbnail = thumbnail;
 			this.title = title;
 			this.address = address;

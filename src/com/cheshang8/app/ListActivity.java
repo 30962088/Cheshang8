@@ -45,6 +45,10 @@ public class ListActivity extends Activity implements OnClickListener,
 	private TextView sortBtn;
 
 	private ListView listView;
+	
+	private View locContainer;
+	
+	private View sortContainer;
 
 	private SearchItemAdapter adapter;
 
@@ -56,10 +60,12 @@ public class ListActivity extends Activity implements OnClickListener,
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.list_layout);
 		findViewById(R.id.nav_right_btn).setOnClickListener(this);
+		sortContainer = findViewById(R.id.sort_container);
+		sortContainer.setOnClickListener(this);
+		locContainer = findViewById(R.id.loc_container);
+		locContainer.setOnClickListener(this);
 		locBtn = (TextView) findViewById(R.id.loc_btn);
-		locBtn.setOnClickListener(this);
 		sortBtn = (TextView) findViewById(R.id.sort_btn);
-		sortBtn.setOnClickListener(this);
 		listView = (ListView) findViewById(R.id.listview);
 
 		adapter = new SearchItemAdapter(this, list);
@@ -107,14 +113,14 @@ public class ListActivity extends Activity implements OnClickListener,
 		case R.id.nav_right_btn:
 			MapActivity.open(this);
 			break;
-		case R.id.loc_btn:
+		case R.id.loc_container:
 			if (twoDialog == null) {
 				twoDialog = new CatTwoDialog(this, v);
 				twoDialog.setCallback(new Callback() {
 					
 					@Override
 					public void oncallback(String name,int id) {
-						locBtn.setText(name+"^");
+						locBtn.setText(name);
 						dist2 = id;
 						request();
 						
@@ -127,14 +133,14 @@ public class ListActivity extends Activity implements OnClickListener,
 
 			break;
 
-		case R.id.sort_btn:
+		case R.id.sort_container:
 			if (sortDialog == null) {
 				sortDialog = new CatSortDialog(this, v);
 				sortDialog.setCallback(new SortCallback() {
 					
 					@Override
 					public void oncallback(com.cheshang8.app.adapter.CatSortAdapter.Model model) {
-						sortBtn.setText(model.getName()+"^");
+						sortBtn.setText(model.getName());
 						sort = model.getSort();
 						request();
 						
@@ -152,25 +158,25 @@ public class ListActivity extends Activity implements OnClickListener,
 
 	@Override
 	public void ondismiss() {
-		locBtn.setSelected(false);
+		locContainer.setSelected(false);
 
 	}
 
 	@Override
 	public void onshow() {
-		locBtn.setSelected(true);
+		locContainer.setSelected(true);
 
 	}
 
 	@Override
 	public void ondismiss2() {
-		sortBtn.setSelected(false);
+		sortContainer.setSelected(false);
 
 	}
 
 	@Override
 	public void onshow2() {
-		sortBtn.setSelected(true);
+		sortContainer.setSelected(true);
 
 	}
 

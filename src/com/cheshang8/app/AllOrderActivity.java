@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.io.IOUtils;
 
 import com.cheshang8.app.adapter.OrderAdapter;
+import com.cheshang8.app.adapter.OrderAdapter.Model;
 import com.cheshang8.app.network.OrdersRequest;
 import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
 import com.cheshang8.app.network.OrdersRequest.Result;
@@ -55,9 +56,10 @@ public class AllOrderActivity extends FragmentActivity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				OrderActivity.open(AllOrderActivity.this);
+				Model model = list.get(position);
+				OrderActivity.open(AllOrderActivity.this,model.getNo());
 				
 			}
 		});

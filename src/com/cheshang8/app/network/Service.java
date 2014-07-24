@@ -5,6 +5,8 @@ public class Service {
 	
 	private String name;
 	
+	private String detail;
+	
 	private int price_discount;
 	
 	private int price_origin;
@@ -43,4 +45,7 @@ public class Service {
 		return description;
 	}
 	
+	public String getDetail() {
+		return detail;
+	}
 }

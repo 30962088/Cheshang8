@@ -10,9 +10,9 @@
         android:ellipsize="end"
         android:singleLine="true"
         android:text="全部(48)"
-        android:background="#73e048"
+        android:background="#02bbfb"
         android:gravity="center"
         android:textColor="#fff"
-        android:textSize="18sp" />
+        android:textSize="15sp" />
 
 </FrameLayout>

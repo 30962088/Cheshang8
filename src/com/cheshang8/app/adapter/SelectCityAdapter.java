@@ -84,7 +84,20 @@ public class SelectCityAdapter extends BaseAdapter{
 			holder = (ViewHolder) convertView.getTag();
 		}
 		holder.container.setBackgroundColor(Color.WHITE);
+		
+		int border;
 		if(position == 0){
+			holder.sep.setVisibility(View.VISIBLE);
+			border = R.drawable.border_2;
+		}else if(position == model.list.size() -1){
+			border = R.drawable.border_3;
+			holder.sep.setVisibility(View.GONE);
+		}else{
+			border = R.drawable.border_1;
+			holder.sep.setVisibility(View.VISIBLE);
+		}
+		holder.container.setBackgroundResource(border);
+	/*	if(position == 0){
 //			holder.container .setBackgroundColor(Color.RED);
 			holder.container.setBackgroundResource(R.drawable.bg_1_t);
 		}else if(position == model.list.size() -1 ){
@@ -92,7 +105,7 @@ public class SelectCityAdapter extends BaseAdapter{
 		}else{
 			holder.container.setBackgroundResource(R.drawable.bg_1);
 		}
-		
+		*/
 		
 		holder.name.setText(model.list.get(position).name);
 		holder.selected.setVisibility(View.GONE);
@@ -110,11 +123,14 @@ public class SelectCityAdapter extends BaseAdapter{
 		private View selected;
 		
 		private View container;
+		
+		private View sep;
 
 		public ViewHolder(View view) {
 			container = view.findViewById(R.id.container);
 			name = (TextView) view.findViewById(R.id.name);
 			selected = view.findViewById(R.id.selected);
+			sep = view.findViewById(R.id.sep);
 			
 		}
 		

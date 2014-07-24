@@ -14,7 +14,7 @@ public class SplashActivity extends Activity implements Runnable{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash_layout);
 		ImageView imageView = (ImageView) findViewById(R.id.img);
-		BitmapLoader.displayImage(this, "https://raw.githubusercontent.com/zimengle/Static/master/Images/0.jpg", imageView);
+//		BitmapLoader.displayImage(this, "https://raw.githubusercontent.com/zimengle/Static/master/Images/0.jpg", imageView);
 		imageView.postDelayed(this, 2000);
 	}
 
