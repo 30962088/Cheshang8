@@ -1,10 +1,12 @@
 package com.cheshang8.app.network;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 
 import com.cheshang8.app.fragment.DetailMainFragment;
+import com.cheshang8.app.fragment.SliderFragment;
 
 public class Shop {
 	public static class Category {
@@ -120,7 +122,7 @@ public class Shop {
 		}
 
 		return new DetailMainFragment.Model(shop_name, shop_address, time,
-				StringUtils.join(shop_phones), range, description);
+				StringUtils.join(shop_phones," "), range, description);
 	}
 
 	public String getLogo() {
@@ -145,6 +147,15 @@ public class Shop {
 	
 	public String getPhoneText(){
 		return StringUtils.join(shop_phones, " ");
+	}
+	
+	public List<SliderFragment.Model> toSliderModel(){
+		List<SliderFragment.Model> models = new ArrayList<SliderFragment.Model>();
+		for(String img : imgs){
+			models.add(new SliderFragment.Model(null, img, null));
+		}
+		return models;
+		
 	}
 	
 }

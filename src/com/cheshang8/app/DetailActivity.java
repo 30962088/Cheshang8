@@ -6,6 +6,7 @@ import com.cheshang8.app.adapter.DetailServiceAdapter;
 import com.cheshang8.app.fragment.DetailCommentFragment;
 import com.cheshang8.app.fragment.DetailMainFragment;
 import com.cheshang8.app.fragment.DetailServiceFragment;
+import com.cheshang8.app.fragment.SliderFragment;
 import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
 import com.cheshang8.app.network.ShopRequest;
 import com.cheshang8.app.network.ShopRequest.Result;
@@ -44,7 +45,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 	
 	private TextView tab4;
 	
-	private ImageView img;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +62,7 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 		tab4 = (TextView) findViewById(R.id.tab4);
 		tab4.setOnClickListener(this);
 		
-		img = (ImageView) findViewById(R.id.img);
+		
 		
 		request();
 	}
@@ -120,9 +121,11 @@ public class DetailActivity extends FragmentActivity implements OnClickListener 
 			@Override
 			public void onSuccess(Object object) {
 				ShopRequest.Result result = (Result) object;
+				getSupportFragmentManager().beginTransaction()
+				.replace(R.id.slider_container,
+						SliderFragment.newInstance(result.getShop().toSliderModel())).commit();
 				List<DetailServiceAdapter.Model> list = Service.toList(result.getServices());
 				DetailMainFragment.Model model = result.getShop().toModel();
-				BitmapLoader.displayImage(context, result.getShop().getLogo(), img);
 				fragments = new Fragment[] { DetailMainFragment.newInstance(context,model),
 						DetailServiceFragment.newInstance(context,list,result.getShop().getId()),
 						new Fragment(),

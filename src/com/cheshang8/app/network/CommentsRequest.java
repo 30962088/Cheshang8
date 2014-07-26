@@ -34,7 +34,7 @@ public class CommentsRequest extends BaseClient{
 			private String content;
 			private List<String> imgs = new ArrayList<String>();
 			public Model toModel(){
-				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				
 				String time = format.format(new Date(date)); 
 				return new Model("assets://images/ii_1.png", service.name, rating, user.phone, time, content, imgs);

@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#73e048" >
+        android:layout_height="47dp"
+        android:background="#02bbfb" >
 
         <ImageView
             android:layout_width="60dp"
@@ -33,14 +33,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingLeft="26dp"
-        android:paddingRight="26dp" >
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="9dp"
-            android:background="@drawable/shape_reg_input"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shape_radius_gray"
             android:gravity="center_vertical" >
 
             <ImageView
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="9dp"
-            android:background="@drawable/shape_reg_input"
+            android:background="@drawable/shape_radius_gray"
             android:gravity="center_vertical" >
 
             <ImageView
@@ -100,7 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="50dp"
-                android:background="@drawable/shape_reg_input"
+                android:background="@drawable/shape_radius_gray"
                 android:gravity="center_vertical" >
 
                 <ImageView
@@ -127,9 +127,9 @@
                 android:layout_width="107dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/shape_reg_input"
+                android:background="@drawable/shape_radius_gray"
                 android:text="获取验证码"
-                android:textColor="#000"
+                android:textColor="#4c4948"
                 android:textSize="14sp"
                 android:gravity="center"/>
             
@@ -138,10 +138,10 @@
         <TextView 
             android:layout_marginTop="55dp"
             android:layout_width="match_parent"
-            android:layout_height="29dp"
-            android:background="#ff0000"
+            android:layout_height="50dp"
+            android:background="@drawable/shape_radius_red"
             android:textColor="#fff"
-            android:textSize="14sp"
+            android:textSize="15sp"
             android:gravity="center"
             android:text="提交"/>
         

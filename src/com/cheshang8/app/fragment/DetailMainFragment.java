@@ -79,8 +79,8 @@ public class DetailMainFragment extends Fragment{
 	private void init() {
 		title.setText(model.title);
 		address.setText(model.address);
-		time.setText(model.time);
-		phone.setText(model.phone);
+		time.setText("营业时间："+model.time);
+		phone.setText("预约电话："+model.phone);
 		range.setText(model.range);
 		detail.setText(model.detail);
 		

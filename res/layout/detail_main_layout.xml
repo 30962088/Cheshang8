@@ -27,10 +27,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="车之友  朝阳路店"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textColor="#4c4948"
+                    android:textSize="15sp" />
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text="地址：朝阳区朝阳路太平庄甲1号(民航医院对面)"
-                    android:textColor="#000"
+                    android:textColor="#898989"
                     android:textSize="12sp" />
                 
                 <TextView
@@ -48,7 +49,7 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text="营业时间：8:00-19:00"
-                    android:textColor="#000"
+                    android:textColor="#898989"
                     android:textSize="12sp" />
                 
                 <TextView
@@ -58,49 +59,36 @@
                     android:ellipsize="end"
                     android:singleLine="true"
                     android:text="预约电话：010-63864400"
-                    android:textColor="#000"
+                    android:textColor="#898989"
                     android:textSize="12sp" />
                 
             </LinearLayout>
-            
-            <View 
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#efefef"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
             
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical" 
                 android:paddingLeft="20dp"
-                android:paddingRight="20dp">
+                android:paddingRight="20dp"
+                android:layout_marginTop="16sp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="经营范围："
-                    android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textColor="#4c4948"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/range"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="维修、洗车、美容、打蜡、贴膜。"
-                    android:textColor="#000"
+                    android:textColor="#898989"
                     android:textSize="12sp" />
 
                 
             </LinearLayout>
-            
-            <View 
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="#efefef"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
             
             <LinearLayout
                 android:layout_width="match_parent"
@@ -113,15 +101,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="服务说明："
-                    android:textColor="#000"
-                    android:textSize="18sp" />
+                    android:textColor="#4c4948"
+                    android:textSize="15sp"
+                    android:layout_marginTop="16sp" />
 
                 <TextView
                     android:id="@+id/detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="北京车之友自上世纪九十年代成立以来，一直奉行“特色技术、全面服务”的经营宗旨，在汽车服务领域不断开拓创新。从前后挡整张贴膜技术的倡导普及到汽车封釉、底盘装甲、汽车镀膜的引进推广，从客户回访到客户综合信息系统的建立，无不体现了车之友对技术革新的孜孜以求和对服务质量的精益求精。经过多年的发展与沉淀，今后的车之友更加专注于汽车美容、贴膜、洗车、轮胎等领域的发展与服务。让车之友在这些项目上表现出更强的竞争力，为您提供专业的技术，温馨的服务！"
-                    android:textColor="#000"
+                    android:textColor="#898989"
                     android:textSize="12sp" />
 
                 

@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="#efefef">
-	
+    android:background="#efefef"
+    android:orientation="vertical" >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
@@ -13,9 +13,9 @@
         <ImageView
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:scaleType="centerInside"
             android:src="@drawable/icon_nav_left" />
 
         <TextView
@@ -25,91 +25,89 @@
             android:gravity="center"
             android:text="商户详情"
             android:textColor="#fff"
-            android:textSize="18sp"
-             />
-        
+            android:textSize="18sp" />
+
         <ImageView
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            android:paddingTop="14dp"
             android:paddingBottom="14dp"
+            android:paddingTop="14dp"
+            android:scaleType="centerInside"
             android:src="@drawable/detail_star_selector" />
-    
     </LinearLayout>
-    
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-        
-        <ImageView 
-            android:id="@+id/img"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@+id/slider_container"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginBottom="10dp"
-            android:scaleType="centerCrop"/>
-        
-        
-        <LinearLayout 
+            android:layout_height="118dp"
+            android:layout_marginBottom="5dp" >
+        </FrameLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp">
-            
-            <TextView 
+            android:layout_marginRight="5dp" >
+
+            <TextView
                 android:id="@+id/tab1"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/detal_tab_bg_selector"
+                android:gravity="center"
                 android:text="简介"
                 android:textColor="@color/detal_tab_color_selector"
-                android:background="@drawable/detal_tab_bg_selector"
-                android:gravity="center"
-                android:textSize="14sp"/>
-            <TextView 
+                android:textSize="14sp" />
+
+            <TextView
                 android:id="@+id/tab2"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/detal_tab_color_selector"
-                android:background="@drawable/detal_tab_bg_selector"
                 android:layout_height="match_parent"
-                android:text="服务(3)"
+                android:layout_weight="1"
+                android:background="@drawable/detal_tab_bg_selector"
                 android:gravity="center"
-                android:textSize="14sp"/>
-            <TextView 
+                android:text="服务(3)"
+                android:textColor="@color/detal_tab_color_selector"
+                android:textSize="14sp" />
+
+            <TextView
                 android:id="@+id/tab3"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/detal_tab_color_selector"
-                android:background="@drawable/detal_tab_bg_selector"
                 android:layout_height="match_parent"
-                android:text="商品(1)"
+                android:layout_weight="1"
+                android:background="@drawable/detal_tab_bg_selector"
                 android:gravity="center"
-                android:textSize="14sp"/>
-            <TextView 
+                android:text="商品(1)"
+                android:textColor="@color/detal_tab_color_selector"
+                android:textSize="14sp" />
+
+            <TextView
                 android:id="@+id/tab4"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:textColor="@color/detal_tab_color_selector"
-                android:background="@drawable/detal_tab_bg_selector"
                 android:layout_height="match_parent"
-                android:text="评论(5)"
+                android:layout_weight="1"
+                android:background="@drawable/detal_tab_bg_selector"
                 android:gravity="center"
-                android:textSize="14sp"/>
-            
+                android:text="评论(5)"
+                android:textColor="@color/detal_tab_color_selector"
+                android:textSize="14sp" />
         </LinearLayout>
-        
-        <FrameLayout 
+
+        <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_marginLeft="6dp"
             android:layout_marginRight="6dp"
-            android:layout_height="0dp"
-            android:background="#fff"
-            android:layout_weight="1"></FrameLayout>
-        
+            android:layout_weight="1"
+            android:background="#fff" >
+        </FrameLayout>
     </LinearLayout>
 
 </LinearLayout>

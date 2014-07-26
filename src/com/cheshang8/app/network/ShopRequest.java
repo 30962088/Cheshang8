@@ -38,6 +38,8 @@ public class ShopRequest extends BaseClient{
 			
 			private String name;
 			
+			private String icon;
+			
 			private List<Sub> subs = new ArrayList<ShopRequest.Result.Service.Sub>();
 
 			public DetailServiceAdapter.Model toModel(){
@@ -48,7 +50,7 @@ public class ShopRequest extends BaseClient{
 					cols.add(sub.toCol());
 				}
 				
-				DetailServiceAdapter.Model model = new DetailServiceAdapter.Model(name, "assets://images/is_2.png", cols);
+				DetailServiceAdapter.Model model = new DetailServiceAdapter.Model(name, icon, cols);
 				
 				return model;
 				

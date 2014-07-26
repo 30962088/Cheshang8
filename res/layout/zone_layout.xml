@@ -7,17 +7,17 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#73e048" >
+        android:layout_height="47dp"
+        android:background="#02bbfb" >
 
         <ImageView
             android:id="@+id/nav_left"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:scaleType="centerInside"
-            android:src="@drawable/ii_n8" />
+            android:src="@drawable/ii_n100" />
 
         <TextView
             android:layout_width="0dp"
@@ -50,8 +50,8 @@
 
                     <com.makeramen.PhotoView
                         android:id="@+id/avatar"
-                        android:layout_width="67dp"
-                        android:layout_height="67dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="27dp"
                         android:background="@drawable/ii_n10"
@@ -69,23 +69,22 @@
                         android:layout_toRightOf="@id/avatar"
                         android:text="点击登录"
                         android:textColor="#efefef"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
                 </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/all_order3_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="47dp"
+                    android:layout_height="60dp"
                     android:background="#efefef"
-                    android:paddingBottom="1dp"
-                    android:paddingTop="1dp" >
+                    android:padding="5dp" >
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="1"
-                        android:background="#fff"
+                        android:background="@drawable/shape_radius_gray"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -100,8 +99,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="待付款"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -110,7 +109,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="1"
-                        android:background="#fff"
+                        android:background="@drawable/shape_radius_gray"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -125,7 +124,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="待服务"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -135,7 +134,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="1dp"
                         android:layout_weight="1"
-                        android:background="#fff"
+                        android:background="@drawable/shape_radius_gray"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -150,7 +149,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="待评价"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14sp" />
                     </LinearLayout>
 
@@ -159,7 +158,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#fff"
+                        android:background="@drawable/shape_radius_gray"
                         android:gravity="center"
                         android:orientation="vertical" >
 
@@ -174,7 +173,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="全部订单"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -182,103 +181,269 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:orientation="vertical" >
-					
-                    <TextView
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical" 
+                    android:background="@drawable/shape_radius_gray"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:padding="1px"
+                  >
+
+                    <LinearLayout
                         android:id="@+id/my_car_btn"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
-                        android:background="#fff"
-                        android:drawableLeft="@drawable/ii_n5"
-                        android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/ii_n7"
+                        
                         android:gravity="center_vertical"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:text="我的车库"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" >
 
-                    <TextView
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ii_n5" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ii_n7"
+                            android:gravity="center_vertical"
+                            android:text="我的车库"
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    
+                    <View 
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#c9caca"/>
+
+                    <LinearLayout
                         android:id="@+id/car_guanjia_btn"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
-                        android:background="#fff"
-                        android:drawableLeft="@drawable/ii_n1"
-                        android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/ii_n7"
+                        
                         android:gravity="center_vertical"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:text="养车管家"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" >
 
-                    <TextView
-                        android:id="@+id/msg_btn"
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ii_n1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ii_n7"
+                            android:gravity="center_vertical"
+                            android:text="养车管家"
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    <View 
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginBottom="1dp"
-                        android:background="#fff"
-                        android:drawableLeft="@drawable/ii_n4"
-                        android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/ii_n7"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:text="个人消息"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-
-                    <TextView
+                        android:layout_height="1px"
+                        android:background="#c9caca"/>
+                    <LinearLayout
                         android:id="@+id/zhuanshu_btn"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
-                        android:background="#fff"
-                        android:drawableLeft="@drawable/ii_n3"
-                        android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/ii_n7"
+                        
                         android:gravity="center_vertical"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:text="专属包养"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" >
 
-                    <TextView
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ii_n1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ii_n7"
+                            android:gravity="center_vertical"
+                            android:text="专属保养"
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    <View 
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#c9caca"/>
+                    <LinearLayout
+                        android:id="@+id/msg_btn"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
-                        android:background="#fff"
-                        android:drawableLeft="@drawable/ii_n6"
-                        android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/ii_n7"
+                        
                         android:gravity="center_vertical"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:text="我的钱包"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" >
 
-                    <TextView
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ii_n1" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ii_n7"
+                            android:gravity="center_vertical"
+                            android:text="消息中心"
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    <View 
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#c9caca"/>
+                    <LinearLayout
+                        
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_marginBottom="1dp"
-                        android:background="#fff"
-                        android:drawableLeft="@drawable/ii_n2"
-                        android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/ii_n7"
+                        
                         android:gravity="center_vertical"
-                        android:paddingLeft="25dp"
-                        android:paddingRight="25dp"
-                        android:text="养车红包"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ii_n3" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ii_n7"
+                            android:gravity="center_vertical"
+                            android:text="违章查询"
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    <View 
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#c9caca"/>
+                    <LinearLayout
+                       
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="1dp"
+                        
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ii_n8" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ii_n7"
+                            android:gravity="center_vertical"
+                            android:text="我的收藏"
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    <View 
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#c9caca"/>
+                    <LinearLayout
+                        
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="1dp"
+                        
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ii_n2" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ii_n7"
+                            android:gravity="center_vertical"
+                            android:text="我的钱包"
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    <View 
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#c9caca"/>
+                    <LinearLayout
+                        
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="1dp"
+                        
+                        android:gravity="center_vertical"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp" >
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="match_parent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ii_n6" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="2dp"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ii_n7"
+                            android:gravity="center_vertical"
+                            android:text="养车红包"
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+                    
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
@@ -286,15 +451,15 @@
         <RelativeLayout
             android:id="@+id/popup"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" 
-            android:background="#d9221815"
-            android:visibility="gone">
+            android:layout_height="match_parent"
+            android:background="#66221815"
+            android:visibility="visible" >
 
             <LinearLayout
                 android:id="@+id/popup_inner"
-                android:background="#f2f2f1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#f2f2f1"
                 android:orientation="vertical" >
 
                 <TextView
@@ -308,9 +473,9 @@
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
                     android:text="问题反馈"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
-                
+                    android:textColor="#4c4948"
+                    android:textSize="15sp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -322,9 +487,9 @@
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
                     android:text="给个好评"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
-                
+                    android:textColor="#4c4948"
+                    android:textSize="15sp"  />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -336,9 +501,9 @@
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
                     android:text="关于我们"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
-                
+                    android:textColor="#4c4948"
+                    android:textSize="15sp"  />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -350,9 +515,8 @@
                     android:paddingLeft="25dp"
                     android:paddingRight="25dp"
                     android:text="检查更新"
-                    android:textColor="#000"
-                    android:textSize="16sp" />
-                
+                    android:textColor="#4c4948"
+                    android:textSize="15sp"  />
             </LinearLayout>
         </RelativeLayout>
     </RelativeLayout>
