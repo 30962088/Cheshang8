@@ -4,114 +4,129 @@
     android:layout_height="wrap_content" >
 
     <LinearLayout
-        android:background="#fff"
+        android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" 
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="15dp">
-
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="37dp"
-            android:gravity="center_vertical"
-            android:text="订单日期：2014-02-05"
-            android:textColor="#000"
-            android:textSize="14sp" />
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="2dp" >
 
-            <ImageView
-                android:id="@+id/thumbnail"
-                android:layout_marginRight="7dp"
-                android:layout_width="72dp"
-                android:layout_height="47dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/testimg" />
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:gravity="center_vertical"
+                android:text="订单日期：2014-02-05"
+                android:textColor="#4c4948"
+                android:textSize="15sp" />
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical" >
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:gravity="center_vertical">
 
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="车之友  朝阳路店"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="89dp"
+                    android:layout_height="67dp"
+                    android:layout_marginRight="10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/testimg" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:id="@+id/type"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="人工洗车"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                    
-                    <TextView
-                        android:id="@+id/price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥15"
-                        android:textColor="#ff00"
-                        android:textSize="14sp" />
-                    
-                </LinearLayout>
-                
-                <TextView
-                    android:id="@+id/no"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="订单编号：0987654321"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
-                
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="订单状态："
-                        android:textColor="#000"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="车之友  朝阳路店"
+                        android:textColor="#898989"
                         android:textSize="14sp" />
-                    
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="人工洗车"
+                            android:textColor="#898989"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥15"
+                            android:textColor="#ff00"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
                     <TextView
-                        android:id="@+id/status"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:id="@+id/no"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="待支付"
-                        android:textColor="#ff00"
+                        android:text="订单编号：0987654321"
+                        android:textColor="#898989"
                         android:textSize="14sp" />
-                    
-                    <TextView
-                        android:id="@+id/status_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="立即支付"
-                        android:textColor="#fff"
-                        android:background="#ff0000"
-                        android:padding="2dp"
-                        android:textSize="14sp" />
-                    
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="订单状态："
+                            android:textColor="#898989"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="待支付"
+                            android:textColor="#ff00"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/status_btn"
+                            android:layout_width="73.5dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/shape_radius_red"
+                            android:gravity="center"
+                            android:padding="3dp"
+                            android:text="立即支付"
+                            android:textColor="#fff"
+                            android:textSize="12sp" />
+                    </LinearLayout>
                 </LinearLayout>
-                
             </LinearLayout>
         </LinearLayout>
+
+        <View
+            android:id="@+id/sep"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#c9caca" />
     </LinearLayout>
 
 </FrameLayout>

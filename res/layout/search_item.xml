@@ -1,131 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    android:background="#fff">
+    android:layout_height="wrap_content">
 
-    <LinearLayout 
-        android:padding="10dp"
+    <LinearLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        
-        <LinearLayout 
-            android:layout_marginRight="10dp"
-            android:layout_width="88dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
-            
-            <ImageView 
-                android:id="@+id/thumbnail"
+            android:padding="10dp" >
+
+            <LinearLayout
                 android:layout_width="88dp"
-                android:layout_height="67dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/ic_launcher"/>
-            
-            <com.cheshang8.app.widget.CarStarView
-                android:id="@+id/star"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-                
-            </com.cheshang8.app.widget.CarStarView>
-            
-        </LinearLayout>
-        
-        <LinearLayout 
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            
-            <TextView 
-                android:id="@+id/title"
-                android:layout_width="match_parent"
-                android:singleLine="true"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:text="龟博士汽车美容连锁"
-                android:textColor="#4c4948"
-                android:textSize="15dp"/>
-            
-            <TextView 
-                android:id="@+id/address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:ellipsize="end"
-                android:layout_marginBottom="5dp"
-                android:text="地址：北京大兴区西红门地铁西出口向北..."
-                android:textColor="#898989"
-                android:textSize="11sp"/>
-            
-            <View 
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#898989"/>
-            
-            <LinearLayout 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="bottom">
-                
-                <TextView 
-                    android:id="@+id/type"
+                android:layout_marginRight="10dp"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/thumbnail"
+                    android:layout_width="88dp"
+                    android:layout_height="67dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher" />
+
+                <com.cheshang8.app.widget.CarStarView
+                    android:id="@+id/star"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="[人工洗车]￥"
+                    android:layout_marginTop="10dp" >
+                </com.cheshang8.app.widget.CarStarView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="龟博士汽车美容连锁"
                     android:textColor="#4c4948"
-                    android:textSize="12.5sp"/>
-                
-                <TextView 
-                    android:id="@+id/price"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="地址：北京大兴区西红门地铁西出口向北..."
+                    android:textColor="#898989"
+                    android:textSize="11sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#898989" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom" >
+
+                    <TextView
+                        android:id="@+id/type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="[人工洗车]￥"
+                        android:textColor="#4c4948"
+                        android:textSize="12.5sp" />
+
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:text="20"
+                        android:textColor="#ff0000"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/price_old"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(45)"
+                        android:textSize="12.5sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#ff0000"
-                    android:text="20"
-                    android:gravity="bottom"
-                    android:textSize="25sp"/>
-                
-                <TextView 
-                    android:id="@+id/price_old"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="(45)"
-                    android:textSize="12.5sp"/>
-                
+                    android:layout_gravity="right" >
+
+                    <TextView
+                        android:id="@+id/comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/icon_comment"
+                        android:drawablePadding="5dp"
+                        android:text="167"
+                        android:textColor="#4c4948"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/loc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:drawableLeft="@drawable/icon_loc"
+                        android:drawablePadding="5dp"
+                        android:text="0.2Km"
+                        android:textColor="#4c4948"
+                        android:textSize="14sp" />
+                </LinearLayout>
             </LinearLayout>
-            
-            <LinearLayout 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right">
-                
-                <TextView 
-                    android:id="@+id/comment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_comment"
-                    android:text="167"
-                    android:textSize="14sp"
-                    android:drawablePadding="5dp"
-                    android:textColor="#4c4948"/>
-                
-                <TextView 
-                    android:id="@+id/loc"
-                    android:layout_marginLeft="25dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/icon_loc"
-                    android:text="0.2Km"
-                    android:textSize="14sp"
-                    android:drawablePadding="5dp"
-                    android:textColor="#4c4948"/>
-                
-            </LinearLayout>
-            
         </LinearLayout>
-        
+
+        <View
+            android:id="@+id/sep"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#c9caca" />
     </LinearLayout>
 
 </FrameLayout>

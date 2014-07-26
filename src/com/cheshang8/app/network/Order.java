@@ -3,6 +3,7 @@ package com.cheshang8.app.network;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 
 public class Order {
@@ -29,6 +30,9 @@ public class Order {
 			return receipt;
 		}
 		
+		public Pay toModel(){
+			return new Pay(price, gift, gift, type,receipt);
+		}
 		
 	}
 	

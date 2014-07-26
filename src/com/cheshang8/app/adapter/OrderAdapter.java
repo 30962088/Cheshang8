@@ -129,6 +129,20 @@ public class OrderAdapter extends BaseAdapter {
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
+		
+		int border;
+		if(position == 0){
+			holder.sep.setVisibility(View.VISIBLE);
+			border = R.drawable.border_2;
+		}else if(position == list.size() -1){
+			border = R.drawable.border_3;
+			holder.sep.setVisibility(View.GONE);
+		}else{
+			border = R.drawable.border_1;
+			holder.sep.setVisibility(View.VISIBLE);
+		}
+		holder.container.setBackgroundResource(border);
+		
 		Status status = model.getStatus();
 		BitmapLoader.displayImage(context, model.thumbnail, holder.thumbnail);
 		
@@ -169,7 +183,9 @@ public class OrderAdapter extends BaseAdapter {
 		private TextView no;
 		private TextView status;
 		private TextView status_btn;
-
+		private View container;
+		
+		private View sep;
 		public ViewHolder(View view) {
 
 			thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
@@ -180,7 +196,8 @@ public class OrderAdapter extends BaseAdapter {
 			no = (TextView) view.findViewById(R.id.no);
 			status = (TextView) view.findViewById(R.id.status);
 			status_btn = (TextView) view.findViewById(R.id.status_btn);
-			
+			container = view.findViewById(R.id.container);
+			sep = view.findViewById(R.id.sep);
 		}
 
 	}

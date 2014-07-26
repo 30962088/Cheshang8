@@ -14,9 +14,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class SearchItemAdapter extends BaseAdapter{
+public class SearchItemAdapter extends BaseAdapter {
 
-	public static class Model{
+	public static class Model {
 		private String id;
 		private String thumbnail;
 		private int star;
@@ -27,6 +27,7 @@ public class SearchItemAdapter extends BaseAdapter{
 		private int price_old;
 		private int comment;
 		private String loc;
+
 		public Model(String id, String thumbnail, int star, String title,
 				String address, String type, int price, int price_old,
 				int comment, String loc) {
@@ -42,20 +43,17 @@ public class SearchItemAdapter extends BaseAdapter{
 			this.comment = comment;
 			this.loc = loc;
 		}
-		
+
 		public String getId() {
 			return id;
 		}
-		
-		
+
 	}
-	
+
 	private Context context;
-	
+
 	private List<Model> list;
-	
-	
-	
+
 	public SearchItemAdapter(Context context, List<Model> list) {
 		super();
 		this.context = context;
@@ -84,27 +82,39 @@ public class SearchItemAdapter extends BaseAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder = null;
 		Model model = list.get(position);
-		if(convertView == null){
+		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.search_item, null);
 			holder = new ViewHolder(convertView);
 			convertView.setTag(holder);
-		}else{
+		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
+		int border;
+		if (position == 0) {
+			holder.sep.setVisibility(View.VISIBLE);
+			border = R.drawable.border_2;
+		} else if (position == list.size() - 1) {
+			border = R.drawable.border_3;
+			holder.sep.setVisibility(View.GONE);
+		} else {
+			border = R.drawable.border_1;
+			holder.sep.setVisibility(View.VISIBLE);
+		}
+		holder.container.setBackgroundResource(border);
 		BitmapLoader.displayImage(context, model.thumbnail, holder.thumbnail);
 		holder.star.setStar(model.star);
 		holder.title.setText(model.title);
 		holder.address.setText(model.address);
-		holder.type.setText("["+model.type+"]￥");
-		holder.price.setText(""+model.price);
-		holder.price_old.setText("("+model.price_old+")");
-		holder.comment.setText(""+model.comment);
-		holder.loc.setText(""+model.loc);
+		holder.type.setText("[" + model.type + "]￥");
+		holder.price.setText("" + model.price);
+		holder.price_old.setText("(" + model.price_old + ")");
+		holder.comment.setText("" + model.comment);
+		holder.loc.setText("" + model.loc);
 		return convertView;
 	}
-	
-	private static class ViewHolder{
+
+	private static class ViewHolder {
 		private ImageView thumbnail;
 		private CarStarView star;
 		private TextView title;
@@ -114,6 +124,10 @@ public class SearchItemAdapter extends BaseAdapter{
 		private TextView price_old;
 		private TextView comment;
 		private TextView loc;
+		private View container;
+
+		private View sep;
+
 		public ViewHolder(View view) {
 			thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
 			star = (CarStarView) view.findViewById(R.id.star);
@@ -124,9 +138,9 @@ public class SearchItemAdapter extends BaseAdapter{
 			price_old = (TextView) view.findViewById(R.id.price_old);
 			comment = (TextView) view.findViewById(R.id.comment);
 			loc = (TextView) view.findViewById(R.id.loc);
+			container = view.findViewById(R.id.container);
+			sep = view.findViewById(R.id.sep);
 		}
 	}
-	
-	
 
 }

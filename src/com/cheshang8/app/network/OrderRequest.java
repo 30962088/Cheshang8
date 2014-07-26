@@ -10,6 +10,7 @@ import org.apache.http.Header;
 
 
 import com.cheshang8.app.OrderActivity;
+import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.ServiceActivity;
 import com.cheshang8.app.adapter.DetailServiceAdapter;
 import com.cheshang8.app.adapter.DetailServiceAdapter.Model.Col;
@@ -28,19 +29,18 @@ public class OrderRequest extends BaseClient{
 		private Shop shop;
 		
 		private Order order;
-		
-		
-		
-		private Payment payment;
+	
 		
 		public OrderActivity.Model toModel(){
 			Service service = order.getService();
-			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-			
+			Pay pay = null;
+			if(order.getPayment() != null){
+				pay = order.getPayment().toModel();
+			}
 			return new OrderActivity.Model(order.getDateString(), order.getNo(),order.getConsume_no(), order.getStatusModel(), 
-					shop.getLogo(), shop.getShop_name(), shop.getShop_address(), shop.getPhoneText(), service.getName(),
+					shop.getLogo(),(int)shop.getRating(), shop.getShop_name(), shop.getShop_address(), shop.getPhoneText(), service.getName(),
 					service.getDetail(), service.getPrice_origin(), service.getPrice_discount(), service.getPrice_origin()-service.getPrice_discount(), 
-					15, 15,15, "淘宝","百度");
+					pay);
 		}
 		
 		

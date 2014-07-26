@@ -5,10 +5,10 @@
     android:background="#efefef"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#73e048" >
+        android:layout_height="47dp"
+        android:background="#02bbfb" >
 
         <ImageView
             android:layout_width="60dp"
@@ -19,15 +19,33 @@
             android:src="@drawable/icon_nav_left" />
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="60dp"
-            android:layout_weight="1"
             android:gravity="center"
             android:text="订单详情"
             android:textColor="#fff"
             android:textSize="18sp" />
-    </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/right_nav_btn"
+            android:layout_alignParentRight="true"
+            android:layout_width="93dp"
+            android:layout_height="match_parent"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="63dp"
+                android:layout_height="21dp"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="取消订单"
+                android:textColor="#4c4948"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,31 +54,35 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" 
-            android:padding="10dp">
+            android:orientation="vertical"
+            android:padding="10dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#efefef"
+                android:background="@drawable/shape_radius_gray"
                 android:orientation="vertical" >
 
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:background="#fff"
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="订单日期：2014-02-05"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textColor="#4c4948"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#c9caca" >
+                </View>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
-                    android:background="#fff"
                     android:orientation="vertical"
                     android:padding="18dp" >
 
@@ -68,19 +90,19 @@
                         android:id="@+id/no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
+                        android:layout_marginBottom="10dp"
                         android:text="订单编号：0987654321"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                        android:textColor="#898989"
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/consume_no"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
+                        android:layout_marginBottom="10dp"
                         android:text="消费编码：123456789012 "
-                        android:textColor="#000"
-                        android:textSize="14sp" />
+                        android:textColor="#898989"
+                        android:textSize="12sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -91,8 +113,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="订单状态："
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#898989"
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/status"
@@ -101,7 +123,7 @@
                             android:layout_weight="1"
                             android:text="待体验"
                             android:textColor="#f6ab3c"
-                            android:textSize="14sp" />
+                            android:textSize="12sp" />
 
                         <TextView
                             android:id="@+id/pay_btn"
@@ -123,37 +145,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="#efefef"
+                android:background="@drawable/shape_radius_gray"
                 android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="1dp"
-                    android:background="#fff"
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="服务信息"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+                    android:textColor="#4c4948"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#c9caca" >
+                </View>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:gravity="center_vertical"
                     android:paddingBottom="20dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:paddingTop="10dp" >
 
-                    <ImageView
-                        android:id="@+id/thumbnail"
-                        android:layout_width="72dp"
-                        android:layout_height="47dp"
-                        android:layout_marginRight="5dp"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/testimg" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:gravity="center"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/thumbnail"
+                            android:layout_width="89dp"
+                            android:layout_height="67dp"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/testimg" />
+
+                        <com.cheshang8.app.widget.CarStarView
+                            android:id="@+id/carstar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp" >
+                        </com.cheshang8.app.widget.CarStarView>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -165,9 +204,11 @@
                             android:id="@+id/title"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:singleLine="true"
                             android:text="车之友  朝阳路店"
-                            android:textColor="#000"
-                            android:textSize="16dp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15dp" />
 
                         <TextView
                             android:id="@+id/address"
@@ -176,100 +217,109 @@
                             android:ellipsize="end"
                             android:singleLine="true"
                             android:text="地址：朝阳区朝阳路太平庄甲1号(民航医院对面)"
-                            android:textColor="#000"
+                            android:textColor="#898989"
                             android:textSize="12dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="#c9caca" >
+                        </View>
 
                         <TextView
                             android:id="@+id/phone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="预约电话：010-63864400"
-                            android:textColor="#000"
-                            android:textSize="12dp" />
-                    </LinearLayout>
-                </LinearLayout>
+                            android:textColor="#898989"
+                            android:textSize="12dp"
+                            android:visibility="gone" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#fff"
-                    android:orientation="vertical"
-                    android:paddingBottom="15dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="10dp" >
-
-                    <TextView
-                        android:id="@+id/service"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="玻璃贴膜"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/service_detail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="威固V70前挡膜+威固K37车身膜"
-                        android:textColor="#898989"
-                        android:textSize="12sp" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="bottom" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="top"
-                            android:layout_marginTop="5dp"
-                            android:text="￥"
-                            android:textColor="#ff0000"
-                            android:textSize="18sp" />
+                            android:orientation="vertical" >
 
-                        <TextView
-                            android:id="@+id/price"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="20"
-                            android:textColor="#ff0000"
-                            android:textSize="36sp" />
+                            <TextView
+                                android:id="@+id/service"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="玻璃贴膜"
+                                android:textColor="#4c4948"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:id="@+id/service_detail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="威固V70前挡膜+威固K37车身膜"
+                                android:textColor="#898989"
+                                android:textSize="12sp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom" >
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="top"
+                                    android:layout_marginTop="5dp"
+                                    android:text="￥"
+                                    android:textColor="#ff0000"
+                                    android:textSize="18sp" />
+
+                                <TextView
+                                    android:id="@+id/price"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="20"
+                                    android:textColor="#ff0000"
+                                    android:textSize="36sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/price0"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="原价：￥45    节省：￥25"
+                                android:textColor="#898989"
+                                android:textSize="12sp" />
+                        </LinearLayout>
                     </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/price0"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="原价：￥45    节省：￥25"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/pay_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#efefef"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp" >
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_radius_gray"
+                android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
-                    android:background="#fff"
+                    android:layout_marginBottom="1dp"
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
                     android:text="支付信息"
-                    android:textColor="#000"
-                    android:layout_marginBottom="1dp"
-                    android:textSize="14sp" />
+                    android:textColor="#4c4948"
+                    android:textSize="15sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#c9caca" >
+                </View>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
                     android:orientation="vertical" >
 
                     <LinearLayout
@@ -283,7 +333,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="商品金额："
-                            android:textColor="#000"
+                            android:textColor="#898989"
                             android:textSize="14dp" />
 
                         <TextView
@@ -306,7 +356,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="养车红包："
-                            android:textColor="#000"
+                            android:textColor="#898989"
                             android:textSize="14dp" />
 
                         <TextView
@@ -329,7 +379,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="订单实付金额："
-                            android:textColor="#000"
+                            android:textColor="#898989"
                             android:textSize="14dp" />
 
                         <TextView
@@ -349,7 +399,7 @@
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="支付方式：线上支付/支付宝"
-                        android:textColor="#000"
+                        android:textColor="#898989"
                         android:textSize="14dp" />
 
                     <TextView
@@ -360,7 +410,7 @@
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp"
                         android:text="发票信息：北京与车行信息技术有限公司"
-                        android:textColor="#000"
+                        android:textColor="#898989"
                         android:textSize="14dp" />
                 </LinearLayout>
             </LinearLayout>

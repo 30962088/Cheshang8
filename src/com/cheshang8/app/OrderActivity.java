@@ -1,5 +1,6 @@
 package com.cheshang8.app;
 
+import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 import com.cheshang8.app.fragment.TabIndexFragment;
 import com.cheshang8.app.fragment.TabZoneFragment;
@@ -69,6 +70,7 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 	
 	
 	private class ViewHolder{
+		private View rightBtn;
 		private TextView time;
 		private TextView no;
 		private TextView consume_no;
@@ -80,6 +82,7 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 		private TextView phone;
 		private TextView service;
 		private TextView service_detail;
+		private View pay_container;
 		private TextView price;
 		private TextView price0;
 		private TextView price1;
@@ -88,6 +91,7 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 		private TextView pay_from;
 		private TextView fapiao;
 		public ViewHolder() {
+			rightBtn = findViewById(R.id.right_nav_btn);
 			time = (TextView) findViewById(R.id.time);
 			no = (TextView) findViewById(R.id.no);
 			consume_no = (TextView) findViewById(R.id.consume_no);
@@ -106,8 +110,14 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 			price3 = (TextView) findViewById(R.id.price3);
 			pay_from = (TextView) findViewById(R.id.pay_from);
 			fapiao = (TextView) findViewById(R.id.fapiao);
+			pay_container = findViewById(R.id.pay_container);
 		}
 		public void setModel(Model model){
+			if(model.status == Status.待支付){
+				rightBtn.setVisibility(View.VISIBLE);
+			}else{
+				rightBtn.setVisibility(View.GONE);
+			}
 			BitmapLoader.displayImage(context, model.thumbnail, thumbnail);
 			time.setText("订单日期："+model.time);
 			no.setText("订单编号："+model.no);
@@ -123,22 +133,51 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 			service_detail.setText(model.service_detail);
 			price.setText(""+model.price);
 			price0.setText("原价："+model.price0+"      节省："+model.price0_0);
-			price1.setText(""+model.price1);
-			price2.setText(""+model.price2);
-			price3.setText(""+model.price3);
-			pay_from.setText("支付方式："+model.pay_from);
-			fapiao.setText("发票信息："+model.fapiao);
+			if(model.pay == null){
+				pay_container.setVisibility(View.GONE);
+			}else{
+				pay_container.setVisibility(View.VISIBLE);
+				Pay pay = model.pay;
+				price1.setText(""+pay.price1);
+				price2.setText(""+pay.price2);
+				price3.setText(""+pay.price3);
+				pay_from.setText("支付方式："+pay.pay_from);
+				fapiao.setText("发票信息："+pay.fapiao);
+			}
+			
 		}
 	}
 	
 	public static class Model{
 		
+		
+		public static class Pay{
+			
+			private int price1;
+			private int price2;
+			private int price3;
+			private String pay_from;
+			private String fapiao;
+			public Pay(int price1, int price2, int price3, String pay_from,
+					String fapiao) {
+				super();
+				this.price1 = price1;
+				this.price2 = price2;
+				this.price3 = price3;
+				this.pay_from = pay_from;
+				this.fapiao = fapiao;
+			}
+			
+			
+		}
+		
 		private String time;
 		private String no;
 		private String consume_no;
 		private Status status;
-
+		
 		private String thumbnail; 
+		private int star;
 		private String title;
 		private String address;
 		private String phone;
@@ -147,22 +186,18 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 		private int price;
 		private int price0;
 		private int price0_0;
-		private int price1;
-		private int price2;
-		private int price3;
-		private String pay_from;
-		private String fapiao;
-		public Model(String time, String no, String consume_no, Status status,String thumbnail, String title, String address,
+		private Pay pay;
+		public Model(String time, String no, String consume_no, Status status,
+				String thumbnail, int star, String title, String address,
 				String phone, String service, String service_detail, int price,
-				int price0, int price0_0, int price1, int price2, int price3,
-				String pay_from, String fapiao) {
+				int price0, int price0_0, Pay pay) {
 			super();
 			this.time = time;
 			this.no = no;
 			this.consume_no = consume_no;
 			this.status = status;
-
 			this.thumbnail = thumbnail;
+			this.star = star;
 			this.title = title;
 			this.address = address;
 			this.phone = phone;
@@ -171,12 +206,14 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 			this.price = price;
 			this.price0 = price0;
 			this.price0_0 = price0_0;
-			this.price1 = price1;
-			this.price2 = price2;
-			this.price3 = price3;
-			this.pay_from = pay_from;
-			this.fapiao = fapiao;
+			this.pay = pay;
 		}
+		
+		
+		
+		
+
+		
 		
 		
 		
