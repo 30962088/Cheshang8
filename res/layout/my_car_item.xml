@@ -5,12 +5,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content" 
+        android:background="@drawable/shape_radius_gray"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
-            android:background="#efefef">
+            android:layout_height="wrap_content">
             
             
             <LinearLayout 
@@ -18,17 +19,19 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="#fff">
+                android:paddingBottom="10dp">
                 
                 <LinearLayout 
                     android:layout_width="match_parent"
-                    android:layout_height="92dp"
+                    android:layout_height="56dp"
                     android:gravity="center_vertical">
                     
                     <ImageView 
                         android:id="@+id/icon"
                         android:layout_marginLeft="25dp"
                         android:layout_width="50dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
                         android:layout_height="match_parent"
                         android:scaleType="centerInside"
                         android:src="@drawable/car_auto"/>
@@ -42,8 +45,8 @@
                         android:singleLine="true"
                         android:ellipsize="end"
                         android:text="奥迪Q3"
-                        android:textColor="#000"
-                        android:textSize="24sp"/>
+                        android:textColor="#4c4948"
+                        android:textSize="16sp"/>
                     
                 </LinearLayout>
                 
@@ -57,8 +60,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="信息完善度"
-                        android:textColor="#000"
-                        android:textSize="20sp"/>
+                        android:textColor="#4c4948"
+                        android:textSize="14sp"/>
                     <TextView 
                         android:id="@+id/percent"
                         android:layout_width="wrap_content"
@@ -83,12 +86,16 @@
                 
             </LinearLayout>
             
+            <View 
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="#c9caca"></View>
+            
             <LinearLayout 
                 android:layout_width="95dp"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:background="#fff"
                 android:layout_marginLeft="1dp">
                 
                 <ImageView 
@@ -102,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="编辑"
-                    android:textSize="20dp"
+                    android:textSize="14dp"
                     android:textColor="#898989"/>
                 
             </LinearLayout>
@@ -114,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ii_z1"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="0dp"/>
         
     </RelativeLayout>
 

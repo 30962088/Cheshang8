@@ -6,19 +6,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" 
-        android:background="#efefef">
+        android:background="#efefef"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp" >
 
         <LinearLayout
-            android:layout_marginTop="9dp"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="30dp"
-            android:background="#fff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_marginTop="9dp"
+            android:background="@drawable/shape_radius_gray"
+            android:orientation="vertical"
+            android:paddingBottom="30dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="20dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,14 +35,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="5dp" >
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical" >
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="电脑洗车"
-                        android:textColor="#000"
+                        android:textColor="#4c4948"
                         android:textSize="14sp" />
 
                     <LinearLayout
@@ -68,45 +70,44 @@
             </LinearLayout>
 
             <TextView
-                android:layout_marginTop="19dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
                 android:text="消费编码：1234567890"
-                android:textColor="#000"
+                android:textColor="#4c4948"
                 android:textSize="14sp" />
         </LinearLayout>
-        
-        <LinearLayout 
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
             android:paddingLeft="7dp"
-            android:paddingRight="7dp">
-            
+            android:paddingRight="7dp" >
+
             <TextView
-                
                 android:layout_width="0dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:layout_height="30dp"
-                android:text="查看订单"
+                android:background="@drawable/shape_radius_blue"
                 android:gravity="center"
-                android:background="#ff0000"
+                android:text="查看订单"
                 android:textColor="#fff"
                 android:textSize="16sp" />
-            
+
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="30dp"
-                android:text="继续逛逛"
-                android:gravity="center"
-                android:background="#fff"
-                android:textColor="#000"
+                android:layout_height="40dp"
                 android:layout_marginLeft="37dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_radius_gray"
+                android:gravity="center"
+                android:text="继续逛逛"
+                android:textColor="#4c4948"
                 android:textSize="16sp" />
-            
         </LinearLayout>
+
         
     </LinearLayout>
 

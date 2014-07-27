@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#73e048" >
+        android:layout_height="47dp"
+        android:background="#02bbfb" >
 
         <ImageView
             android:layout_width="60dp"
@@ -37,15 +37,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" >
 
             <LinearLayout
                 android:id="@+id/item1"
                 android:layout_width="match_parent"
-                android:layout_height="32dp"
+                android:layout_height="42dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:background="#fff"
+                android:background="@drawable/shape_radius_gray"
+                
                 android:drawableRight="@drawable/ii_n7"
                 android:gravity="center_vertical"
                 android:paddingLeft="25dp"
@@ -56,14 +59,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="奥迪Q5"
-                    android:textColor="#000"
+                    android:textColor="@color/cat_info_selector"
                     android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawablePadding="8dp"
-                    android:drawableRight="@drawable/car_info_selector"
+                    android:drawableRight="@drawable/ii_n7"
                     android:text="重选车系"
                     android:textColor="@color/cat_info_selector"
                     android:textSize="12sp" />
@@ -72,14 +75,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#efefef"
+                android:background="@drawable/shape_radius_gray"
                 android:orientation="vertical" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="42dp"
                     android:layout_marginBottom="1dp"
-                    android:background="#fff"
+                    
                     android:drawableRight="@drawable/ii_n7"
                     android:gravity="center_vertical"
                     android:paddingLeft="25dp"
@@ -90,14 +93,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="车型"
-                        android:textColor="#000"
+                        android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/car_info_selector"
+                        android:drawableRight="@drawable/ii_n7"
                         android:text="未选择"
                         android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
@@ -105,9 +108,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="42dp"
                     android:layout_marginBottom="1dp"
-                    android:background="#fff"
+                    
                     android:drawableRight="@drawable/ii_n7"
                     android:gravity="center_vertical"
                     android:paddingLeft="25dp"
@@ -118,14 +121,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="车架号"
-                        android:textColor="#000"
+                        android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/car_info_selector"
+                        android:drawableRight="@drawable/ii_n7"
                         android:text="未填写"
                         android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
@@ -133,8 +136,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="#fff"
+                    android:layout_height="42dp"
+                    
                     android:drawableRight="@drawable/ii_n7"
                     android:gravity="center_vertical"
                     android:paddingLeft="25dp"
@@ -145,14 +148,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="发动机编号"
-                        android:textColor="#000"
+                        android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/car_info_selector"
+                        android:drawableRight="@drawable/ii_n7"
                         android:text="未填写"
                         android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
@@ -163,15 +166,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="#efefef"
+                android:background="@drawable/shape_radius_gray"
                 android:orientation="vertical" 
                 android:layout_marginBottom="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="42dp"
                     android:layout_marginBottom="1dp"
-                    android:background="#fff"
+                    
                     android:drawableRight="@drawable/ii_n7"
                     android:gravity="center_vertical"
                     android:paddingLeft="25dp"
@@ -182,14 +185,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="车主姓名"
-                        android:textColor="#000"
+                        android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/car_info_selector"
+                        android:drawableRight="@drawable/ii_n7"
                         android:text="未选择"
                         android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
@@ -197,9 +200,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="42dp"
                     android:layout_marginBottom="1dp"
-                    android:background="#fff"
+                    
                     android:drawableRight="@drawable/ii_n7"
                     android:gravity="center_vertical"
                     android:paddingLeft="25dp"
@@ -210,14 +213,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="车牌号"
-                        android:textColor="#000"
+                        android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/car_info_selector"
+                        android:drawableRight="@drawable/ii_n7"
                         android:text="未填写"
                         android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
@@ -225,9 +228,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="42dp"
                     android:layout_marginBottom="1dp"
-                    android:background="#fff"
+                    
                     android:drawableRight="@drawable/ii_n7"
                     android:gravity="center_vertical"
                     android:paddingLeft="25dp"
@@ -238,14 +241,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="购车价格"
-                        android:textColor="#000"
+                        android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/car_info_selector"
+                        android:drawableRight="@drawable/ii_n7"
                         android:text="未填写"
                         android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
@@ -253,9 +256,9 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="42dp"
                     android:layout_marginBottom="1dp"
-                    android:background="#fff"
+                    
                     android:drawableRight="@drawable/ii_n7"
                     android:gravity="center_vertical"
                     android:paddingLeft="25dp"
@@ -266,14 +269,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="购车日期"
-                        android:textColor="#000"
+                        android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/car_info_selector"
+                        android:drawableRight="@drawable/ii_n7"
                         android:text="未填写"
                         android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
@@ -281,8 +284,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="#fff"
+                    android:layout_height="42dp"
+                    
                     android:drawableRight="@drawable/ii_n7"
                     android:gravity="center_vertical"
                     android:paddingLeft="25dp"
@@ -293,14 +296,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="里程数"
-                        android:textColor="#000"
+                        android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawablePadding="8dp"
-                        android:drawableRight="@drawable/car_info_selector"
+                        android:drawableRight="@drawable/ii_n7"
                         android:text="未填写"
                         android:textColor="@color/cat_info_selector"
                         android:textSize="12sp" />

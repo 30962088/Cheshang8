@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#73e048" >
+        android:layout_height="47dp"
+        android:background="#02bbfb" >
 
         <ImageView
             android:layout_width="60dp"
@@ -49,12 +49,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
+                    android:background="@drawable/shape_radius_gray"
                     android:orientation="vertical" >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="26dp"
+                        android:layout_height="29dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp" >
 
@@ -64,14 +64,14 @@
                             android:drawableLeft="@drawable/ii_p1"
                             android:drawablePadding="5dp"
                             android:text="服务信息"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#f2f2f1" />
+                        android:layout_height="1px"
+                        android:background="#c9caca" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -86,7 +86,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="玻璃贴膜"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14sp" />
 
                         <TextView
@@ -122,7 +122,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="原价：￥45    节省：￥25"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -131,12 +131,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#fff"
+                    android:background="@drawable/shape_radius_gray"
                     android:orientation="vertical" >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="26dp"
+                        android:layout_height="29dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp" >
 
@@ -146,14 +146,14 @@
                             android:drawableLeft="@drawable/ii_p2"
                             android:drawablePadding="5dp"
                             android:text="商家信息"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#f2f2f1" />
+                        android:layout_height="1px"
+                        android:background="#c9caca" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -181,8 +181,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="车之友  朝阳路店"
-                                android:textColor="#000"
-                                android:textSize="16dp" />
+                                android:textColor="#4c4948"
+                                android:textSize="15dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -190,14 +190,14 @@
                                 android:ellipsize="end"
                                 android:singleLine="true"
                                 android:text="地址：朝阳区朝阳路太平庄甲1号(民航医院对面)"
-                                android:textColor="#000"
+                                android:textColor="#4c4948"
                                 android:textSize="12dp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="预约电话：010-63864400"
-                                android:textColor="#000"
+                                android:textColor="#4c4948"
                                 android:textSize="12dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -207,12 +207,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#fff"
+                    android:background="@drawable/shape_radius_gray"
                     android:orientation="vertical" >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="26dp"
+                        android:layout_height="29dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp" >
 
@@ -222,8 +222,8 @@
                             android:drawableLeft="@drawable/ii_p3"
                             android:drawablePadding="5dp"
                             android:text="您的手机号"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <View
@@ -243,7 +243,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="158****1121"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="12dp" />
 
                         <TextView

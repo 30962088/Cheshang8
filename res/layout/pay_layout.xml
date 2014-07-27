@@ -7,8 +7,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#73e048" >
+        android:layout_height="47dp"
+        android:background="#02bbfb" >
 
         <ImageView
             android:layout_width="60dp"
@@ -46,17 +46,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical" 
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#fff"
+                    android:background="@drawable/shape_radius_gray"
                     android:orientation="vertical" >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="26dp"
+                        android:layout_height="29dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp" >
 
@@ -66,14 +68,14 @@
                             android:drawableLeft="@drawable/ii_p1"
                             android:drawablePadding="5dp"
                             android:text="服务信息"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#f2f2f1" />
+                        android:layout_height="1px"
+                        android:background="#c9caca" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -88,7 +90,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="玻璃贴膜"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14sp" />
 
                         <TextView
@@ -124,7 +126,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="原价：￥45    节省：￥25"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -133,12 +135,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#fff"
+                    android:background="@drawable/shape_radius_gray"
                     android:orientation="vertical" >
+
+                    
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="26dp"
+                        android:layout_height="29dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp" >
 
@@ -148,14 +152,14 @@
                             android:drawableLeft="@drawable/ii_m6"
                             android:drawablePadding="5dp"
                             android:text="支付方式"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#f2f2f1" />
+                        android:layout_height="1px"
+                        android:background="#c9caca" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -202,7 +206,7 @@
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:text="钱包总额："
-                                            android:textColor="#000"
+                                            android:textColor="#4c4948"
                                             android:textSize="14sp" />
 
                                         <TextView
@@ -224,7 +228,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="#ff0000"
+                                    android:background="@drawable/shape_radius_red"
                                     android:paddingBottom="2dp"
                                     android:paddingLeft="5dp"
                                     android:paddingRight="5dp"
@@ -258,7 +262,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="店铺支付"
-                                android:textColor="#000"
+                                android:textColor="#4c4948"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -285,7 +289,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="支付宝支付"
-                                android:textColor="#000"
+                                android:textColor="#4c4948"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -312,7 +316,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="微信支付"
-                                android:textColor="#000"
+                                android:textColor="#4c4948"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
@@ -340,7 +344,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="银行卡支付"
-                                android:textColor="#000"
+                                android:textColor="#4c4948"
                                 android:textSize="14sp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -350,12 +354,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#fff"
+                    android:background="@drawable/shape_radius_gray"
                     android:orientation="vertical" >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="26dp"
+                        android:layout_height="29dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp" >
 
@@ -365,18 +369,18 @@
                             android:drawableLeft="@drawable/ii_m7"
                             android:drawablePadding="5dp"
                             android:text="费用详情"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
                     </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#f2f2f1" />
+                        android:layout_height="1px"
+                        android:background="#c9caca" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="34dp"
+                        android:layout_height="28dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp" >
@@ -385,7 +389,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="商品金额："
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14dp" />
 
                         <TextView
@@ -398,7 +402,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="34dp"
+                        android:layout_height="28dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp" >
@@ -407,7 +411,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="钱包金额："
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14dp" />
 
                         <TextView
@@ -420,7 +424,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="34dp"
+                        android:layout_height="28dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp" >
@@ -429,7 +433,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="养车红包："
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14dp" />
 
                         <TextView
@@ -442,7 +446,7 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="34dp"
+                        android:layout_height="28dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp"
                         android:paddingRight="20dp" >
@@ -451,7 +455,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="订单实付金额："
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14dp" />
 
                         <TextView
@@ -467,12 +471,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:background="#fff"
+                    android:background="@drawable/shape_radius_gray"
                     android:orientation="vertical" >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="26dp"
+                        android:layout_height="29dp"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp" >
 
@@ -482,14 +486,18 @@
                             android:drawableLeft="@drawable/ii_m8"
                             android:drawablePadding="5dp"
                             android:text="开具发票"
-                            android:textColor="#000"
-                            android:textSize="14sp" />
+                            android:textColor="#4c4948"
+                            android:textSize="15sp" />
                     </RelativeLayout>
+                    
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#c9caca" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="42dp"
-                        android:background="#f2f2f0"
                         android:paddingBottom="1px"
                         android:paddingTop="1px" >
 
@@ -498,7 +506,6 @@
                             android:layout_height="match_parent"
                             android:layout_marginRight="1px"
                             android:layout_weight="1"
-                            android:background="#fff"
                             android:gravity="center" >
 
                             <ImageView
@@ -510,7 +517,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="个人"
-                                android:textColor="#000"
+                                android:textColor="#4c4948"
                                 android:textSize="14dp" />
                         </LinearLayout>
 
@@ -518,7 +525,6 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="#fff"
                             android:gravity="center" >
 
                             <ImageView
@@ -530,7 +536,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="公司"
-                                android:textColor="#000"
+                                android:textColor="#4c4948"
                                 android:textSize="14dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -546,7 +552,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="27dp"
                             android:text="发票抬头："
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14dp" />
 
                         <EditText
@@ -558,7 +564,7 @@
                             android:paddingLeft="12dp"
                             android:paddingRight="12dp"
                             android:text="北京与车行信息技术有限公司"
-                            android:textColor="#000"
+                            android:textColor="#4c4948"
                             android:textSize="14dp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -570,7 +576,7 @@
             android:layout_height="47dp"
             android:layout_alignParentBottom="true" 
             android:background="#c4c4c3"
-            android:paddingTop="1dp">
+            android:paddingTop="1px">
 
             <LinearLayout
                 android:background="#fff"
@@ -583,7 +589,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="总金额："
-                    android:textColor="#000"
+                    android:textColor="#4c4948"
                     android:textSize="16dp" />
 
                 <TextView
