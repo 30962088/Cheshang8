@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-public class UserInfoActivity extends FragmentActivity implements OnClickListener{
+public class UserInfoActivity extends BaseActivity implements OnClickListener{
 	public static void open(Context context){
 		context.startActivity(new Intent(context, UserInfoActivity.class));
 	}
@@ -31,6 +31,11 @@ public class UserInfoActivity extends FragmentActivity implements OnClickListene
 			break;
 		}
 		
+	}
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 

@@ -44,6 +44,7 @@
             android:gravity="center" >
 
             <ImageView
+                android:id="@+id/nav_left_btn"
                 android:layout_width="17dp"
                 android:layout_height="17dp"
                 android:scaleType="centerInside"

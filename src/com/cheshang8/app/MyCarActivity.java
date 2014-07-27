@@ -25,7 +25,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-public class MyCarActivity extends Activity implements OnClickListener{
+public class MyCarActivity extends BaseActivity implements OnClickListener{
 	
 	public static void open(Context context){
 		context.startActivity(new Intent(context, MyCarActivity.class));
@@ -71,6 +71,13 @@ public class MyCarActivity extends Activity implements OnClickListener{
 			break;
 		}
 		
+	}
+
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 }

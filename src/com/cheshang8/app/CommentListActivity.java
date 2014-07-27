@@ -21,7 +21,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class CommentListActivity extends FragmentActivity {
+public class CommentListActivity extends BaseActivity {
 	public static void open(Context context){
 		context.startActivity(new Intent(context, CommentListActivity.class));
 	}
@@ -51,6 +51,11 @@ public class CommentListActivity extends FragmentActivity {
 				
 			}
 		});
+	}
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 

@@ -19,7 +19,7 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.widget.ListView;
 
-public class PaySuccessActivity extends FragmentActivity {
+public class PaySuccessActivity extends BaseActivity {
 	public static void open(Context context){
 		context.startActivity(new Intent(context, PaySuccessActivity.class));
 	}
@@ -46,6 +46,11 @@ public class PaySuccessActivity extends FragmentActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 

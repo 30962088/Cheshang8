@@ -14,7 +14,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.GridView;
 
-public class PublishCommentActivity extends FragmentActivity {
+public class PublishCommentActivity extends BaseActivity {
 	public static void open(Context context){
 		context.startActivity(new Intent(context, PublishCommentActivity.class));
 	}
@@ -27,6 +27,11 @@ public class PublishCommentActivity extends FragmentActivity {
 		list.add(new Model("drawable://"+R.drawable.icon_add));
 		CommentImgAdapter adapter = new CommentImgAdapter(this, list);
 		gridView.setAdapter(adapter);
+	}
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 

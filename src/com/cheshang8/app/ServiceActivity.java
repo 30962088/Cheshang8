@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-public class ServiceActivity extends FragmentActivity implements OnClickListener{
+public class ServiceActivity extends BaseActivity implements OnClickListener{
 	
 	
 	private ViewHolder holder;
@@ -146,6 +146,12 @@ public class ServiceActivity extends FragmentActivity implements OnClickListener
 			phone.setText(model.phone);
 			detail.setText(model.detail);
 		}
+	}
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 

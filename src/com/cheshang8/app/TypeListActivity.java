@@ -24,7 +24,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class TypeListActivity extends FragmentActivity {
+public class TypeListActivity extends BaseActivity {
 
 	public static void open(Context context, String pid) {
 		Intent intent = new Intent(context, TypeListActivity.class);
@@ -74,6 +74,12 @@ public class TypeListActivity extends FragmentActivity {
 			}
 		});
 		
+	}
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 	
 	

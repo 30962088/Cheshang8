@@ -46,7 +46,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MapActivity extends FragmentActivity {
+public class MapActivity extends BaseActivity {
 	public static void open(Context context){
 		context.startActivity(new Intent(context, MapActivity.class));
 	}
@@ -217,6 +217,13 @@ public class MapActivity extends FragmentActivity {
 		mMapView.onDestroy();
 		mMapView = null;
 		super.onDestroy();
+	}
+
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 	

@@ -23,7 +23,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class AllOrderActivity extends FragmentActivity {
+public class AllOrderActivity extends BaseActivity {
 	public static void open(Context context){
 		Intent intent = new Intent(context, AllOrderActivity.class);
 		
@@ -77,6 +77,12 @@ public class AllOrderActivity extends FragmentActivity {
 				adapter.notifyDataSetChanged();
 			}
 		});
+	}
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 

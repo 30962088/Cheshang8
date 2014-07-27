@@ -22,7 +22,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
-public class SearchActivity extends Activity{
+public class SearchActivity extends BaseActivity{
 	
 	public static void open(Context context){
 		context.startActivity(new Intent(context, SearchActivity.class));
@@ -58,6 +58,14 @@ public class SearchActivity extends Activity{
 				adapter.notifyDataSetChanged();
 			}
 		});
+	}
+
+
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 }

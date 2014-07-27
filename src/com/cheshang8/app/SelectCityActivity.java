@@ -25,7 +25,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-public class SelectCityActivity extends Activity {
+public class SelectCityActivity extends BaseActivity {
 
 	public static void open(Context context) {
 		Intent intent = new Intent(context, SelectCityActivity.class);
@@ -65,6 +65,12 @@ public class SelectCityActivity extends Activity {
 		
 		
 
+	}
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 }

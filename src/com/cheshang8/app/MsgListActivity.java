@@ -26,7 +26,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-public class MsgListActivity extends Activity {
+public class MsgListActivity extends BaseActivity {
 	
 	public static void open(Context context){
 		context.startActivity(new Intent(context, MsgListActivity.class));
@@ -58,6 +58,13 @@ public class MsgListActivity extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 	
 	

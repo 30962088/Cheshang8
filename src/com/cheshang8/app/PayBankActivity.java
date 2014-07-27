@@ -26,7 +26,7 @@ import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 
-public class PayBankActivity extends FragmentActivity implements OnClickListener{
+public class PayBankActivity extends BaseActivity implements OnClickListener{
 	public static void open(Context context){
 		context.startActivity(new Intent(context, PayBankActivity.class));
 	}
@@ -120,6 +120,13 @@ public class PayBankActivity extends FragmentActivity implements OnClickListener
 		}
 		transaction.commitAllowingStateLoss();
 		lastFragment = fragment;
+	}
+
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 

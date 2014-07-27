@@ -21,7 +21,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class OrderActivity extends FragmentActivity implements OnClickListener{
+public class OrderActivity extends BaseActivity implements OnClickListener{
 	public static void open(Context context,String id){
 		Intent intent = new Intent(context, OrderActivity.class);
 		intent.putExtra("id", id);
@@ -217,6 +217,12 @@ public class OrderActivity extends FragmentActivity implements OnClickListener{
 		
 		
 		
+	}
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 }

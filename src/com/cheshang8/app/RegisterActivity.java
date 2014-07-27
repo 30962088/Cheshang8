@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-public class RegisterActivity extends FragmentActivity {
+public class RegisterActivity extends BaseActivity {
 	public static void open(Context context){
 		context.startActivity(new Intent(context, RegisterActivity.class));
 	}
@@ -16,6 +16,11 @@ public class RegisterActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_layout);
 		
+	}
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 

@@ -33,7 +33,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class ListActivity extends Activity implements OnClickListener,
+public class ListActivity extends BaseActivity implements OnClickListener,
 		OnStateChange, OnStateChange2 {
 
 	public static void open(Context context) {
@@ -178,6 +178,12 @@ public class ListActivity extends Activity implements OnClickListener,
 	public void onshow2() {
 		sortContainer.setSelected(true);
 
+	}
+
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 }

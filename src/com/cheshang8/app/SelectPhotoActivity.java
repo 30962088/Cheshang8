@@ -28,7 +28,7 @@ import android.view.View.OnClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 
-public class SelectPhotoActivity extends FragmentActivity {
+public class SelectPhotoActivity extends BaseActivity {
 	public static void open(Context context){
 		context.startActivity(new Intent(context, SelectPhotoActivity.class));
 	}
@@ -57,6 +57,11 @@ public class SelectPhotoActivity extends FragmentActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+	@Override
+	protected Integer finishBtn() {
+		// TODO Auto-generated method stub
+		return R.id.nav_left_btn;
 	}
 
 	
