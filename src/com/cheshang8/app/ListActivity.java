@@ -90,12 +90,15 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 	
 	private Integer dist2;
 	
+	private ArrayList<MapActivity.Model> mapList = new ArrayList<MapActivity.Model>();
+	
 	private void request(){
 		ShopsRequest request = new ShopsRequest(new ShopsRequest.Params(1,dist1,dist2,sort));
 		request.request(new SimpleRequestHandler(){
 			@Override
 			public void onSuccess(Object object) {
 				List<Result> results = (List<Result>) object;
+				mapList = Result.toMapList(results);
 				list.clear();
 				list.addAll(Result.toList(results));
 				adapter.notifyDataSetChanged();
@@ -111,7 +114,7 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.nav_right_btn:
-			MapActivity.open(this);
+			MapActivity.open(this,mapList);
 			break;
 		case R.id.loc_container:
 			if (twoDialog == null) {

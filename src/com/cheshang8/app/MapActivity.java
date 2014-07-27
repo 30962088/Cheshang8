@@ -6,9 +6,8 @@ package com.cheshang8.app;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 
-import org.apache.commons.io.IOUtils;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -18,7 +17,6 @@ import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BaiduMapOptions;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
-import com.baidu.mapapi.map.GroundOverlayOptions;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -30,25 +28,24 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
 import com.baidu.mapapi.map.MyLocationConfigeration.LocationMode;
 import com.baidu.mapapi.model.LatLng;
-import com.baidu.mapapi.model.LatLngBounds;
-import com.cheshang8.app.adapter.TabIndexAdapter.Model;
 import com.cheshang8.app.widget.CarStarView;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
 
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class MapActivity extends BaseActivity {
-	public static void open(Context context){
-		context.startActivity(new Intent(context, MapActivity.class));
+	
+	
+	public static void open(Context context,ArrayList<Model> list){
+		Intent intent = new Intent(context, MapActivity.class);
+		intent.putExtra("list", list);
+		context.startActivity(intent);
 	}
 	private MapView mMapView;
 	private LocationClient mLocClient;
@@ -61,9 +58,11 @@ public class MapActivity extends BaseActivity {
 	private TextView priceView;
 	private CarStarView starView;
 	private View containerView;
+	private ArrayList<Model> list;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		list =(ArrayList<MapActivity.Model>)getIntent().getSerializableExtra("list");
 		setContentView(R.layout.map_layout);
 		containerView = findViewById(R.id.container);
 		nameView = (TextView) findViewById(R.id.name);
@@ -125,9 +124,6 @@ public class MapActivity extends BaseActivity {
 
 	
 
-	// 初始化全局 bitmap 信息，不用时及时 recycle
-	BitmapDescriptor bdA = BitmapDescriptorFactory
-			.fromResource(R.drawable.icon_marka);
 	
 
 	
@@ -156,21 +152,22 @@ public class MapActivity extends BaseActivity {
 	
 	public void initOverlay() throws Exception {
 		
-		List<Model> list = new Gson().fromJson(
-				IOUtils.toString(getAssets().open(
-						"datas/map.json")),
-				new TypeToken<List<Model>>() {
-				}.getType());
 		
-		for(Model model : list){
+		for(int i = 0;i<list.size();i++){
+			Model model = list.get(i);
+			View mapLocView = LayoutInflater.from(this).inflate(
+					R.layout.map_loc, null);
+			TextView textView = (TextView)mapLocView.findViewById(R.id.text);
+			textView.setText(""+(i+1));
 			LatLng latLng = new LatLng(model.x, model.y);
-			OverlayOptions ooA = new MarkerOptions().position(latLng).icon(bdA)
+			OverlayOptions ooA = new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromView(mapLocView))
 					.zIndex(9);
 			Marker marker = (Marker) (mBaiduMap.addOverlay(ooA));
 			Bundle bundle = new Bundle();
 			bundle.putSerializable("model", model);
 			marker.setExtraInfo(bundle);
 		}
+		
 		
 		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
 
@@ -186,6 +183,8 @@ public class MapActivity extends BaseActivity {
 				priceView.setText(""+model.price);
 				
 				starView.setStar(model.star);
+				
+				mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newLatLng(new LatLng(model.x, model.y)),300);
 				
 				return true;
 			}

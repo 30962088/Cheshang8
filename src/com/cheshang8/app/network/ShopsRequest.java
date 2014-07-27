@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.http.Header;
 
 
+import com.cheshang8.app.MapActivity;
 import com.cheshang8.app.adapter.SearchItemAdapter;
 import com.cheshang8.app.adapter.SelectCityAdapter.Model.Col;
 import com.cheshang8.app.network.CityListRequest.Result;
@@ -23,6 +24,8 @@ public class ShopsRequest extends BaseClient{
 		private int price_origin;
 		private int price_discount;
 		private int comment_count;
+		private double longitude;
+		private double latitude;
 		private String shop_name;
 		private String shop_address;
 		private List<String> shop_phones;
@@ -57,7 +60,19 @@ public class ShopsRequest extends BaseClient{
 			return shop_phones;
 		}
 		public SearchItemAdapter.Model toModel(){
-			return new SearchItemAdapter.Model(id, logo, (int)rating, shop_name, shop_address, "", price_discount, price_origin, comment_count, distance);
+			return new SearchItemAdapter.Model(id, logo, (int)rating, shop_name, "地址:"+shop_address, "人工洗车", price_discount, price_origin, comment_count, distance);
+		}
+		
+		public MapActivity.Model toMapModel(){
+			return new MapActivity.Model(longitude, latitude, shop_name, (int)rating, price_discount);
+		}
+		
+		public static ArrayList<MapActivity.Model> toMapList(List<Result> results){
+			ArrayList<MapActivity.Model> list = new ArrayList<MapActivity.Model>();
+			for(Result result : results){
+				list.add(result.toMapModel());
+			}
+			return list;
 		}
 		
 		public static List<SearchItemAdapter.Model> toList(List<Result> results){
