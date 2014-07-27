@@ -89,7 +89,7 @@ public class IndexDataRequest extends BaseClient{
 			private Shop shop;
 			public TabIndexAdapter.Model toModel(){
 				
-				return new TabIndexAdapter.Model(shop.logo, shop.shop_name, shop.shop_address, shop.distance);
+				return new TabIndexAdapter.Model(target_id,shop.logo, shop.shop_name, shop.shop_address, shop.distance);
 			}
 			public static List<TabIndexAdapter.Model> toList(List<Recommend> results){
 				List<TabIndexAdapter.Model> list = new ArrayList<TabIndexAdapter.Model>();

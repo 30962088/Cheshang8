@@ -16,17 +16,25 @@ import android.widget.TextView;
 public class TabIndexAdapter extends BaseAdapter{
 
 	public static class Model{
+		private String id;
 		private String img;
 		private String title;
 		private String company;
 		private String location;
-		public Model(String img, String title, String company, String location) {
+		public Model(String id, String img, String title, String company,
+				String location) {
 			super();
+			this.id = id;
 			this.img = img;
 			this.title = title;
 			this.company = company;
 			this.location = location;
 		}
+		
+		public String getId() {
+			return id;
+		}
+	
 		
 	}
 	

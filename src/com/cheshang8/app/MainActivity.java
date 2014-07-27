@@ -26,7 +26,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		fragments = new Fragment[]{TabIndexFragment.newInstance(),TabZoneFragment.newInstance(),TabZoneFragment.newInstance(),TabZoneFragment.newInstance()};
+		fragments = new Fragment[]{TabIndexFragment.newInstance(),new Fragment(),new Fragment(),TabZoneFragment.newInstance()};
 		findViewById(R.id.tab1).setOnClickListener(this);
 		findViewById(R.id.tab2).setOnClickListener(this);
 		findViewById(R.id.tab3).setOnClickListener(this);

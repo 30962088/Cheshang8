@@ -39,14 +39,7 @@ public class SelectCityActivity extends BaseActivity {
 
 		setContentView(R.layout.select_city_layout);
 
-		findViewById(R.id.close).setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				finish();
-
-			}
-		});
+		
 
 		final ListView listView = (ListView) findViewById(R.id.listview);
 

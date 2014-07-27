@@ -1,10 +1,12 @@
 package com.cheshang8.app.fragment;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 
+import com.cheshang8.app.DetailActivity;
 import com.cheshang8.app.R;
 import com.cheshang8.app.SearchActivity;
 import com.cheshang8.app.SelectCityActivity;
@@ -26,6 +28,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class TabIndexFragment extends Fragment{
@@ -45,6 +49,10 @@ public class TabIndexFragment extends Fragment{
 	private ListView listView;
 	
 	private TabIndexHeaderView headerView;
+	
+	private TabIndexAdapter adapter;
+	
+	private List<Model> list = new ArrayList<TabIndexAdapter.Model>();
 	
 	
 	@Override
@@ -71,11 +79,24 @@ public class TabIndexFragment extends Fragment{
 		});
 		
 		headerView = new TabIndexHeaderView(getActivity(), this);
-		
+		adapter = new TabIndexAdapter(getActivity(), list);
 		listView = (ListView) view.findViewById(R.id.listview);
 		
 		listView.addHeaderView(headerView);
-	
+		
+		listView.setAdapter(adapter);
+		
+		listView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
+				Model model = list.get(position);
+				DetailActivity.open(getActivity(), model.getId());
+				
+			}
+		});
+		
 		request();
 		
 	
@@ -90,12 +111,13 @@ public class TabIndexFragment extends Fragment{
 				IndexDataRequest.Result result = (Result) object;
 				List<SliderFragment.Model> sliderList = Result.Banner.toList(result.getBanners());
 				List<CatIndexAdapter.Model> catList = Result.Category.toList(result.getCategories());
-				List<TabIndexAdapter.Model> indexList = Result.Recommend.toList(result.getRecommends());
-				TabIndexAdapter adapter = new TabIndexAdapter(getActivity(), indexList);
-				
-				listView.setAdapter(adapter);
-				
 				headerView.setData(sliderList, catList,Promotion.toList(result.getPromotions()));
+				
+				list.clear();
+				list.addAll(Result.Recommend.toList(result.getRecommends()));
+				adapter.notifyDataSetChanged();
+				
+				
 				
 				
 			}
