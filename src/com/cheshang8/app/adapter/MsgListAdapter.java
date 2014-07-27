@@ -88,6 +88,19 @@ public class MsgListAdapter extends BaseAdapter{
 			holder.title.setSelected(false);
 		}
 		
+		int border;
+		if(position == 0){
+			holder.sep.setVisibility(View.VISIBLE);
+			border = R.drawable.border_2;
+		}else if(position == list.size() -1){
+			border = R.drawable.border_3;
+			holder.sep.setVisibility(View.GONE);
+		}else{
+			border = R.drawable.border_1;
+			holder.sep.setVisibility(View.VISIBLE);
+		}
+		holder.container.setBackgroundResource(border);
+		
 		holder.title.setText(model.title);
 		
 		holder.desc.setText(model.desc);
@@ -108,7 +121,9 @@ public class MsgListAdapter extends BaseAdapter{
 		private TextView from;
 		
 		private TextView time;
+		private View container;
 		
+		private View sep;
 		public ViewHolder(View view) {
 
 			title = (TextView) view.findViewById(R.id.title);
@@ -118,7 +133,8 @@ public class MsgListAdapter extends BaseAdapter{
 			from = (TextView) view.findViewById(R.id.from);
 			
 			time = (TextView) view.findViewById(R.id.time);
-			
+			container = view.findViewById(R.id.container);
+			sep = view.findViewById(R.id.sep);
 		}
 		
 	}
