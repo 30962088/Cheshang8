@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.cheshang8.app.widget.ScaleImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="match_parent" 
+    android:scaleType="centerInside">
     
-    <ImageView 
-        android:id="@+id/img"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
-       
-        android:scaleType="centerInside"/>
 
-</LinearLayout>
+
+</com.cheshang8.app.widget.ScaleImageView>

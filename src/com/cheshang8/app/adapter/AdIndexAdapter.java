@@ -69,36 +69,23 @@ public class AdIndexAdapter extends BaseAdapter{
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
-		ViewHolder holder = null;
+		
 		Model model = list.get(position);
 		if(convertView == null){
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.ad_item, null);
-			holder = new ViewHolder(convertView);
-			convertView.setTag(holder);
 			
-		}else{
-			holder = (ViewHolder) convertView.getTag();
+			
 		}
 		
 		
-		BitmapLoader.displayImage(context, model.img, holder.img);
+		BitmapLoader.displayImage(context, model.img, (ImageView)convertView);
 		
 		
 		return convertView;
 	}
 	
-	private static class ViewHolder{
-		
-		private ImageView img;
-	
-		
-		public ViewHolder(View view) {
-			img = (ImageView) view.findViewById(R.id.img);
-			
-		}
-		
-	}
+
 	
 	
 
