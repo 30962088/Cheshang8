@@ -7,14 +7,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#73e048" >
+        android:layout_height="47dp"
+        android:background="#02bbfb" >
 
         <ImageView
-            android:layout_width="60dp"
+            android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:scaleType="centerInside"
             android:src="@drawable/icon_nav_left" />
 
@@ -29,10 +29,10 @@
 
         <ImageView
             android:id="@+id/right_nav_btn"
-            android:layout_width="60dp"
+            android:layout_width="48dp"
             android:layout_height="match_parent"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:scaleType="centerInside"
             android:src="@drawable/ii_a6" />
     </LinearLayout>
@@ -40,114 +40,102 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:padding="5dp" >
 
         <TextView
             android:id="@+id/item1"
             android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:background="#fff"
+            android:layout_height="48dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shape_radius_gray"
             android:drawableLeft="@drawable/ii_a5"
             android:drawablePadding="8dp"
             android:gravity="center_vertical"
             android:paddingLeft="25dp"
             android:paddingRight="25dp"
             android:text="奥迪Q3"
-            android:textColor="#000"
-            android:textSize="22sp" >
+            android:textColor="#4c4948"
+            android:textSize="14sp" >
+        </TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shape_radius_gray"
+            android:drawableRight="@drawable/ii_n7"
+            android:gravity="center_vertical"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:text="专属保养"
+            android:textColor="#4c4948"
+            android:textSize="14sp" >
         </TextView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp" >
+            android:layout_height="48dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/shape_radius_gray"
+            android:drawableRight="@drawable/ii_n7"
+            android:gravity="center_vertical"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:background="#fff"
-                android:drawableRight="@drawable/ii_n7"
-                android:gravity="center_vertical"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:text="专属保养"
-                android:textColor="#000"
-                android:textSize="14sp" >
-            </TextView>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="年检提醒"
+                android:textColor="#4c4948"
+                android:textSize="14sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="10dp"
-                android:background="#fff"
-                android:drawableRight="@drawable/ii_n7"
-                android:gravity="center_vertical"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp" >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_weight="1"
+                android:text="倒计时？天"
+                android:textColor="#4c4948"
+                android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="年检提醒"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+            <CheckBox
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:button="@drawable/checkbox_selector" />
+        </LinearLayout>
 
-                <TextView
-                    android:layout_marginLeft="22dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="倒计时？天"
-                    android:textColor="#000"
-                    android:textSize="22sp" />
-                
-                <CheckBox 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox_selector"/>
-                
-            </LinearLayout>
-            
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="1dp"
-                android:background="#fff"
-                android:drawableRight="@drawable/ii_n7"
-                android:gravity="center_vertical"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp" >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/shape_radius_gray"
+            android:drawableRight="@drawable/ii_n7"
+            android:gravity="center_vertical"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp" >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="消分提醒"
-                    android:textColor="#000"
-                    android:textSize="14sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="消分提醒"
+                android:textColor="#4c4948"
+                android:textSize="14sp" />
 
-                <TextView
-                    android:layout_marginLeft="22dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="倒计时150天"
-                    android:textColor="#000"
-                    android:textSize="22sp" />
-                
-                <CheckBox 
-                    android:checked="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/checkbox_selector"/>
-                
-            </LinearLayout>
-            
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:layout_weight="1"
+                android:text="倒计时150天"
+                android:textColor="#4c4948"
+                android:textSize="14sp" />
+
+            <CheckBox
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:button="@drawable/checkbox_selector"
+                android:checked="true" />
         </LinearLayout>
     </LinearLayout>
 
