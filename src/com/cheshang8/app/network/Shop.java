@@ -152,7 +152,7 @@ public class Shop {
 	public List<SliderFragment.Model> toSliderModel(){
 		List<SliderFragment.Model> models = new ArrayList<SliderFragment.Model>();
 		for(String img : imgs){
-			models.add(new SliderFragment.Model(null, img, null));
+			models.add(new SliderFragment.Model(null, img, null,""));
 		}
 		return models;
 		

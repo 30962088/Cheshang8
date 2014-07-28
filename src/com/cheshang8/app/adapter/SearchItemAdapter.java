@@ -19,7 +19,7 @@ public class SearchItemAdapter extends BaseAdapter {
 	public static class Model {
 		private String id;
 		private String thumbnail;
-		private int star;
+		private float star;
 		private String title;
 		private String address;
 		private String type;
@@ -28,7 +28,7 @@ public class SearchItemAdapter extends BaseAdapter {
 		private int comment;
 		private String loc;
 
-		public Model(String id, String thumbnail, int star, String title,
+		public Model(String id, String thumbnail, float star, String title,
 				String address, String type, int price, int price_old,
 				int comment, String loc) {
 			super();

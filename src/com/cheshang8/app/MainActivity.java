@@ -2,6 +2,7 @@ package com.cheshang8.app;
 
 import com.cheshang8.app.fragment.TabIndexFragment;
 import com.cheshang8.app.fragment.TabZoneFragment;
+import com.cheshang8.app.utils.Preferences.Global;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,6 +26,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Global global = new Global(this);
+		if(global.isFirst()){
+			SelectCityActivity.open(this);
+			global.setFirst(false);
+		}
 		setContentView(R.layout.activity_main);
 		fragments = new Fragment[]{TabIndexFragment.newInstance(),new Fragment(),new Fragment(),TabZoneFragment.newInstance()};
 		findViewById(R.id.tab1).setOnClickListener(this);

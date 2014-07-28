@@ -17,14 +17,19 @@ public class SelectCityAdapter extends BaseAdapter{
 	public static class Model{
 		
 		public static class Col{
-			private int id;
+			private String id;
 			private String name;
-			public Col(int id, String name) {
+			public Col(String id, String name) {
 				super();
 				this.id = id;
 				this.name = name;
 			}
-			
+			public String getId() {
+				return id;
+			}
+			public String getName() {
+				return name;
+			}
 		}
 		
 		private List<Col> list;
@@ -36,6 +41,17 @@ public class SelectCityAdapter extends BaseAdapter{
 			this.list = list;
 			this.selected = selected;
 		}
+
+		public Model(List<Col> list) {
+			super();
+			this.list = list;
+		}
+		
+		public void setSelected(Integer selected) {
+			this.selected = selected;
+		}
+		
+		
 		
 		
 		

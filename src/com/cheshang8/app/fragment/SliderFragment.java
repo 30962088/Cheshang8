@@ -1,30 +1,27 @@
 package com.cheshang8.app.fragment;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.apache.commons.io.IOUtils;
+import java.util.List;
+import com.viewpagerindicator.CirclePageIndicator;
 
 import com.cheshang8.app.R;
 import com.cheshang8.app.utils.BitmapLoader;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.imbryk.viewPager.LoopPagerAdapterWrapper;
 import com.imbryk.viewPager.LoopViewPager;
-import com.viewpagerindicator.CirclePageIndicator;
 
 import android.content.Context;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class SliderFragment extends Fragment {
 
@@ -39,6 +36,8 @@ public class SliderFragment extends Fragment {
 	private CirclePageIndicator indicator;
 	
 	private List<Model> models;
+	
+	private TextView titleView;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,13 +52,11 @@ public class SliderFragment extends Fragment {
 		super.onViewCreated(view, savedInstanceState);
 		viewPager = (LoopViewPager) view.findViewById(R.id.viewPager);
 		indicator = (CirclePageIndicator) view.findViewById(R.id.indicator);
-		
+		titleView = (TextView) view.findViewById(R.id.title);
 			
 		MyAdapter adapter = new MyAdapter(getActivity(), models);
-		LoopPagerAdapterWrapper wrapper = new LoopPagerAdapterWrapper(
-				adapter);
 
-		viewPager.setAdapter(wrapper);
+		viewPager.setAdapter(adapter);
 		viewPager.setOnTouchListener(new OnTouchListener() {
 
 			@Override
@@ -81,7 +78,33 @@ public class SliderFragment extends Fragment {
 
 		});
 		indicator.setViewPager(viewPager);
-
+		
+		indicator.setOnPageChangeListener(new OnPageChangeListener() {
+			
+			@Override
+			public void onPageSelected(int position) {
+				
+				Model model = models.get(position);
+				titleView.setText(model.title);
+				
+			}
+			
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		if(models.size() > 0){
+			titleView.setText(models.get(0).title);
+		}
 		
 
 	}
@@ -90,11 +113,16 @@ public class SliderFragment extends Fragment {
 		private String id;
 		private String img;
 		private String target_page;
-		public Model(String id, String img, String target_page) {
+		private String title;
+		public Model(String id, String img, String target_page, String title) {
 			super();
 			this.id = id;
 			this.img = img;
 			this.target_page = target_page;
+			this.title = title;
+		}
+		public String getTitle() {
+			return title;
 		}
 		
 	}
@@ -126,6 +154,12 @@ public class SliderFragment extends Fragment {
 		public int getCount() {
 			// TODO Auto-generated method stub
 			return list.size();
+		}
+		
+		@Override
+		public CharSequence getPageTitle(int position) {
+			// TODO Auto-generated method stub
+			return list.get(position).title;
 		}
 
 		@Override

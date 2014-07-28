@@ -73,15 +73,15 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 		private String name;
 		private int price_origin;
 		private int price_discount;
-		private int env_rating;
-		private int rating;
+		private float env_rating;
+		private float rating;
 		private String title;
 		private String address;
 		private String time;
 		private String phone;
 		private String detail;
 		public Model(String name, int price_origin, int price_discount,
-				int env_rating, int rating, String title, String address,
+				float env_rating, float rating, String title, String address,
 				String time, String phone, String detail) {
 			super();
 			this.name = name;
@@ -134,16 +134,16 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 			detail = (TextView) findViewById(R.id.detail);			
 		}
 		public void setModel(Model model){
-			name.setText(model.name);
-			price_origin.setText(""+model.price_origin);
-			price_discount.setText(""+model.price_discount);
-			price_reduce.setText(""+(model.price_origin-model.price_discount));
+			name.setText("["+model.name+"]");
+			price_origin.setText(""+model.price_discount);
+			price_discount.setText("原价"+model.price_origin);
+			price_reduce.setText("节省"+(model.price_origin-model.price_discount));
 			env_rating.setStar(model.env_rating);
 			rating.setStar(model.rating);
 			title.setText(model.title);
-			address.setText(model.address);
-			time.setText(model.time);
-			phone.setText(model.phone);
+			address.setText("地址:"+model.address);
+			time.setText("营业时间:"+model.time);
+			phone.setText("预约电话:"+model.phone);
 			detail.setText(model.detail);
 		}
 	}

@@ -60,11 +60,11 @@ public class ShopsRequest extends BaseClient{
 			return shop_phones;
 		}
 		public SearchItemAdapter.Model toModel(){
-			return new SearchItemAdapter.Model(id, logo, (int)rating, shop_name, "地址:"+shop_address, "人工洗车", price_discount, price_origin, comment_count, distance);
+			return new SearchItemAdapter.Model(id, logo, rating, shop_name, "地址:"+shop_address, "人工洗车", price_discount, price_origin, comment_count, distance);
 		}
 		
 		public MapActivity.Model toMapModel(){
-			return new MapActivity.Model(longitude, latitude, shop_name, (int)rating, price_discount);
+			return new MapActivity.Model(longitude, latitude, shop_name, rating, price_discount);
 		}
 		
 		public static ArrayList<MapActivity.Model> toMapList(List<Result> results){

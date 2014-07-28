@@ -135,11 +135,11 @@ public class MapActivity extends BaseActivity {
 		
 		private String name;
 		
-		private int star;
+		private float star;
 		
 		private int price;
 
-		public Model(double x, double y, String name, int star, int price) {
+		public Model(double x, double y, String name, float star, int price) {
 			super();
 			this.x = x;
 			this.y = y;
@@ -148,6 +148,20 @@ public class MapActivity extends BaseActivity {
 			this.price = price;
 		}
 		
+	}
+	
+	private void onMakerClick(Marker marker){
+		Model model = (Model) marker.getExtraInfo().get("model");
+		
+		containerView.setVisibility(View.VISIBLE);
+		
+		nameView.setText(model.name);
+		
+		priceView.setText(""+model.price);
+		
+		starView.setStar(model.star);
+		
+		mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newLatLng(new LatLng(model.x, model.y)),300);
 	}
 	
 	public void initOverlay() throws Exception {
@@ -166,7 +180,11 @@ public class MapActivity extends BaseActivity {
 			Bundle bundle = new Bundle();
 			bundle.putSerializable("model", model);
 			marker.setExtraInfo(bundle);
+			if(i == 0){
+				onMakerClick(marker);
+			}
 		}
+		
 		
 		
 		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
@@ -174,17 +192,7 @@ public class MapActivity extends BaseActivity {
 			@Override
 			public boolean onMarkerClick(Marker marker) {
 				
-				Model model = (Model) marker.getExtraInfo().get("model");
-				
-				containerView.setVisibility(View.VISIBLE);
-				
-				nameView.setText(model.name);
-				
-				priceView.setText(""+model.price);
-				
-				starView.setStar(model.star);
-				
-				mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newLatLng(new LatLng(model.x, model.y)),300);
+				onMakerClick(marker);
 				
 				return true;
 			}

@@ -27,8 +27,9 @@ public class IndexDataRequest extends BaseClient{
 			private String img;
 			private String target_page;
 			private String target_id;
+			private String title;
 			public SliderFragment.Model toModel(){
-				return new SliderFragment.Model(target_id, img, target_page);
+				return new SliderFragment.Model(target_id, img, target_page,title);
 			}
 			
 			public static List<SliderFragment.Model> toList(List<Banner> results){
@@ -126,9 +127,9 @@ public class IndexDataRequest extends BaseClient{
 	}
 	
 	public static class Params{
-		private int city_id;
+		private String city_id;
 
-		public Params(int city_id) {
+		public Params(String city_id) {
 			super();
 			this.city_id = city_id;
 		}

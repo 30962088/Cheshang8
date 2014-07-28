@@ -25,10 +25,11 @@
         
         
         <TextView 
+            android:id="@+id/city_name"
             android:paddingLeft="25dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="定位中....."
+            android:text="北京"
             android:background="@drawable/shape_radius_gray"
             android:gravity="center_vertical"
             android:textSize="12sp"

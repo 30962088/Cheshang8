@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.RatingBar;
 
 public class CarStarView extends FrameLayout{
 
@@ -18,27 +19,18 @@ public class CarStarView extends FrameLayout{
 		init();
 	}
 	
-	private ViewGroup container;
+	private RatingBar container;
 
 	private void init() {
 		LayoutInflater.from(getContext()).inflate(
-				R.layout.car_star, this);
+				R.layout.ratingbar, this);
 		
-		container = (ViewGroup) findViewById(R.id.container);
+		container = (RatingBar) findViewById(R.id.ratingbar);
 		
 	}
 	
-	public void setStar(int count){
-		
-		for(int i = 0;i<container.getChildCount();i++){
-			View view = container.getChildAt(i);
-			if(i<count){
-				view.setSelected(true);
-			}else{
-				view.setSelected(false);
-			}
-		}
-		
+	public void setStar(float count){
+		container.setRating(count);
 	}
 	
 	

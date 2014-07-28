@@ -14,9 +14,9 @@ import com.loopj.android.http.RequestParams;
 public class CityListRequest extends BaseClient{
 
 	public static class Result{
-		private int id;
+		private String id;
 		private String name;
-		public int getId() {
+		public String getId() {
 			return id;
 		}
 		public String getName() {

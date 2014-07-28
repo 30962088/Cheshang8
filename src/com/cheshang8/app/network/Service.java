@@ -11,9 +11,9 @@ public class Service {
 	
 	private int price_origin;
 	
-	private int env_rating;
+	private float env_rating;
 	
-	private int rating;
+	private float rating;
 	
 	private String description;
 
@@ -33,11 +33,11 @@ public class Service {
 		return price_origin;
 	}
 
-	public int getEnv_rating() {
+	public float getEnv_rating() {
 		return env_rating;
 	}
 
-	public int getRating() {
+	public float getRating() {
 		return rating;
 	}
 

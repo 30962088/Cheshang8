@@ -17,6 +17,7 @@ import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
 import com.cheshang8.app.network.IndexDataRequest;
 import com.cheshang8.app.network.IndexDataRequest.Result;
 import com.cheshang8.app.network.IndexDataRequest.Result.Promotion;
+import com.cheshang8.app.utils.Preferences.Global;
 import com.cheshang8.app.widget.TabIndexHeaderView;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -24,11 +25,13 @@ import com.google.gson.reflect.TypeToken;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
@@ -52,6 +55,8 @@ public class TabIndexFragment extends Fragment{
 	
 	private TabIndexAdapter adapter;
 	
+	private TextView cityView;
+	
 	private List<Model> list = new ArrayList<TabIndexAdapter.Model>();
 	
 	
@@ -59,7 +64,7 @@ public class TabIndexFragment extends Fragment{
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
-		
+		cityView = (TextView) view.findViewById(R.id.city_name);
 		view.findViewById(R.id.btn_city).setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -97,13 +102,27 @@ public class TabIndexFragment extends Fragment{
 			}
 		});
 		
-		request();
 		
-	
+		
 	}
 	
-	private void request(){
-		IndexDataRequest request = new IndexDataRequest(new IndexDataRequest.Params(1));
+	private String cityId;
+	
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Global global = new Global(getActivity());
+		cityView.setText(global.getCityName());
+		String cityId = global.getCityId();
+		if(!TextUtils.equals(cityId, this.cityId)){
+			this.cityId = cityId;
+			request(cityId);
+		}
+	}
+	
+	private void request(String city_id){
+		IndexDataRequest request = new IndexDataRequest(new IndexDataRequest.Params(city_id));
 		
 		request.request(new SimpleRequestHandler(){
 			@Override
