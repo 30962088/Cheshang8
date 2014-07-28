@@ -33,6 +33,10 @@ public class CarStarView extends FrameLayout{
 		container.setRating(count);
 	}
 	
+	public void setIndicator(boolean val){
+		container.setIsIndicator(val);
+	}
+	
 	
 	
 	

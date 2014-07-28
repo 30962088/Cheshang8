@@ -68,6 +68,16 @@ public class OrderField {
 		});
 	}
 	
+	public static void update(Result result){
+		final DataBaseHelper helper = new DataBaseHelper(App.getInstance());
+		try {
+			helper.getOrderDao().update(new OrderField(result.getOrder().getNo(), result));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void getList(final Callback callback){
 		final DataBaseHelper helper = new DataBaseHelper(App.getInstance());
 		Global global = new Global(App.getInstance());

@@ -42,13 +42,16 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 	}
 	private Result result;
 	
+	private Model model;
+	
 	private void request() {
 		OrderField.getOrder(id, new Callback2() {
 			
 			@Override
 			public void callback2(Result result) {
 				OrderActivity.this.result = result;
-				holder.setModel(result.toOrderModel());
+				model = result.toOrderModel();
+				holder.setModel(model);
 				
 			}
 		});
@@ -59,8 +62,31 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+
 		case R.id.pay_btn:
-			SubmitActivity.open(this,result.toSubmitModel());
+			if(model.status == Status.待支付){
+				SubmitActivity.open(this,result.toSubmitModel());
+			}else if(model.status == Status.已完成){
+				PublishCommentActivity.open(this);
+			}else if(model.status == Status.待体验){
+				//状态修改成退款完成
+				ConfirmDialog.open(this, "确认", "是否要退款？", new ConfirmDialog.OnClickListener() {
+					
+					@Override
+					public void onPositiveClick() {
+						result.getOrder().setStatus(Status.退款中);
+						model = result.toOrderModel();
+						holder.setModel(model);
+						OrderField.update(result);
+						
+					}
+					@Override
+					public void onNegativeClick() {
+					}
+				});
+				
+			}
+			
 			break;
 		case R.id.right_nav_btn:
 			ConfirmDialog.open(this, "确认", "是否要取消订单？", new ConfirmDialog.OnClickListener() {

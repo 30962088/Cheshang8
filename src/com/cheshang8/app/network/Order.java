@@ -3,6 +3,8 @@ package com.cheshang8.app.network;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 
@@ -34,6 +36,7 @@ public class Order {
 			return new Pay(price, gift, gift, type,receipt);
 		}
 		
+		
 	}
 	
 	private long date;
@@ -44,8 +47,15 @@ public class Order {
 	private Service service;
 	private Payment payment;
 	
+	
+	private static Status[] STATUS = new Status[]{Status.待支付,Status.待支付,Status.已完成,Status.待体验,Status.已完成,Status.退款中,Status.退款完成,Status.退款失败};
+	
 	public Status getStatusModel(){
-		return new Status[]{Status.待支付,Status.待支付,Status.已完成,Status.待体验,Status.已完成,Status.退款中,Status.退款完成,Status.退款失败}[status];
+		return STATUS[status];
+	}
+	
+	public void setStatus(Status status) {
+		this.status = ArrayUtils.indexOf(STATUS, status);
 	}
 	
 	public long getDate() {

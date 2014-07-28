@@ -57,6 +57,7 @@
                     android:textSize="14sp" />
 
                 <com.cheshang8.app.widget.CarStarView
+                    android:id="@+id/star"
                     android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" >
@@ -64,6 +65,7 @@
             </LinearLayout>
 
             <EditText
+                android:id="@+id/text"
                 android:layout_width="match_parent"
                 android:layout_height="124dp"
                 android:layout_marginTop="10dp"
