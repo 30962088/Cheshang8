@@ -8,6 +8,9 @@ import org.apache.http.Header;
 
 
 
+import com.cheshang8.app.OrderActivity;
+import com.cheshang8.app.SubmitActivity;
+import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.adapter.OrderAdapter;
 import com.cheshang8.app.adapter.SelectCityAdapter.Model.Col;
 import com.cheshang8.app.network.CityListRequest.Result;
@@ -32,6 +35,24 @@ public class OrdersRequest extends BaseClient{
 		
 		private int commented;
 		
+		public Order getOrder() {
+			return order;
+		}
+		
+		public SubmitActivity.Model toSubmitModel(){
+			return new SubmitActivity.Model(shop.getLogo(), service.getName(), service.getDescription(), 
+					service.getPrice_discount(), service.getPrice_origin(), shop.getShop_name(), shop.getShop_address(), shop.getPhoneText(), "158****1121");
+		}
+		
+		public OrderActivity.Model toOrderModel(){
+			Pay pay = null;
+			if(order.getPayment() != null){
+				pay = order.getPayment().toModel();
+			}
+			return new OrderActivity.Model(order.getDateString(), order.getNo(), order.getConsume_no(), order.getStatusModel(), shop.getLogo(), shop.getRating(), 
+					shop.getShop_name(), shop.getShop_address(), shop.getPhoneText(), service.getName(), service.getDetail(), 
+					service.getPrice_discount(), service.getPrice_origin(), service.getPrice_origin()-service.getPrice_discount(), pay);
+		}
 		
 		public OrderAdapter.Model toModel(){
 			int price = 0;
@@ -50,6 +71,7 @@ public class OrdersRequest extends BaseClient{
 			}
 			return list;
 		}
+		
 		
 	}
 	

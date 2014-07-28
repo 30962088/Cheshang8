@@ -2,24 +2,19 @@ package com.cheshang8.app;
 
 import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
-import com.cheshang8.app.fragment.TabIndexFragment;
-import com.cheshang8.app.fragment.TabZoneFragment;
-import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
-import com.cheshang8.app.network.OrderRequest;
-import com.cheshang8.app.network.OrderRequest.Result;
+import com.cheshang8.app.database.OrderField;
+import com.cheshang8.app.database.OrderField.Callback2;
+import com.cheshang8.app.network.OrdersRequest.Result;
 import com.cheshang8.app.utils.BitmapLoader;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.mengle.lib.utils.ConfirmDialog;
 
 public class OrderActivity extends BaseActivity implements OnClickListener{
 	public static void open(Context context,String id){
@@ -41,27 +36,49 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		context = this;
 		setContentView(R.layout.order_layout);
 		holder = new ViewHolder();
+		findViewById(R.id.right_nav_btn).setOnClickListener(this);
 		findViewById(R.id.pay_btn).setOnClickListener(this);
 		request();
 	}
+	private Result result;
+	
 	private void request() {
-		OrderRequest request = new OrderRequest(id);
-		request.request(new SimpleRequestHandler(){
+		OrderField.getOrder(id, new Callback2() {
+			
 			@Override
-			public void onSuccess(Object object) {
-				OrderRequest.Result result = (Result) object;
-				holder.setModel(result.toModel());
+			public void callback2(Result result) {
+				OrderActivity.this.result = result;
+				holder.setModel(result.toOrderModel());
+				
 			}
 		});
+	
+		
 		
 	}
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.pay_btn:
-			SubmitActivity.open(this);
+			SubmitActivity.open(this,result.toSubmitModel());
 			break;
-
+		case R.id.right_nav_btn:
+			ConfirmDialog.open(this, "确认", "是否要取消订单？", new ConfirmDialog.OnClickListener() {
+				
+				@Override
+				public void onPositiveClick() {
+					OrderField.deleteOrder(id);
+					finish();
+					
+				}
+				
+				@Override
+				public void onNegativeClick() {
+					
+					
+				}
+			});
+			break;
 		default:
 			break;
 		}
@@ -177,7 +194,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		private Status status;
 		
 		private String thumbnail; 
-		private int star;
+		private float star;
 		private String title;
 		private String address;
 		private String phone;
@@ -188,7 +205,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		private int price0_0;
 		private Pay pay;
 		public Model(String time, String no, String consume_no, Status status,
-				String thumbnail, int star, String title, String address,
+				String thumbnail, float star, String title, String address,
 				String phone, String service, String service_detail, int price,
 				int price0, int price0_0, Pay pay) {
 			super();

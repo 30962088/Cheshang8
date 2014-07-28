@@ -7,6 +7,8 @@ import org.apache.commons.io.IOUtils;
 
 import com.cheshang8.app.adapter.OrderAdapter;
 import com.cheshang8.app.adapter.OrderAdapter.Model;
+import com.cheshang8.app.database.OrderField;
+import com.cheshang8.app.database.OrderField.Callback;
 import com.cheshang8.app.network.OrdersRequest;
 import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
 import com.cheshang8.app.network.OrdersRequest.Result;
@@ -63,20 +65,27 @@ public class AllOrderActivity extends BaseActivity {
 				
 			}
 		});
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
 		request();
 	}
 	
 	private void request(){
-		OrdersRequest request = new OrdersRequest();
-		request.request(new SimpleRequestHandler(){
+		OrderField.getList(new Callback() {
 			@Override
-			public void onSuccess(Object object) {
-				List<Result> result = (List<Result>) object;
+			public void callback(List<Result> result) {
 				list.clear();
 				list.addAll(Result.toList(result));
 				adapter.notifyDataSetChanged();
+				
 			}
 		});
+		
 	}
 
 	@Override

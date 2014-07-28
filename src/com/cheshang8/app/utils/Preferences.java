@@ -50,6 +50,14 @@ public class Preferences {
 			return preferences.getBoolean("first", true);
 		}
 		
+		public void setOrders(boolean val){
+			preferences.edit().putBoolean("set_order", val).commit();
+		}
+		
+		public boolean isSetOrders(){
+			return preferences.getBoolean("set_order", false);
+		}
+		
 	
 		
 		

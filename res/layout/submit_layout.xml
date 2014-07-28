@@ -84,6 +84,7 @@
                         android:paddingTop="10dp" >
 
                         <TextView
+                            android:id="@+id/name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="玻璃贴膜"
@@ -91,6 +92,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/detail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="威固V70前挡膜+威固K37车身膜"
@@ -112,6 +114,7 @@
                                 android:textSize="18sp" />
 
                             <TextView
+                                android:id="@+id/price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="20"
@@ -120,6 +123,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/price1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="原价：￥45    节省：￥25"
@@ -166,6 +170,7 @@
                         android:paddingTop="10dp" >
 
                         <ImageView
+                            android:id="@+id/thumbnail"
                             android:layout_width="72dp"
                             android:layout_height="47dp"
                             android:layout_marginRight="5dp"
@@ -179,6 +184,7 @@
                             android:orientation="vertical" >
 
                             <TextView
+                                android:id="@+id/title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="车之友  朝阳路店"
@@ -186,6 +192,7 @@
                                 android:textSize="15dp" />
 
                             <TextView
+                                android:id="@+id/address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:ellipsize="end"
@@ -195,6 +202,7 @@
                                 android:textSize="12dp" />
 
                             <TextView
+                                android:id="@+id/phone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="预约电话：010-63864400"
@@ -240,6 +248,7 @@
                         android:paddingRight="20dp" >
 
                         <TextView
+                            android:id="@+id/my_phone"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

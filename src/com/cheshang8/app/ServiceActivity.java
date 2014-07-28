@@ -47,7 +47,7 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.pay_btn:
-			SubmitActivity.open(this);
+//			SubmitActivity.open(this);
 			break;
 		case R.id.comment_btn:
 			CommentListActivity.open(this);
