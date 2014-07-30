@@ -15,6 +15,7 @@ import com.cheshang8.app.PaySuccessActivity;
 import com.cheshang8.app.SubmitActivity;
 import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.adapter.OrderAdapter;
+import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 import com.cheshang8.app.adapter.SelectCityAdapter.Model.Col;
 import com.cheshang8.app.network.CityListRequest.Result;
 import com.cheshang8.app.network.Order.Payment;
@@ -59,12 +60,32 @@ public class OrdersRequest extends BaseClient{
 					service.getPrice_discount(), service.getPrice_origin(), shop.getShop_name(), shop.getShop_address(), shop.getPhoneText(), "158****1121");
 		}
 		
+		public void setCommented(int commented) {
+			this.commented = commented;
+		}
+		public void setOrder(Order order) {
+			this.order = order;
+		}
+		public void setPayment(Payment payment) {
+			this.payment = payment;
+		}
+		public void setService(Service service) {
+			this.service = service;
+		}
+		public void setShop(Shop shop) {
+			this.shop = shop;
+		}
+		
 		public OrderActivity.Model toOrderModel(){
 			Pay pay = null;
 			if(order.getPayment() != null){
 				pay = order.getPayment().toModel();
 			}
-			return new OrderActivity.Model(order.getDateString(), order.getNo(), order.getConsume_no(), order.getStatusModel(), shop.getLogo(), shop.getRating(), 
+			Status st = order.getStatusModel();
+			if(st == Status.已完成 && commented == 1){
+				st = Status.已评价;
+			}
+			return new OrderActivity.Model(order.getDateString(), order.getNo(), order.getConsume_no(), st, shop.getLogo(), shop.getRating(), 
 					shop.getShop_name(), shop.getShop_address(), shop.getPhoneText(), service.getName(), service.getDetail(), 
 					service.getPrice_discount(), service.getPrice_origin(), service.getPrice_origin()-service.getPrice_discount(), pay);
 		}
@@ -76,7 +97,11 @@ public class OrdersRequest extends BaseClient{
 			}else{
 				price = service.getPrice_discount();
 			}
-			return new OrderAdapter.Model(shop.getId(), shop.getLogo(), order.getDateString(), shop.getShop_name(), service.getName(), price, order.getNo(), order.getStatusModel());
+			Status st = order.getStatusModel();
+			if(st == Status.已完成 && commented == 1){
+				st = Status.已评价;
+			}
+			return new OrderAdapter.Model(shop.getId(), shop.getLogo(), order.getDateString(), shop.getShop_name(), service.getName(), price, order.getNo(),st );
 		}
 		
 		public static List<OrderAdapter.Model> toList(List<Result> results){

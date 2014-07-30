@@ -2,6 +2,7 @@ package com.cheshang8.app.adapter;
 
 import java.util.List;
 
+import com.cheshang8.app.PayActivity;
 import com.cheshang8.app.PublishCommentActivity;
 import com.cheshang8.app.R;
 import com.cheshang8.app.SubmitActivity;
@@ -10,7 +11,7 @@ import com.cheshang8.app.database.OrderField;
 import com.cheshang8.app.database.OrderField.Callback2;
 import com.cheshang8.app.network.OrdersRequest.Result;
 import com.cheshang8.app.utils.BitmapLoader;
-import com.mengle.lib.utils.ConfirmDialog;
+import com.mengle.lib.wiget.ConfirmDialog;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -32,6 +33,7 @@ public class OrderAdapter extends BaseAdapter {
 			待支付("待支付","立即支付",Color.parseColor("#ff0000")),
 			待体验("待体验","立即退款",Color.parseColor("#f49e17")),
 			已完成("已完成","立即评价",Color.parseColor("#73e048")),
+			已评价("已评价",null,Color.parseColor("#73e048")),
 			退款中("退款中",null,Color.parseColor("#f49e17")),
 			退款完成("退款完成",null,Color.parseColor("#898989")),
 			退款失败("退款失败",null,Color.parseColor("#ff0000"));
@@ -190,9 +192,9 @@ public class OrderAdapter extends BaseAdapter {
 						@Override
 						public void callback2(final Result result) {
 							if(model.status == Status.待支付){
-								SubmitActivity.open(context,result);
+								PayActivity.open(context, result);
 							}else if(model.status == Status.已完成){
-								PublishCommentActivity.open(context,new PublishCommentActivity.Params(model.getShop_id()));
+								PublishCommentActivity.open(context,new PublishCommentActivity.Params(model.getShop_id(),model.getNo()));
 							}else if(model.status == Status.待体验){
 								//状态修改成退款完成
 								ConfirmDialog.open(context, "确认", "是否要退款？", new ConfirmDialog.OnClickListener() {

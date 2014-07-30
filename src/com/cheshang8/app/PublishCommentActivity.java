@@ -12,9 +12,12 @@ import java.util.List;
 import com.cheshang8.app.adapter.CommentImgAdapter;
 import com.cheshang8.app.adapter.CommentImgAdapter.Model;
 import com.cheshang8.app.database.CommentField;
+import com.cheshang8.app.database.OrderField;
+import com.cheshang8.app.database.OrderField.Callback2;
 import com.cheshang8.app.network.CommentsRequest.Result.Comment;
 import com.cheshang8.app.network.CommentsRequest.Result.Comment.Service;
 import com.cheshang8.app.network.CommentsRequest.Result.Comment.User;
+import com.cheshang8.app.network.OrdersRequest.Result;
 import com.cheshang8.app.widget.CarStarView;
 
 import android.app.AlertDialog;
@@ -37,14 +40,12 @@ public class PublishCommentActivity extends BaseActivity implements OnClickListe
 	public static class Params implements Serializable{
 		private Service service;
 		private String shop_id;
-		public Params(Service service, String shop_id) {
-			super();
-			this.service = service;
-			this.shop_id = shop_id;
-		}
-		public Params(String shop_id) {
+		private String order_id;
+		
+		public Params(String shop_id,String order_id) {
 			super();
 			this.shop_id = shop_id;
+			this.order_id = order_id;
 			service = new Service("1","洗车");
 		}
 		
@@ -179,19 +180,30 @@ public class PublishCommentActivity extends BaseActivity implements OnClickListe
 	}
 	
 	private void publish(){
-		float rating = holder.star.getStar();
-		String content = holder.text.getText().toString();
-		List<String> imgs = new ArrayList<String>();
+		final float rating = holder.star.getStar();
+		final String content = holder.text.getText().toString();
+		final List<String> imgs = new ArrayList<String>();
 		
 		for(int i = 0;i< holder.list.size()-1;i++){
 			imgs.add(holder.list.get(i).getImg());
 		}
-		User user = new User("15832112321");
-		long date = new Date().getTime();
-		Comment comment = new Comment(params.service, rating, date, user, content, imgs);
-		CommentField.saveOrUpdate(new CommentField(params.shop_id, comment));
-		com.mengle.lib.utils.Utils.tip(context, "发布成功");
-		finish();
+		final User user = new User("15832112321");
+		final long date = new Date().getTime();
+		OrderField.getOrder(params.order_id, new Callback2() {
+			
+			@Override
+			public void callback2(Result result) {
+				result.setCommented(1);
+				OrderField.update(result);
+				Comment comment = new Comment(params.service, rating, date, user, content, imgs);
+				CommentField.saveOrUpdate(new CommentField(params.shop_id, comment));
+				com.mengle.lib.utils.Utils.tip(context, "发布成功");
+				finish();
+				
+			}
+		});
+		
+		
 	}
 	
 	@Override

@@ -72,6 +72,16 @@ public class OrderField {
 		});
 	}
 	
+	public static void create(Result result){
+		final DataBaseHelper helper = new DataBaseHelper(App.getInstance());
+		try {
+			helper.getOrderDao().create(new OrderField(result.getOrder().getNo(), result));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void update(Result result){
 		final DataBaseHelper helper = new DataBaseHelper(App.getInstance());
 		try {

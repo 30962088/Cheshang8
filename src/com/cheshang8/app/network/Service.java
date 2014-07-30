@@ -22,6 +22,10 @@ public class Service implements Serializable{
 	public String getId() {
 		return id;
 	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
 	public String getName() {
 		return name;

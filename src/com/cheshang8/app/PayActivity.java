@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cheshang8.app.network.OrdersRequest.Result;
-import com.mengle.lib.utils.WigetUtils;
-import com.mengle.lib.utils.WigetUtils.OnItemClickListener;
+import com.mengle.lib.wiget.WigetUtils;
+import com.mengle.lib.wiget.WigetUtils.OnItemClickListener;
 public class PayActivity extends BaseActivity implements OnClickListener{
 	public static void open(Context context,Result result){
 		Intent intent = new Intent(context, PayActivity.class);

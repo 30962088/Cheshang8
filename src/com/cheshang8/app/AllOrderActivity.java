@@ -27,8 +27,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-
-public class AllOrderActivity extends BaseActivity {
+import com.mengle.lib.wiget.BaseListView;
+import com.mengle.lib.wiget.BaseListView.OnLoadListener;
+public class AllOrderActivity extends BaseActivity implements OnLoadListener{
 	public static void open(Context context,Status status){
 		Intent intent = new Intent(context, AllOrderActivity.class);
 		intent.putExtra("status", status);
@@ -37,7 +38,7 @@ public class AllOrderActivity extends BaseActivity {
 	
 	
 	
-	private ListView listView;
+	private BaseListView listView;
 	
 	private OrderAdapter adapter;
 	
@@ -59,9 +60,9 @@ public class AllOrderActivity extends BaseActivity {
 			textView.setText(status.getText());
 		}
 		
-		listView = (ListView) findViewById(R.id.listview);
+		listView = (BaseListView) findViewById(R.id.listview);
 		
-			
+		listView.setOnLoadListener(this);
 			
 		adapter = new OrderAdapter(this, list);
 			
@@ -73,7 +74,7 @@ public class AllOrderActivity extends BaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				Model model = list.get(position);
+				Model model = list.get(position-1);
 				OrderActivity.open(AllOrderActivity.this,model.getNo());
 				
 			}
@@ -110,6 +111,18 @@ public class AllOrderActivity extends BaseActivity {
 	protected Integer finishBtn() {
 		// TODO Auto-generated method stub
 		return R.id.nav_left_btn;
+	}
+
+	@Override
+	public boolean onLoad(int offset, int limit) {
+		
+		return false;
+	}
+
+	@Override
+	public void onLoadSuccess() {
+//		request();
+		
 	}
 
 

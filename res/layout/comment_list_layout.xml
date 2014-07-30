@@ -30,7 +30,7 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <ListView
+    <com.mengle.lib.wiget.BaseListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -41,9 +41,10 @@
         android:dividerHeight="1dp"
         android:padding="5dp"
         android:scrollbarStyle="outsideOverlay" >
-    </ListView>
+    </com.mengle.lib.wiget.BaseListView>
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/comment_btn"
         android:layout_width="match_parent"
         android:layout_height="46dp"

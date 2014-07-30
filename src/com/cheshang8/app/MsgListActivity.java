@@ -1,6 +1,7 @@
 package com.cheshang8.app;
 
 import java.io.IOException;
+
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -25,8 +26,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
-
-public class MsgListActivity extends BaseActivity {
+import com.mengle.lib.wiget.BaseListView;
+import com.mengle.lib.wiget.BaseListView.OnLoadListener;
+public class MsgListActivity extends BaseActivity implements OnLoadListener{
 	
 	public static void open(Context context){
 		context.startActivity(new Intent(context, MsgListActivity.class));
@@ -39,7 +41,8 @@ public class MsgListActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.msg_list_layout);
 		
-		ListView listView = (ListView) findViewById(R.id.listview);
+		BaseListView listView = (BaseListView) findViewById(R.id.listview);
+		listView.setOnLoadListener(this);
 		try {
 			List<MsgListAdapter.Model> list = new Gson().fromJson(
 					IOUtils.toString(getAssets().open(
@@ -65,6 +68,20 @@ public class MsgListActivity extends BaseActivity {
 	protected Integer finishBtn() {
 		// TODO Auto-generated method stub
 		return R.id.nav_left_btn;
+	}
+
+
+	@Override
+	public boolean onLoad(int offset, int limit) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public void onLoadSuccess() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

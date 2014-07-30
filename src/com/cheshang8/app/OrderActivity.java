@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.mengle.lib.utils.ConfirmDialog;
+import com.mengle.lib.wiget.ConfirmDialog;
 
 public class OrderActivity extends BaseActivity implements OnClickListener{
 	public static void open(Context context,String id){
@@ -81,9 +81,9 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 
 		case R.id.pay_btn:
 			if(model.status == Status.待支付){
-				SubmitActivity.open(this,result);
+				PayActivity.open(this,result);
 			}else if(model.status == Status.已完成){
-				PublishCommentActivity.open(this,new Params(result.getShop().getId()));
+				PublishCommentActivity.open(this,new Params(result.getShop().getId(),result.getOrder().getNo()));
 			}else if(model.status == Status.待体验){
 				//状态修改成退款完成
 				ConfirmDialog.open(this, "确认", "是否要退款？", new ConfirmDialog.OnClickListener() {

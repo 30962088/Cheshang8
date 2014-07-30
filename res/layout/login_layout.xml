@@ -54,6 +54,7 @@
                 android:src="@drawable/icon_username" />
 
             <EditText
+                android:id="@+id/username"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -86,6 +87,7 @@
                 android:src="@drawable/icon_password" />
 
             <EditText
+                android:id="@+id/password"
                 android:password="true"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

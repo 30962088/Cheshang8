@@ -2,6 +2,7 @@ package com.cheshang8.app;
 
 import java.io.Serializable;
 
+import com.cheshang8.app.database.OrderField;
 import com.cheshang8.app.fragment.TabIndexFragment;
 import com.cheshang8.app.network.OrdersRequest.Result;
 import com.cheshang8.app.utils.BitmapLoader;
@@ -39,6 +40,7 @@ public class SubmitActivity extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.submit_btn:
+			OrderField.create(result);
 			PayActivity.open(this,result);
 			break;
 

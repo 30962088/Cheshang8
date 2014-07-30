@@ -48,11 +48,24 @@ public class Order implements Serializable{
 	private Service service;
 	private Payment payment;
 	
-	
+	public void setDate(long date) {
+		this.date = date;
+	}
+	public void setNo(String no) {
+		this.no = no;
+	}
+	public void setCommented(int commented) {
+		this.commented = commented;
+	}
+	public void setConsume_no(String consume_no) {
+		this.consume_no = consume_no;
+	}
 	private static Status[] STATUS = new Status[]{Status.待支付,Status.待支付,Status.已完成,Status.待体验,Status.已完成,Status.退款中,Status.退款完成,Status.退款失败};
 	
 	public Status getStatusModel(){
-		return STATUS[status];
+		Status st = STATUS[status];
+		
+		return st;
 	}
 	
 	public void setStatus(Status status) {

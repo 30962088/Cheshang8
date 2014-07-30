@@ -10,14 +10,16 @@ import android.content.SharedPreferences;
 public class Preferences {
 
 	public static class User{
+		private String phone;
 		private String name;
 		private String level;
 		private String coin;
-		public User(String name, String level, String coin) {
+		public User(String name,String phone, String level, String coin) {
 			super();
 			this.name = name;
 			this.level = level;
 			this.coin = coin;
+			this.phone = phone;
 		}
 		public String getCoin() {
 			return coin;
@@ -27,6 +29,12 @@ public class Preferences {
 		}
 		public String getName() {
 			return name;
+		}
+		public void setPhone(String phone) {
+			this.phone = phone;
+		}
+		public String getPhone() {
+			return phone;
 		}
 		
 	}

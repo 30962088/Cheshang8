@@ -1,8 +1,16 @@
 package com.cheshang8.app;
 
+import java.util.Date;
+
+import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
+import com.cheshang8.app.database.OrderField;
+import com.cheshang8.app.network.Order;
+import com.cheshang8.app.network.OrdersRequest;
 import com.cheshang8.app.network.ServiceRequest;
 import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
 import com.cheshang8.app.network.ServiceRequest.Result;
+import com.cheshang8.app.utils.Preferences;
+import com.cheshang8.app.utils.Preferences.User;
 import com.cheshang8.app.widget.CarStarView;
 
 import android.content.Context;
@@ -31,6 +39,8 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 	
 	private String shop_id;
 	
+	private Result result;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,13 +57,34 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.pay_btn:
-//			SubmitActivity.open(this);
+			onPay();
 			break;
 		case R.id.comment_btn:
-			CommentListActivity.open(this);
+			CommentListActivity.open(this,shop_id);
 			break;
 		default:
 			break;
+		}
+		
+	}
+	
+	private void onPay(){
+		User user = new Preferences.Global(context).getUser();
+		if(user == null){
+			LoginActivity.open(context);
+		}else{
+			OrdersRequest.Result rs = new OrdersRequest.Result();
+			rs.setCommented(0);
+			result.getService().setDescription("");
+			rs.setService(result.getService());
+			rs.setShop(result.getShop());
+			Order order = new Order();
+			order.setDate(new Date().getTime());
+			order.setNo(""+new Date().getTime());
+			order.setConsume_no(""+new Date().getTime());
+			order.setStatus(Status.待支付);
+			rs.setOrder(order);
+			SubmitActivity.open(context, rs);
 		}
 		
 	}
@@ -63,7 +94,7 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 		request.request(new SimpleRequestHandler(){
 			@Override
 			public void onSuccess(Object object) {
-				ServiceRequest.Result result = (Result) object;
+				result = (Result) object;
 				holder.setModel(result.toModel());
 			}
 		});
