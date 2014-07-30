@@ -2,6 +2,7 @@ package com.cheshang8.app.database;
 
 import java.sql.SQLException;
 
+import com.cheshang8.app.network.CommentsRequest.Result.Comment;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
@@ -29,6 +30,7 @@ public class DataBaseHelper extends OrmLiteSqliteOpenHelper {
 	public void onCreate(SQLiteDatabase arg0, ConnectionSource arg1) {
 		try {
 			TableUtils.createTableIfNotExists(connectionSource, OrderField.class);
+			TableUtils.createTableIfNotExists(connectionSource, CommentField.class);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -45,12 +47,23 @@ public class DataBaseHelper extends OrmLiteSqliteOpenHelper {
 			int arg2, int arg3) {
 		try {
 			TableUtils.dropTable(connectionSource, OrderField.class, true);
+			TableUtils.dropTable(connectionSource, CommentField.class, true);
 			onCreate(database, connectionSource);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+	
+	private Dao<CommentField, String> commentDao;
+
+	public Dao<CommentField, String> getCommentDao() throws SQLException {
+		if (commentDao == null) {
+			commentDao = DaoManager.createDao(getConnectionSource(),
+					CommentField.class);
+		}
+		return commentDao;
 	}
 
 	private Dao<OrderField, String> orderDao;

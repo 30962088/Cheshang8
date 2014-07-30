@@ -47,7 +47,7 @@ public class CommentListActivity extends BaseActivity {
 			
 			@Override
 			public void onClick(View v) {
-				PublishCommentActivity.open(CommentListActivity.this);
+				;
 				
 			}
 		});

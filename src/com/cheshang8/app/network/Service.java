@@ -1,6 +1,8 @@
 package com.cheshang8.app.network;
 
-public class Service {
+import java.io.Serializable;
+
+public class Service implements Serializable{
 	private String id;
 	
 	private String name;

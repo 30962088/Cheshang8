@@ -3,6 +3,7 @@ package com.cheshang8.app;
 import java.io.Serializable;
 
 import com.cheshang8.app.fragment.TabIndexFragment;
+import com.cheshang8.app.network.OrdersRequest.Result;
 import com.cheshang8.app.utils.BitmapLoader;
 
 import android.content.Context;
@@ -16,29 +17,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SubmitActivity extends BaseActivity implements OnClickListener{
-	public static void open(Context context,Model model){
+	public static void open(Context context,Result result){
 		Intent intent = new Intent(context, SubmitActivity.class);
-		intent.putExtra("model", model);
+		intent.putExtra("model", result);
 		context.startActivity(intent);
 	}
 	
 	private ViewHolder holder;
 	
-	private Model model;
+	private Result result;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		model = (Model) getIntent().getSerializableExtra("model");
+		result = (Result) getIntent().getSerializableExtra("model");
 		setContentView(R.layout.submit_layout);
 		holder = new ViewHolder();
-		holder.setModel(model);
+		holder.setModel(result.toSubmitModel());
 		findViewById(R.id.submit_btn).setOnClickListener(this);
 	}
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.submit_btn:
-			PayActivity.open(this);
+			PayActivity.open(this,result);
 			break;
 
 		default:

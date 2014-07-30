@@ -26,12 +26,12 @@ public class DetailCommentAdapter extends BaseAdapter{
 	public static class Model{
 		private String icon;
 		private String type;
-		private int star;
+		private float star;
 		private String phone;
 		private String time;
 		private String detail;
 		private List<String> icons;
-		public Model(String icon, String type, int star, String phone,
+		public Model(String icon, String type, float star, String phone,
 				String time, String detail, List<String> icons) {
 			super();
 			this.icon = icon;

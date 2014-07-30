@@ -2,14 +2,21 @@ package com.cheshang8.app.adapter;
 
 import java.util.List;
 
+import com.cheshang8.app.PublishCommentActivity;
 import com.cheshang8.app.R;
+import com.cheshang8.app.SubmitActivity;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
+import com.cheshang8.app.database.OrderField;
+import com.cheshang8.app.database.OrderField.Callback2;
+import com.cheshang8.app.network.OrdersRequest.Result;
 import com.cheshang8.app.utils.BitmapLoader;
+import com.mengle.lib.utils.ConfirmDialog;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
@@ -57,6 +64,7 @@ public class OrderAdapter extends BaseAdapter {
 			}
 
 		}
+		private String shop_id;
 		private String thumbnail;
 		private String time;
 		private String name;
@@ -65,9 +73,15 @@ public class OrderAdapter extends BaseAdapter {
 		private String no;
 		private Status status;
 		
-		public Model(String thumbnail, String time, String name, String type,
-				int price, String no, Status status) {
+		
+		
+
+		
+		
+		public Model(String shop_id, String thumbnail, String time,
+				String name, String type, int price, String no, Status status) {
 			super();
+			this.shop_id = shop_id;
 			this.thumbnail = thumbnail;
 			this.time = time;
 			this.name = name;
@@ -76,13 +90,14 @@ public class OrderAdapter extends BaseAdapter {
 			this.no = no;
 			this.status = status;
 		}
-
-		
 		public String getNo() {
 			return no;
 		}
 		public Status getStatus() {
 			return status;
+		}
+		public String getShop_id() {
+			return shop_id;
 		}
 		
 
@@ -120,7 +135,7 @@ public class OrderAdapter extends BaseAdapter {
 	public View getView(int position, View convertView, ViewGroup parent) {
 
 		ViewHolder holder = null;
-		Model model = list.get(position);
+		final Model model = list.get(position);
 		if (convertView == null) {
 			convertView = LayoutInflater.from(context).inflate(
 					R.layout.order_item, null);
@@ -166,7 +181,47 @@ public class OrderAdapter extends BaseAdapter {
 			holder.status_btn.setVisibility(View.VISIBLE);
 			holder.status_btn.setText(status.getBtn());
 			holder.status_btn.setBackgroundColor(status.getColor());
+			holder.status_btn.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					OrderField.getOrder(model.no, new Callback2() {
+						
+						@Override
+						public void callback2(final Result result) {
+							if(model.status == Status.待支付){
+								SubmitActivity.open(context,result);
+							}else if(model.status == Status.已完成){
+								PublishCommentActivity.open(context,new PublishCommentActivity.Params(model.getShop_id()));
+							}else if(model.status == Status.待体验){
+								//状态修改成退款完成
+								ConfirmDialog.open(context, "确认", "是否要退款？", new ConfirmDialog.OnClickListener() {
+									
+									@Override
+									public void onPositiveClick() {
+										result.getOrder().setStatus(Status.退款中);
+										
+										OrderField.update(result);
+										model.status = Status.退款中;
+										notifyDataSetChanged();
+									}
+									@Override
+									public void onNegativeClick() {
+									}
+								});
+								
+							}
+							
+						}
+					});
+					
+					
+				}
+			});
 		}
+		
+		
+		
 	
 		
 

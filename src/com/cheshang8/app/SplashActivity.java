@@ -1,12 +1,19 @@
 package com.cheshang8.app;
 
-import com.cheshang8.app.utils.BitmapLoader;
+import com.cheshang8.app.utils.Preferences.Global;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
 public class SplashActivity extends Activity implements Runnable{
+	
+	public static void open(Context context){
+		Intent intent = new Intent(context, SplashActivity.class);
+		context.startActivity(intent);
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +27,13 @@ public class SplashActivity extends Activity implements Runnable{
 
 	@Override
 	public void run() {
-		MainActivity.open(this);
-		finish();
 		
+		Global global = new Global(this);
+		if(global.isFirst()){
+			SelectCityActivity.open(this);
+			global.setFirst(false);
+		}
+		finish();
 	}
 
 }

@@ -3,6 +3,7 @@ package com.cheshang8.app;
 
 
 import java.io.File;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +11,10 @@ import java.util.List;
 
 import com.cheshang8.app.adapter.CommentImgAdapter;
 import com.cheshang8.app.adapter.CommentImgAdapter.Model;
+import com.cheshang8.app.database.CommentField;
+import com.cheshang8.app.network.CommentsRequest.Result.Comment;
+import com.cheshang8.app.network.CommentsRequest.Result.Comment.Service;
+import com.cheshang8.app.network.CommentsRequest.Result.Comment.User;
 import com.cheshang8.app.widget.CarStarView;
 
 import android.app.AlertDialog;
@@ -21,23 +26,50 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.EditText;
 import android.widget.GridView;
 
-public class PublishCommentActivity extends BaseActivity {
-	public static void open(Context context){
-		context.startActivity(new Intent(context, PublishCommentActivity.class));
+public class PublishCommentActivity extends BaseActivity implements OnClickListener{
+	
+	public static class Params implements Serializable{
+		private Service service;
+		private String shop_id;
+		public Params(Service service, String shop_id) {
+			super();
+			this.service = service;
+			this.shop_id = shop_id;
+		}
+		public Params(String shop_id) {
+			super();
+			this.shop_id = shop_id;
+			service = new Service("1","洗车");
+		}
+		
+		
+		
+	}
+	
+	public static void open(Context context,Params params){
+		Intent intent = new Intent(context, PublishCommentActivity.class);
+		intent.putExtra("params", params);
+		context.startActivity(intent);
 	}
 	private ViewHolder holder;
 	
 	private Context context;
 	
+	private Params params;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		params = (Params) getIntent().getSerializableExtra("params");
 		context = this;
 		setContentView(R.layout.publish_comment);
+		findViewById(R.id.publish_btn).setOnClickListener(this);
 		holder = new ViewHolder();
 		
 		folder = new File(Environment.getExternalStorageDirectory(), "cheshang8");
@@ -61,8 +93,10 @@ public class PublishCommentActivity extends BaseActivity {
 		private CarStarView star;
 		private GridView gridView;
 		private CommentImgAdapter adapter;
+		private EditText text;
 		private List<Model> list = new ArrayList<Model>();
 		public ViewHolder() {
+			text = (EditText) findViewById(R.id.text);
 			star = (CarStarView) findViewById(R.id.star);
 			star.setIndicator(false);
 			gridView = (GridView) findViewById(R.id.gridview);
@@ -142,6 +176,35 @@ public class PublishCommentActivity extends BaseActivity {
 	        }
 
 	    }
+	}
+	
+	private void publish(){
+		float rating = holder.star.getStar();
+		String content = holder.text.getText().toString();
+		List<String> imgs = new ArrayList<String>();
+		
+		for(int i = 0;i< holder.list.size()-1;i++){
+			imgs.add(holder.list.get(i).getImg());
+		}
+		User user = new User("15832112321");
+		long date = new Date().getTime();
+		Comment comment = new Comment(params.service, rating, date, user, content, imgs);
+		CommentField.saveOrUpdate(new CommentField(params.shop_id, comment));
+		com.mengle.lib.utils.Utils.tip(context, "发布成功");
+		finish();
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.publish_btn:
+			publish();
+			break;
+
+		default:
+			break;
+		}
+		
 	};
 
 

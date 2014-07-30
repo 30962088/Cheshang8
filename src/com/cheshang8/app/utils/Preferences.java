@@ -2,12 +2,34 @@ package com.cheshang8.app.utils;
 
 
 
+import com.google.gson.Gson;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Preferences {
 
-	
+	public static class User{
+		private String name;
+		private String level;
+		private String coin;
+		public User(String name, String level, String coin) {
+			super();
+			this.name = name;
+			this.level = level;
+			this.coin = coin;
+		}
+		public String getCoin() {
+			return coin;
+		}
+		public String getLevel() {
+			return level;
+		}
+		public String getName() {
+			return name;
+		}
+		
+	}
 	public static class Global{
 		
 		private static final String NAME = "Global";
@@ -16,9 +38,23 @@ public class Preferences {
 
 		private Context context;
 		
+		
+		
 		public Global(Context context) {
 			preferences = context.getSharedPreferences(NAME, 0);
 			this.context = context;
+		}
+		
+		public void setUser(User user){
+			preferences.edit().putString("user", new Gson().toJson(user)).commit();
+		}
+		
+		public User getUser(){
+			String str = preferences.getString("user",null);
+			if(str == null){
+				return null;
+			}
+			return new Gson().fromJson(str, User.class);
 		}
 		
 		public void setCity(String id,String name){

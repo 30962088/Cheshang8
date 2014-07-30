@@ -28,7 +28,9 @@ public class CommentImgAdapter extends BaseAdapter{
 			super();
 			this.img = img;
 		}
-		
+		public String getImg() {
+			return img;
+		}
 	}
 	
 	private Context context;

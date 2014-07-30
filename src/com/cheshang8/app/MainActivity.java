@@ -26,11 +26,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		Global global = new Global(this);
-		if(global.isFirst()){
-			SelectCityActivity.open(this);
-			global.setFirst(false);
-		}
+		SplashActivity.open(this);
 		setContentView(R.layout.activity_main);
 		fragments = new Fragment[]{TabIndexFragment.newInstance(),new Fragment(),new Fragment(),TabZoneFragment.newInstance()};
 		findViewById(R.id.tab1).setOnClickListener(this);

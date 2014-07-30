@@ -88,6 +88,7 @@
                         android:paddingTop="10dp" >
 
                         <TextView
+                            android:id="@+id/name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="玻璃贴膜"
@@ -95,6 +96,7 @@
                             android:textSize="14sp" />
 
                         <TextView
+                            android:id="@+id/detail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="威固V70前挡膜+威固K37车身膜"
@@ -116,6 +118,7 @@
                                 android:textSize="18sp" />
 
                             <TextView
+                                android:id="@+id/price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="20"
@@ -124,6 +127,7 @@
                         </LinearLayout>
 
                         <TextView
+                            android:id="@+id/price1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="原价：￥45    节省：￥25"
@@ -395,6 +399,7 @@
                             android:textSize="14dp" />
 
                         <TextView
+                            android:id="@+id/price2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="￥20"
@@ -417,6 +422,7 @@
                             android:textSize="14dp" />
 
                         <TextView
+                            android:id="@+id/price3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="￥10"
@@ -439,6 +445,7 @@
                             android:textSize="14dp" />
 
                         <TextView
+                            android:id="@+id/price4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="￥5"
@@ -461,6 +468,7 @@
                             android:textSize="14dp" />
 
                         <TextView
+                            android:id="@+id/price5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="￥5"
@@ -596,6 +604,7 @@
                     android:textSize="16dp" />
 
                 <TextView
+                    android:id="@+id/price6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="￥20"

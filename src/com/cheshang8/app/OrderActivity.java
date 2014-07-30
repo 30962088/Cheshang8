@@ -1,6 +1,7 @@
 package com.cheshang8.app;
 
 import com.cheshang8.app.OrderActivity.Model.Pay;
+import com.cheshang8.app.PublishCommentActivity.Params;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 import com.cheshang8.app.database.OrderField;
 import com.cheshang8.app.database.OrderField.Callback2;
@@ -23,6 +24,13 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		context.startActivity(intent);
 	}
 	
+	public static void openClear(Context context,String id){
+		Intent intent = new Intent(context, OrderActivity.class);
+		intent.putExtra("id", id);
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		context.startActivity(intent);
+	}
+	
 	private Context context;
 	
 	private String id;
@@ -38,8 +46,16 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		holder = new ViewHolder();
 		findViewById(R.id.right_nav_btn).setOnClickListener(this);
 		findViewById(R.id.pay_btn).setOnClickListener(this);
+		
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
 		request();
 	}
+	
 	private Result result;
 	
 	private Model model;
@@ -65,9 +81,9 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 
 		case R.id.pay_btn:
 			if(model.status == Status.待支付){
-				SubmitActivity.open(this,result.toSubmitModel());
+				SubmitActivity.open(this,result);
 			}else if(model.status == Status.已完成){
-				PublishCommentActivity.open(this);
+				PublishCommentActivity.open(this,new Params(result.getShop().getId()));
 			}else if(model.status == Status.待体验){
 				//状态修改成退款完成
 				ConfirmDialog.open(this, "确认", "是否要退款？", new ConfirmDialog.OnClickListener() {

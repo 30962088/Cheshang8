@@ -39,6 +39,7 @@
                     android:orientation="vertical" >
 
                     <TextView
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="电脑洗车"
@@ -60,6 +61,7 @@
                             android:textSize="18sp" />
 
                         <TextView
+                            android:id="@+id/price"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="20"
@@ -70,6 +72,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
@@ -87,6 +90,7 @@
             android:paddingRight="7dp" >
 
             <TextView
+                android:id="@+id/display"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="1"
@@ -97,6 +101,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/again"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="37dp"
@@ -108,7 +113,19 @@
                 android:textSize="16sp" />
         </LinearLayout>
 
-        
+        <com.cheshang8.app.widget.MyGridView
+            android:id="@+id/adgrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:horizontalSpacing="5dp"
+            android:listSelector="#00000000"
+            android:numColumns="2"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:verticalSpacing="5dp" >
+        </com.cheshang8.app.widget.MyGridView>
     </LinearLayout>
 
 </FrameLayout>

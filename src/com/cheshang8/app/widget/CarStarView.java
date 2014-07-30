@@ -37,7 +37,9 @@ public class CarStarView extends FrameLayout{
 		container.setIsIndicator(val);
 	}
 	
-	
+	public float getStar(){
+		return container.getRating();
+	}
 	
 	
 

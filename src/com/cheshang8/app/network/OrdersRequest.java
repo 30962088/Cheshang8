@@ -1,6 +1,7 @@
 package com.cheshang8.app.network;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import org.apache.http.Header;
 
 
 import com.cheshang8.app.OrderActivity;
+import com.cheshang8.app.PayActivity;
+import com.cheshang8.app.PaySuccessActivity;
 import com.cheshang8.app.SubmitActivity;
 import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.adapter.OrderAdapter;
@@ -21,7 +24,7 @@ import com.loopj.android.http.RequestParams;
 
 public class OrdersRequest extends BaseClient{
 
-	public static class Result{
+	public static class Result implements Serializable{
 		
 		
 		
@@ -35,8 +38,20 @@ public class OrdersRequest extends BaseClient{
 		
 		private int commented;
 		
+		public Shop getShop() {
+			return shop;
+		}
+		
 		public Order getOrder() {
 			return order;
+		}
+		
+		public PaySuccessActivity.Model.Header toHeader(){
+			return new PaySuccessActivity.Model.Header(service.getName(), service.getPrice_discount(), order.getConsume_no());
+		}
+		
+		public PayActivity.Model toPayModel(){
+			return new PayActivity.Model(service.getName(), service.getDescription(), service.getPrice_discount(), service.getPrice_origin(), 0, 0, 0,0,0);
 		}
 		
 		public SubmitActivity.Model toSubmitModel(){
@@ -61,7 +76,7 @@ public class OrdersRequest extends BaseClient{
 			}else{
 				price = service.getPrice_discount();
 			}
-			return new OrderAdapter.Model(shop.getLogo(), order.getDateString(), shop.getShop_name(), service.getName(), price, order.getNo(), order.getStatusModel());
+			return new OrderAdapter.Model(shop.getId(), shop.getLogo(), order.getDateString(), shop.getShop_name(), service.getName(), price, order.getNo(), order.getStatusModel());
 		}
 		
 		public static List<OrderAdapter.Model> toList(List<Result> results){

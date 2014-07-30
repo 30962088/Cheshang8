@@ -1,5 +1,6 @@
 package com.cheshang8.app.network;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,6 +11,7 @@ import org.apache.http.Header;
 
 import com.cheshang8.app.adapter.DetailCommentAdapter.Model;
 import com.cheshang8.app.adapter.SelectCityAdapter.Model.Col;
+import com.cheshang8.app.database.CommentField;
 import com.cheshang8.app.network.CityListRequest.Result;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -22,17 +24,48 @@ public class CommentsRequest extends BaseClient{
 		public static class Comment{
 			public static class User{
 				private String phone;
+				public User() {
+					// TODO Auto-generated constructor stub
+				}
+				public User(String phone) {
+					super();
+					this.phone = phone;
+				}
+				
 			}
-			public static class Service{
+			public static class Service implements Serializable{
 				private String id;
 				private String name;
+				public Service(String id, String name) {
+					super();
+					this.id = id;
+					this.name = name;
+				}
+				public Service() {
+					// TODO Auto-generated constructor stub
+				}
 			}
 			private Service service;
-			private int rating;
+			private float rating;
 			private long date;
 			private User user;
 			private String content;
 			private List<String> imgs = new ArrayList<String>();
+			
+			public Comment(Service service, float rating, long date, User user,
+					String content, List<String> imgs) {
+				super();
+				this.service = service;
+				this.rating = rating;
+				this.date = date;
+				this.user = user;
+				this.content = content;
+				this.imgs = imgs;
+			}
+			
+			public Comment() {
+				// TODO Auto-generated constructor stub
+			}
 			public Model toModel(){
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 				
@@ -77,7 +110,12 @@ public class CommentsRequest extends BaseClient{
 
 	@Override
 	public Object onSuccess(String str) {
-		return new Gson().fromJson(str,Result.class);
+		Result result = new Gson().fromJson(str,Result.class);
+ 		
+		for(CommentField field: CommentField.getComment(shop_id)){
+			result.list.add(0, field.getComment());
+		}
+		return result;
 		
 	}
 	

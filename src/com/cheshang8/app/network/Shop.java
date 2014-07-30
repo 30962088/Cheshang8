@@ -1,5 +1,6 @@
 package com.cheshang8.app.network;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,8 +9,8 @@ import org.apache.commons.lang3.StringUtils;
 import com.cheshang8.app.fragment.DetailMainFragment;
 import com.cheshang8.app.fragment.SliderFragment;
 
-public class Shop {
-	public static class Category {
+public class Shop implements Serializable{
+	public static class Category implements Serializable{
 		private int id;
 		private String name;
 

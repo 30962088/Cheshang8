@@ -20,6 +20,7 @@
             android:src="@drawable/icon_nav_left" />
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

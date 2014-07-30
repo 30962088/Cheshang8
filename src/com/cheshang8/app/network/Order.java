@@ -1,5 +1,6 @@
 package com.cheshang8.app.network;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -8,9 +9,9 @@ import org.apache.commons.lang3.ArrayUtils;
 import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 
-public class Order {
+public class Order implements Serializable{
 	
-	public static class Payment{
+	public static class Payment implements Serializable{
 		private int price;
 		private int gift;
 		private int pay;

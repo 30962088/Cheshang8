@@ -1,6 +1,8 @@
 package com.cheshang8.app;
 
 import com.cheshang8.app.fragment.TabIndexFragment;
+import com.cheshang8.app.utils.Preferences;
+import com.cheshang8.app.utils.Preferences.User;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +20,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_layout);
 		findViewById(R.id.reg_btn).setOnClickListener(this);
+		findViewById(R.id.login_btn).setOnClickListener(this);
 	}
 	@Override
 	public void onClick(View v) {
@@ -25,7 +28,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		case R.id.reg_btn:
 			RegisterActivity.open(this);
 			break;
-
+		case R.id.login_btn:
+			User user = new User("小苹果", "菜鸟", "500");
+			new Preferences.Global(this).setUser(user);
+			finish();
+			break;
 		default:
 			break;
 		}

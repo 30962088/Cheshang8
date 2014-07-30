@@ -4,6 +4,7 @@ package com.cheshang8.app.fragment;
 import java.util.List;
 import com.viewpagerindicator.CirclePageIndicator;
 
+import com.cheshang8.app.DetailActivity;
 import com.cheshang8.app.R;
 import com.cheshang8.app.utils.BitmapLoader;
 import com.imbryk.viewPager.LoopPagerAdapterWrapper;
@@ -18,6 +19,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -77,8 +79,8 @@ public class SliderFragment extends Fragment {
 			}
 
 		});
-		indicator.setViewPager(viewPager);
 		
+		indicator.setViewPager(viewPager);
 		indicator.setOnPageChangeListener(new OnPageChangeListener() {
 			
 			@Override
@@ -141,12 +143,20 @@ public class SliderFragment extends Fragment {
 
 		@Override
 		public Object instantiateItem(ViewGroup container, int position) {
-			Model model = list.get(position);
+			final Model model = list.get(position);
 			View view = LayoutInflater.from(context).inflate(
 					R.layout.slider_item, null);
 			ImageView imageView = (ImageView) view.findViewById(R.id.img);
 			BitmapLoader.displayImage(context, model.img, imageView);
 			container.addView(view);
+			view.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					DetailActivity.open(context, model.id);
+					
+				}
+			});
 			return view;
 		}
 

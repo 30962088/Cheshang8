@@ -2,11 +2,15 @@ package com.cheshang8.app.database;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.content.Context;
 
 import com.cheshang8.app.App;
+import com.cheshang8.app.adapter.OrderAdapter;
+import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
 import com.cheshang8.app.network.OrdersRequest;
 import com.cheshang8.app.network.OrdersRequest.Result;
@@ -117,6 +121,31 @@ public class OrderField {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	
+	public static interface Callback3{
+		public void callback3( Map<Status, Integer>  map);
+	}
+	public static void getCount(final Callback3 callback3){
+		
+		getList(new Callback() {
+			
+			@Override
+			public void callback(List<Result> list) {
+				Map<Status, Integer> map = new HashMap<Status, Integer>();
+				for(Result result : list){
+					Integer integer = map.get(result.getOrder().getStatusModel());
+					if(integer == null){
+						integer = 0;
+						
+					}
+					integer++;
+					map.put(result.getOrder().getStatusModel(), integer);
+				}
+				callback3.callback3(map);
+			}
+		});
 	}
 	
 	public static void getOrder(final String no,final Callback2 callback2){
