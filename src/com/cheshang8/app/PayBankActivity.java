@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 
 import com.cheshang8.app.adapter.BankAdapter;
 import com.cheshang8.app.adapter.BankAdapter.Model;
+import com.cheshang8.app.network.OrdersRequest.Result;
 import com.google.gson.Gson;
 
 import com.google.gson.reflect.TypeToken;
@@ -24,19 +25,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 public class PayBankActivity extends BaseActivity implements OnClickListener{
-	public static void open(Context context){
-		context.startActivity(new Intent(context, PayBankActivity.class));
+	public static void open(Context context,Result result){
+		Intent intent = new Intent(context, PayBankActivity.class);
+		intent.putExtra("result", result);
+		context.startActivity(intent);
 	}
 	
 	private Fragment[] fragments;
+	
+	private Result result;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		result = (Result) getIntent().getSerializableExtra("result");
 		setContentView(R.layout.pay_bank_layout);
-		fragments = new Fragment[]{BankFragment.newInstance(),BankFragment.newInstance()};
+		fragments = new Fragment[]{BankFragment.newInstance(result),BankFragment.newInstance(result)};
 		findViewById(R.id.tab1).setOnClickListener(this);
 		findViewById(R.id.tab2).setOnClickListener(this);
 		findViewById(R.id.tab1).performClick();
@@ -46,9 +56,13 @@ public class PayBankActivity extends BaseActivity implements OnClickListener{
 	
 	public static class BankFragment extends Fragment{
 		
-		public static BankFragment newInstance(){
-			return new BankFragment();
+		public static BankFragment newInstance(Result result){
+			BankFragment fragment = new BankFragment();
+			fragment.result = result;
+			return fragment;
 		}
+		
+		private Result result;
 		
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,6 +88,16 @@ public class PayBankActivity extends BaseActivity implements OnClickListener{
 				BankAdapter adapter = new BankAdapter(getActivity(), list);
 				
 				listView.setAdapter(adapter);
+				
+				listView.setOnItemClickListener(new OnItemClickListener() {
+
+					@Override
+					public void onItemClick(AdapterView<?> arg0, View arg1,
+							int position, long arg3) {
+						PaySuccessActivity.open(getActivity(), result);
+						
+					}
+				});
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

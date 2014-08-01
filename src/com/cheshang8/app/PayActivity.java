@@ -156,7 +156,7 @@ public class PayActivity extends BaseActivity implements OnClickListener,TextWat
 
 		case R.id.pay_btn:
 			if(payView.getId() == R.id.bank_btn){
-				PayBankActivity.open(this);
+				PayBankActivity.open(this,result);
 			}else{
 				PaySuccessActivity.open(this,result);
 			}

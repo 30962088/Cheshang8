@@ -22,13 +22,12 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="60dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="发表评论"
-            android:layout_marginRight="60dp"
             android:textColor="#fff"
             android:textSize="18sp" />
-
     </LinearLayout>
 
     <RelativeLayout
@@ -37,73 +36,78 @@
         android:background="#efefef"
         android:padding="7dp" >
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:paddingBottom="46dp" >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="38.5dp"
-                android:background="@drawable/shape_radius_gray"
-                android:gravity="center_vertical"
-                android:paddingLeft="20dp" >
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="商户详情"
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38.5dp"
+                    android:background="@drawable/shape_radius_gray"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="20dp" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="商户详情"
+                        android:textColor="#4c4948"
+                        android:textSize="14sp" />
+
+                    <com.cheshang8.app.widget.CarStarView
+                        android:id="@+id/star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp" >
+                    </com.cheshang8.app.widget.CarStarView>
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
+                    android:layout_height="124dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/shape_radius_gray"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint="写点儿什么吧"
+                    android:padding="20dp"
                     android:textColor="#4c4948"
-                    android:textSize="14sp" />
+                    android:textColorHint="#949495"
+                    android:textSize="12sp" >
 
-                <com.cheshang8.app.widget.CarStarView
-                    android:id="@+id/star"
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-                </com.cheshang8.app.widget.CarStarView>
+                    <requestFocus />
+                </EditText>
+
+                <GridView
+                    android:id="@+id/gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:columnWidth="69dp"
+                    android:horizontalSpacing="8dp"
+                    android:numColumns="auto_fit"
+                    android:verticalSpacing="8dp" >
+                </GridView>
             </LinearLayout>
+        </ScrollView>
 
-            <EditText
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="124dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/shape_radius_gray"
-                android:ems="10"
-                android:hint="写点儿什么吧"
-                android:padding="20dp"
-                android:textColor="#4c4948"
-                android:textColorHint="#949495"
-                android:textSize="12sp" >
-
-                <requestFocus />
-            </EditText>
-            
-            <GridView 
-                android:verticalSpacing="8dp"
-                android:horizontalSpacing="8dp"
-                android:layout_marginTop="16dp"
-                android:numColumns="auto_fit"
-                android:columnWidth="69dp"
-                android:id="@+id/gridview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></GridView>
-            
-        </LinearLayout>
-        
-        <TextView 
+        <TextView
             android:id="@+id/publish_btn"
             android:layout_width="match_parent"
             android:layout_height="36dp"
+            android:layout_alignParentBottom="true"
+            android:background="#73e048"
+            android:gravity="center"
             android:text="发布评价"
             android:textColor="#fff"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:background="#73e048"
-            android:layout_alignParentBottom="true"/>
-        
-        
+            android:textSize="16sp" />
     </RelativeLayout>
 
 </LinearLayout>

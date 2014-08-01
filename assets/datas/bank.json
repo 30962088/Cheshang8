@@ -1,17 +1,15 @@
 [{
 	"icon":"assets://images/bank_gongshang.png"
 },{
-	"icon":"assets://images/bank_gongshang.png"
+	"icon":"assets://images/bank_jianshe.png"
 },{
-	"icon":"assets://images/bank_gongshang.png"
+	"icon":"assets://images/bank_jiaotong.png"
 },{
-	"icon":"assets://images/bank_gongshang.png"
+	"icon":"assets://images/bank_nongye.png"
 },{
-	"icon":"assets://images/bank_gongshang.png"
+	"icon":"assets://images/bank_xingye.png"
 },{
-	"icon":"assets://images/bank_gongshang.png"
+	"icon":"assets://images/bank_zhaoshang.png"
 },{
-	"icon":"assets://images/bank_gongshang.png"
-},{
-	"icon":"assets://images/bank_gongshang.png"
+	"icon":"assets://images/bank_zhongguo.png"
 }]
