@@ -18,7 +18,9 @@ import com.google.gson.reflect.TypeToken;
 
 import android.content.Context;
 
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 
 
 import android.view.LayoutInflater;
@@ -76,6 +78,14 @@ public class CatSortDialog implements OnClickListener{
 		View view = LayoutInflater.from(context).inflate(R.layout.sort_dialog_layout,
 				null);
 	
+		view.findViewById(R.id.container).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				dismiss();
+				
+			}
+		});
 		
 		list = new Gson().fromJson(
 				IOUtils.toString(context.getAssets().open(
@@ -104,14 +114,14 @@ public class CatSortDialog implements OnClickListener{
 		
 		mPopupWindow = new PopupWindow(view, LayoutParams.MATCH_PARENT,
 				LayoutParams.MATCH_PARENT, true);
-		mPopupWindow.setOutsideTouchable(true);
+		/*mPopupWindow.setOutsideTouchable(true);
 		mPopupWindow.setFocusable(true);
-		mPopupWindow.setBackgroundDrawable(new BitmapDrawable());
-	/*	mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color
+		mPopupWindow.setBackgroundDrawable(new BitmapDrawable());*/
+		mPopupWindow.setBackgroundDrawable(new ColorDrawable(Color
 				.parseColor("#80b7bbc2")));
 		mPopupWindow.setTouchable(true);
 		mPopupWindow.setOutsideTouchable(true);
-		*/		
+				
 	}
 	
 	private OnStateChange2 onStateChange;

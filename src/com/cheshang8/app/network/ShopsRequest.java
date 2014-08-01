@@ -59,8 +59,8 @@ public class ShopsRequest extends BaseClient{
 		public List<String> getShop_phones() {
 			return shop_phones;
 		}
-		public SearchItemAdapter.Model toModel(){
-			return new SearchItemAdapter.Model(id, logo, rating, shop_name, "地址:"+shop_address, "人工洗车", price_discount, price_origin, comment_count, distance);
+		public SearchItemAdapter.Model toModel(String type){
+			return new SearchItemAdapter.Model(id, logo, rating, shop_name, "地址:"+shop_address, type, price_discount, price_origin, comment_count, distance);
 		}
 		
 		public MapActivity.Model toMapModel(){
@@ -75,10 +75,10 @@ public class ShopsRequest extends BaseClient{
 			return list;
 		}
 		
-		public static List<SearchItemAdapter.Model> toList(List<Result> results){
+		public static List<SearchItemAdapter.Model> toList(List<Result> results,String type){
 			List<SearchItemAdapter.Model> list = new ArrayList<SearchItemAdapter.Model>();
 			for(Result result : results){
-				list.add(result.toModel());
+				list.add(result.toModel(type));
 			}
 			return list;
 		}

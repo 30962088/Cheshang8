@@ -18,6 +18,7 @@ import com.cheshang8.app.network.CommentsRequest.Result.Comment;
 import com.cheshang8.app.network.CommentsRequest.Result.Comment.Service;
 import com.cheshang8.app.network.CommentsRequest.Result.Comment.User;
 import com.cheshang8.app.network.OrdersRequest.Result;
+import com.cheshang8.app.utils.Preferences;
 import com.cheshang8.app.widget.CarStarView;
 
 import android.app.AlertDialog;
@@ -187,7 +188,8 @@ public class PublishCommentActivity extends BaseActivity implements OnClickListe
 		for(int i = 0;i< holder.list.size()-1;i++){
 			imgs.add(holder.list.get(i).getImg());
 		}
-		final User user = new User("15832112321");
+		 
+		final User user = new User(new Preferences.Global(context).getUser().getName());
 		final long date = new Date().getTime();
 		OrderField.getOrder(params.order_id, new Callback2() {
 			

@@ -5,6 +5,7 @@ import java.util.List;
 import com.viewpagerindicator.CirclePageIndicator;
 
 import com.cheshang8.app.DetailActivity;
+import com.cheshang8.app.MainActivity;
 import com.cheshang8.app.R;
 import com.cheshang8.app.utils.BitmapLoader;
 import com.imbryk.viewPager.LoopPagerAdapterWrapper;
@@ -153,7 +154,10 @@ public class SliderFragment extends Fragment {
 				
 				@Override
 				public void onClick(View v) {
-					DetailActivity.open(context, model.id);
+					if(context instanceof MainActivity){
+						DetailActivity.open(context, model.id);
+					}
+					
 					
 				}
 			});

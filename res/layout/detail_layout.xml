@@ -29,6 +29,7 @@
             android:textSize="18sp" />
 
         <ImageView
+            android:id="@+id/starBtn"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:paddingBottom="14dp"

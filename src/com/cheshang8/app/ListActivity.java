@@ -32,25 +32,31 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import com.mengle.lib.wiget.BaseListView;
+import com.mengle.lib.wiget.BaseListView.OnLoadListener;
 
 public class ListActivity extends BaseActivity implements OnClickListener,
-		OnStateChange, OnStateChange2 {
+		OnStateChange, OnStateChange2,OnLoadListener {
 
-	public static void open(Context context) {
-		context.startActivity(new Intent(context, ListActivity.class));
+	public static void open(Context context,String titleType) {
+		Intent intent = new Intent(context, ListActivity.class);
+		intent.putExtra("titleType", titleType);
+		context.startActivity(intent);
 	}
 
 	private TextView locBtn;
 
 	private TextView sortBtn;
 
-	private ListView listView;
+	private BaseListView listView;
 	
 	private View locContainer;
 	
 	private View sortContainer;
 
 	private SearchItemAdapter adapter;
+	
+	private String titleType;
 
 	private List<Model> list = new ArrayList<SearchItemAdapter.Model>();
 
@@ -58,6 +64,7 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		titleType = getIntent().getStringExtra("titleType");
 		setContentView(R.layout.list_layout);
 		findViewById(R.id.nav_right_btn).setOnClickListener(this);
 		sortContainer = findViewById(R.id.sort_container);
@@ -66,8 +73,8 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 		locContainer.setOnClickListener(this);
 		locBtn = (TextView) findViewById(R.id.loc_btn);
 		sortBtn = (TextView) findViewById(R.id.sort_btn);
-		listView = (ListView) findViewById(R.id.listview);
-
+		listView = (BaseListView) findViewById(R.id.listview);
+		listView.setOnLoadListener(this);
 		adapter = new SearchItemAdapter(this, list);
 
 		listView.setAdapter(adapter);
@@ -100,7 +107,7 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 				List<Result> results = (List<Result>) object;
 				mapList = Result.toMapList(results);
 				list.clear();
-				list.addAll(Result.toList(results));
+				list.addAll(Result.toList(results,titleType));
 				adapter.notifyDataSetChanged();
 			}
 		});
@@ -187,6 +194,18 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 	protected Integer finishBtn() {
 		// TODO Auto-generated method stub
 		return R.id.nav_left_btn;
+	}
+
+	@Override
+	public boolean onLoad(int offset, int limit) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onLoadSuccess() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

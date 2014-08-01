@@ -37,6 +37,10 @@ public class TypeListAdapter extends BaseAdapter{
 			return id;
 		}
 		
+		public String getText() {
+			return text;
+		}
+		
 		
 		
 		

@@ -52,7 +52,7 @@ public class OrdersRequest extends BaseClient{
 		}
 		
 		public PayActivity.Model toPayModel(){
-			return new PayActivity.Model(service.getName(), service.getDescription(), service.getPrice_discount(), service.getPrice_origin(), 0, 0, 0,0,0);
+			return new PayActivity.Model(service.getName(), service.getDescription(), service.getPrice_discount(), service.getPrice_origin(), 0, 1,1,0, 0);
 		}
 		
 		public SubmitActivity.Model toSubmitModel(){

@@ -170,7 +170,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="待付款"
+                            android:text="待支付"
                             android:textColor="#4c4948"
                             android:textSize="15sp" />
                     </LinearLayout>
@@ -189,14 +189,14 @@
                             android:id="@+id/order2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1"
+                            android:text="0"
                             android:textColor="#fe0000"
                             android:textSize="12sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="待服务"
+                            android:text="待体验"
                             android:textColor="#4c4948"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -240,7 +240,7 @@
                             android:id="@+id/order4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="5"
+                            android:text="0"
                             android:textColor="#fe0000"
                             android:textSize="12sp" />
 

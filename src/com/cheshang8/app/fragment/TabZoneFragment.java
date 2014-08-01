@@ -49,12 +49,14 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 	
 	private LoginHolder holder;
 	
+	private OrderHolder orderHolder;
+	
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onViewCreated(view, savedInstanceState);
 		container = view;
-		OrderHolder orderHolder = new OrderHolder();
+		orderHolder = new OrderHolder();
 		holder = new LoginHolder();
 		popup = view.findViewById(R.id.popup);
 		popup.setOnClickListener(this);
@@ -70,6 +72,7 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 		view.findViewById(R.id.zhuanshu_btn).setOnClickListener(this);
 		view.findViewById(R.id.my_car_btn).setOnClickListener(this);
 		view.findViewById(R.id.car_guanjia_btn).setOnClickListener(this);
+		view.findViewById(R.id.login_container).setOnClickListener(this);
 	}
 	
 	private class OrderHolder{
@@ -83,7 +86,7 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 			order2 = (TextView) container.findViewById(R.id.order2);
 			order3 = (TextView) container.findViewById(R.id.order3);
 			order4 = (TextView) container.findViewById(R.id.order4);
-			setCount();
+			
 		}
 
 		private void setCount() {
@@ -91,18 +94,28 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 				
 				@Override
 				public void callback3(Map<Status, Integer> map) {
-					order1.setText(""+(map.containsKey(Status.待支付)?map.get(Status.待支付):0));
-					order2.setText(""+(map.containsKey(Status.待体验)?map.get(Status.待体验):0));
-					order3.setText(""+(map.containsKey(Status.已完成)?map.get(Status.已完成):0));
-				
-					OrderField.getList(new Callback() {
-						
-						@Override
-						public void callback(List<Result> list) {
-							order4.setText(""+list.size());
+					User user = new Preferences.Global(getActivity()).getUser();
+					if(user != null){
+						order1.setText(""+(map.containsKey(Status.待支付)?map.get(Status.待支付):0));
+						order2.setText(""+(map.containsKey(Status.待体验)?map.get(Status.待体验):0));
+						order3.setText(""+(map.containsKey(Status.已完成)?map.get(Status.已完成):0));
+						OrderField.getList(new Callback() {
 							
-						}
-					});
+							@Override
+							public void callback(List<Result> list) {
+								order4.setText(""+list.size());
+								
+							}
+						});
+					}else{
+						order1.setText(""+0);
+						order2.setText(""+0);
+						order3.setText(""+0);
+						order4.setText(""+0);
+					}
+					
+				
+					
 					
 					
 				}
@@ -152,6 +165,9 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 		super.onResume();
 		User user = new Preferences.Global(getActivity()).getUser();
 		holder.setModel(user);
+		orderHolder.setCount();
+		
+		
 	}
 
 	private boolean checkLogin(){
@@ -190,6 +206,7 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 				MsgListActivity.open(getActivity());
 			}
 			break;
+		case R.id.login_container:
 		case R.id.avatar:
 			if(checkLogin()){
 				UserInfoActivity.open(getActivity());
@@ -197,24 +214,24 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 			break;
 		case R.id.all_order1_btn:
 			if(checkLogin()){
-				AllOrderActivity.open(getActivity(),Status.已完成);
+				AllOrderActivity.open(getActivity(),Status.已完成,"待评价");
 			}
 			break;
 		case R.id.all_order2_btn:
 			if(checkLogin()){
-				AllOrderActivity.open(getActivity(),Status.待体验);
+				AllOrderActivity.open(getActivity(),Status.待体验,"待体验");
 			}
 			break;
 		case R.id.all_order3_btn:
 			if(checkLogin()){
-				AllOrderActivity.open(getActivity(),Status.待支付);
+				AllOrderActivity.open(getActivity(),Status.待支付,"待支付");
 				
 			}
 			
 			break;
 		case R.id.all_order_btn:
 			if(checkLogin()){
-				AllOrderActivity.open(getActivity(),null);
+				AllOrderActivity.open(getActivity(),null,"全部订单");
 			}
 			
 			break;

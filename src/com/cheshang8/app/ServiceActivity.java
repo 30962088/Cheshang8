@@ -1,6 +1,7 @@
 package com.cheshang8.app;
 
 import java.util.Date;
+import java.util.Random;
 
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
 import com.cheshang8.app.database.OrderField;
@@ -60,7 +61,13 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 			onPay();
 			break;
 		case R.id.comment_btn:
-			CommentListActivity.open(this,shop_id);
+			User user = new Preferences.Global(context).getUser();
+			if(user == null){
+				LoginActivity.open(context);
+			}else{
+				CommentListActivity.open(this,shop_id);
+			}
+			
 			break;
 		default:
 			break;
@@ -80,13 +87,23 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 			rs.setShop(result.getShop());
 			Order order = new Order();
 			order.setDate(new Date().getTime());
-			order.setNo(""+new Date().getTime());
-			order.setConsume_no(""+new Date().getTime());
+			order.setNo(""+generateRandom(10));
+			order.setConsume_no(""+generateRandom(12));
 			order.setStatus(Status.待支付);
 			rs.setOrder(order);
 			SubmitActivity.open(context, rs);
 		}
 		
+	}
+	
+	public static long generateRandom(int length) {
+	    Random random = new Random();
+	    char[] digits = new char[length];
+	    digits[0] = (char) (random.nextInt(9) + '1');
+	    for (int i = 1; i < length; i++) {
+	        digits[i] = (char) (random.nextInt(10) + '0');
+	    }
+	    return Long.parseLong(new String(digits));
 	}
 	
 	private void request(){

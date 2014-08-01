@@ -11,6 +11,7 @@ import com.cheshang8.app.utils.BitmapLoader;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -20,6 +21,11 @@ import com.mengle.lib.wiget.ConfirmDialog;
 public class OrderActivity extends BaseActivity implements OnClickListener{
 	public static void open(Context context,String id){
 		Intent intent = new Intent(context, OrderActivity.class);
+		if(context instanceof PaySuccessActivity){
+			intent.putExtra("lastActivity", "paySuccess");
+		}else{
+			intent.putExtra("lastActivity", "normal");
+		}
 		intent.putExtra("id", id);
 		context.startActivity(intent);
 	}
@@ -27,6 +33,11 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 	public static void openClear(Context context,String id){
 		Intent intent = new Intent(context, OrderActivity.class);
 		intent.putExtra("id", id);
+		if(context instanceof PaySuccessActivity){
+			intent.putExtra("lastActivity", "paySuccess");
+		}else{
+			intent.putExtra("lastActivity", "normal");
+		}
 		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		context.startActivity(intent);
 	}
@@ -37,15 +48,28 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 	
 	private ViewHolder holder;
 	
+	private String lastActivity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		id = getIntent().getStringExtra("id");
+		lastActivity = getIntent().getStringExtra("lastActivity");
 		context = this;
 		setContentView(R.layout.order_layout);
 		holder = new ViewHolder();
 		findViewById(R.id.right_nav_btn).setOnClickListener(this);
 		findViewById(R.id.pay_btn).setOnClickListener(this);
+		
+	}
+	
+	@Override
+	public void finish() {
+		if(TextUtils.equals(lastActivity, "paySuccess")){
+			MainActivity.open(context);
+		}else{
+			super.finish();
+		}
 		
 	}
 	

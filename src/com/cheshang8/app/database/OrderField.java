@@ -25,6 +25,8 @@ public class OrderField {
 	private String id;
 	@DatabaseField
 	private String data;
+	@DatabaseField
+	private long createTime;
 	
 
 	
@@ -32,9 +34,10 @@ public class OrderField {
 		
 	}
 	
-	public OrderField(String id, Result result) {
+	public OrderField(String id,long createTime, Result result) {
 		this();
 		this.id = id;
+		this.createTime = createTime;
 		this.data = new Gson().toJson(result);
 	}
 
@@ -60,7 +63,7 @@ public class OrderField {
 				List<Result> list = (List<Result>) object;
 				for(Result result : list){
 					try {
-						helper.getOrderDao().create(new OrderField(result.getOrder().getNo(), result));
+						helper.getOrderDao().create(new OrderField(result.getOrder().getNo(),result.getOrder().getDate(), result));
 						callback.callback(list);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
@@ -75,7 +78,7 @@ public class OrderField {
 	public static void create(Result result){
 		final DataBaseHelper helper = new DataBaseHelper(App.getInstance());
 		try {
-			helper.getOrderDao().create(new OrderField(result.getOrder().getNo(), result));
+			helper.getOrderDao().create(new OrderField(result.getOrder().getNo(),result.getOrder().getDate(), result));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,7 +88,7 @@ public class OrderField {
 	public static void update(Result result){
 		final DataBaseHelper helper = new DataBaseHelper(App.getInstance());
 		try {
-			helper.getOrderDao().update(new OrderField(result.getOrder().getNo(), result));
+			helper.getOrderDao().update(new OrderField(result.getOrder().getNo(),result.getOrder().getDate(), result));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,7 +103,7 @@ public class OrderField {
 			global.setOrders(true);
 		}else{
 			try {
-				List<OrderField> fields = helper.getOrderDao().queryForAll();
+				List<OrderField> fields = helper.getOrderDao().queryBuilder().orderBy("createTime", false).query();
 				List<Result> results = new ArrayList<OrdersRequest.Result>();
 				for(OrderField field : fields){
 					results.add(field.getOrder());

@@ -513,6 +513,7 @@
                         android:paddingTop="1px" >
 
                         <LinearLayout
+                            android:id="@+id/fapiao_person"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_marginRight="1px"
@@ -533,6 +534,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/fapiao_company"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -567,6 +569,7 @@
                             android:textSize="14dp" />
 
                         <EditText
+                            android:id="@+id/fapiaoText"
                             android:layout_width="0dp"
                             android:layout_height="32dp"
                             android:layout_marginRight="25dp"

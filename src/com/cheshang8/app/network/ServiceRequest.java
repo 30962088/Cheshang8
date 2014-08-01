@@ -26,6 +26,7 @@ public class ServiceRequest extends BaseClient{
 		private Service service;
 		
 		public ServiceActivity.Model toModel(){
+			
 			return new ServiceActivity.Model(service.getName(), service.getPrice_origin(), service.getPrice_discount(), service.getEnv_rating(), service.getRating(), 
 					shop.getShop_name(), shop.getShop_address(), shop.getTime(), StringUtils.join(shop.getShop_phones()," "), shop.getDescription());
 		}

@@ -30,9 +30,10 @@ import android.widget.TextView;
 import com.mengle.lib.wiget.BaseListView;
 import com.mengle.lib.wiget.BaseListView.OnLoadListener;
 public class AllOrderActivity extends BaseActivity implements OnLoadListener{
-	public static void open(Context context,Status status){
+	public static void open(Context context,Status status,String title){
 		Intent intent = new Intent(context, AllOrderActivity.class);
 		intent.putExtra("status", status);
+		intent.putExtra("title", title);
 		context.startActivity(intent);
 	}
 	
@@ -44,21 +45,22 @@ public class AllOrderActivity extends BaseActivity implements OnLoadListener{
 	
 	private Status status;
 	
+	private String title;
+	
 	private List<OrderAdapter.Model> list = new ArrayList<OrderAdapter.Model>();
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		title = getIntent().getStringExtra("title");
 		status = (Status) getIntent().getSerializableExtra("status");
 		
 		setContentView(R.layout.all_order_layout);
 		TextView textView = (TextView) findViewById(R.id.title);
-		if(status == null){
-			textView.setText("全部订单");
-		}else{
-			textView.setText(status.getText());
-		}
+		
+		textView.setText(title);
+		
 		
 		listView = (BaseListView) findViewById(R.id.listview);
 		

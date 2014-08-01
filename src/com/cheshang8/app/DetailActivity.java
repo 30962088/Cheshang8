@@ -45,6 +45,8 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 	
 	private TextView tab4;
 	
+	private View starBtn;
+	
 	
 	
 	@Override
@@ -53,6 +55,8 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 		id = getIntent().getStringExtra("id");
 		context = this;
 		setContentView(R.layout.detail_layout);
+		starBtn = findViewById(R.id.starBtn);
+		starBtn.setOnClickListener(this);
 		tab1 = (TextView) findViewById(R.id.tab1);
 		tab1.setOnClickListener(this);
 		tab2 = (TextView) findViewById(R.id.tab2);
@@ -91,28 +95,53 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		if (lastView != null) {
-			lastView.setSelected(false);
-		}
-		v.setSelected(true);
+		
+		
 		switch (v.getId()) {
 		case R.id.tab1:
+			if (lastView != null) {
+				lastView.setSelected(false);
+			}
 			switchFragment(fragments[0]);
+			v.setSelected(true);
+			lastView = v;
 			break;
 		case R.id.tab2:
+			if (lastView != null) {
+				lastView.setSelected(false);
+			}
 			switchFragment(fragments[1]);
+			v.setSelected(true);
+			lastView = v;
 			break;
 		case R.id.tab3:
+			if (lastView != null) {
+				lastView.setSelected(false);
+			}
 			switchFragment(fragments[2]);
+			v.setSelected(true);
+			lastView = v;
 			break;
 		case R.id.tab4:
+			if (lastView != null) {
+				lastView.setSelected(false);
+			}
 			switchFragment(fragments[3]);
+			v.setSelected(true);
+			lastView = v;
 			break;
-
+		case R.id.starBtn:
+			onStar();
+			break;
 		}
-		lastView = v;
+		
 	}
 	
+	private void onStar() {
+		starBtn.setSelected(!starBtn.isSelected());
+		
+	}
+
 	private void request(){
 		
 		ShopRequest request = new ShopRequest(id);

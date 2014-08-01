@@ -6,6 +6,8 @@ import java.io.Serializable;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -14,7 +16,7 @@ import android.widget.TextView;
 import com.cheshang8.app.network.OrdersRequest.Result;
 import com.mengle.lib.wiget.WigetUtils;
 import com.mengle.lib.wiget.WigetUtils.OnItemClickListener;
-public class PayActivity extends BaseActivity implements OnClickListener{
+public class PayActivity extends BaseActivity implements OnClickListener,TextWatcher{
 	public static void open(Context context,Result result){
 		Intent intent = new Intent(context, PayActivity.class);
 		intent.putExtra("result", result);
@@ -22,13 +24,22 @@ public class PayActivity extends BaseActivity implements OnClickListener{
 	}
 	private View payView;
 	private View fapiaoView;
+	private TextView fapiaoText;
+	private View fapiaoPerson;
+	private View fapiaoCompany;
 	private Result result;
 	private ViewHolder holder;
+	private String person="个人";
+	private String company="北京与车行信息技术有限公司";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		result = (Result) getIntent().getSerializableExtra("result");
 		setContentView(R.layout.pay_layout);
+		fapiaoText = (TextView) findViewById(R.id.fapiaoText);
+		fapiaoText.addTextChangedListener(this);
+		fapiaoPerson = findViewById(R.id.fapiao_person);
+		fapiaoCompany = findViewById(R.id.fapiao_company);
 		holder = new ViewHolder();
 		holder.setModel(result.toPayModel());
 		findViewById(R.id.pay_btn).setOnClickListener(this);
@@ -56,14 +67,25 @@ public class PayActivity extends BaseActivity implements OnClickListener{
 				if(fapiaoView!=null){
 					fapiaoView.setSelected(false);
 				}
+				fapiaoText.removeTextChangedListener(PayActivity.this);
+				if(view == fapiaoPerson){
+					
+					fapiaoText.setText(person);
+				}else{
+					fapiaoText.setText(company);
+				}
+				fapiaoText.addTextChangedListener(PayActivity.this);
 				view.setSelected(true);
 				fapiaoView = view;
 			}
 			
 		});
+		fapiaoPerson.performClick();
 		fapiao_type.getChildAt(0).performClick();
 		
 	}
+	
+	
 	
 	public static class Model implements Serializable{
 		private String name;
@@ -149,6 +171,27 @@ public class PayActivity extends BaseActivity implements OnClickListener{
 	protected Integer finishBtn() {
 		// TODO Auto-generated method stub
 		return R.id.nav_left_btn;
+	}
+	@Override
+	public void afterTextChanged(Editable s) {
+		String str= s.toString();
+		if(fapiaoPerson.isSelected()){
+			person = str;
+		}else{
+			company  = str;
+		}
+		
+	}
+	@Override
+	public void beforeTextChanged(CharSequence s, int start, int count,
+			int after) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onTextChanged(CharSequence s, int start, int before, int count) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

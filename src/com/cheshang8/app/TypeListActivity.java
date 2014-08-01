@@ -23,8 +23,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import com.mengle.lib.wiget.BaseListView;
+import com.mengle.lib.wiget.BaseListView.OnLoadListener;
 
-public class TypeListActivity extends BaseActivity {
+public class TypeListActivity extends BaseActivity implements OnLoadListener{
 
 	public static void open(Context context, String pid) {
 		Intent intent = new Intent(context, TypeListActivity.class);
@@ -36,7 +38,7 @@ public class TypeListActivity extends BaseActivity {
 
 	private List<TypeListAdapter.Model> list = new ArrayList<TypeListAdapter.Model>();
 
-	private ListView listView;
+	private BaseListView  listView;
 
 	private TypeListAdapter adapter;
 
@@ -45,8 +47,8 @@ public class TypeListActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		pid = getIntent().getStringExtra("pid");
 		setContentView(R.layout.type_list_layout);
-		listView = (ListView) findViewById(R.id.listview);
-
+		listView = (BaseListView ) findViewById(R.id.listview);
+		listView.setOnLoadListener(this);
 		adapter = new TypeListAdapter(this, list);
 
 		listView.setAdapter(adapter);
@@ -54,9 +56,10 @@ public class TypeListActivity extends BaseActivity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				ListActivity.open(TypeListActivity.this);
+				
+				ListActivity.open(TypeListActivity.this,list.get(position-1).getText());
 
 			}
 		});
@@ -80,6 +83,18 @@ public class TypeListActivity extends BaseActivity {
 	protected Integer finishBtn() {
 		// TODO Auto-generated method stub
 		return R.id.nav_left_btn;
+	}
+
+	@Override
+	public boolean onLoad(int offset, int limit) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void onLoadSuccess() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

@@ -18,14 +18,17 @@ public class CarGuanjiaActivity extends BaseActivity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.car_guanjia_layout);
 		findViewById(R.id.right_nav_btn).setOnClickListener(this);
+		findViewById(R.id.baoyang).setOnClickListener(this);
 	}
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.right_nav_btn:
-			CarInfoActivity.open(this);
+//			CarInfoActivity.open(this);
 			break;
-		
+		case R.id.baoyang:
+			ZhuanshubaoyangActivity.open(this);
+			break;
 		}
 		
 	}
