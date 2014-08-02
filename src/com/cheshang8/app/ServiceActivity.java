@@ -61,12 +61,12 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 			onPay();
 			break;
 		case R.id.comment_btn:
-			User user = new Preferences.Global(context).getUser();
+			/*User user = new Preferences.Global(context).getUser();
 			if(user == null){
 				LoginActivity.open(context);
 			}else{
 				CommentListActivity.open(this,shop_id);
-			}
+			}*/
 			
 			break;
 		default:

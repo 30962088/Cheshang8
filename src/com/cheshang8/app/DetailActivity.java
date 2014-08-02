@@ -69,7 +69,7 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 		tab3.setOnClickListener(this);
 		tab4 = (TextView) findViewById(R.id.tab4);
 		tab4.setOnClickListener(this);
-		
+		disableBack(findViewById(R.id.slider_container));
 		
 		
 		request();
