@@ -14,13 +14,19 @@ import android.widget.EditText;
 
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	public static void open(Context context){
-		context.startActivity(new Intent(context, LoginActivity.class));
+		Intent intent = new Intent(context, LoginActivity.class);
+		intent.putExtra("to", context.getClass().getName());
+		context.startActivity(intent);
 	}
 	
 	private ViewHolder holder;
+	
+	private String to;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		to = getIntent().getStringExtra("to");
 		setContentView(R.layout.login_layout);
 		holder = new ViewHolder();
 		findViewById(R.id.reg_btn).setOnClickListener(this);
@@ -41,7 +47,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.reg_btn:
-			RegisterActivity.open(this);
+			RegisterActivity.open(this,to);
 			break;
 		case R.id.login_btn:
 			User user = new User(holder.username.getText().toString(),"18522112212", "菜鸟", "500");

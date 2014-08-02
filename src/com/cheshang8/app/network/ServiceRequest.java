@@ -7,6 +7,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.http.Header;
 
 
+import com.cheshang8.app.MapActivity;
 import com.cheshang8.app.ServiceActivity;
 import com.cheshang8.app.adapter.DetailServiceAdapter;
 import com.cheshang8.app.adapter.DetailServiceAdapter.Model.Col;
@@ -37,6 +38,12 @@ public class ServiceRequest extends BaseClient{
 		public Shop getShop() {
 			return shop;
 		}
+		
+		public MapActivity.Model toMapModel(){
+			
+			return new MapActivity.Model(shop.getLongitude(),shop.getLatitude(), shop.getShop_name(), shop.getRating(), shop.getPrice_discount());
+		}
+		
 	}
 	
 	

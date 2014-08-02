@@ -1,5 +1,6 @@
 package com.cheshang8.app;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
@@ -50,6 +51,7 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 		shop_id = getIntent().getStringExtra("shop_id");
 		setContentView(R.layout.service_layout);
 		holder = new ViewHolder();
+		holder.address.setOnClickListener(this);
 		findViewById(R.id.pay_btn).setOnClickListener(this);
 		findViewById(R.id.comment_btn).setOnClickListener(this);
 		request();
@@ -57,6 +59,9 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.address:
+			onMap();
+			break;
 		case R.id.pay_btn:
 			onPay();
 			break;
@@ -200,6 +205,13 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 	protected Integer finishBtn() {
 		// TODO Auto-generated method stub
 		return R.id.nav_left_btn;
+	}
+	
+	private void onMap() {
+		MapActivity.open(this, new ArrayList<MapActivity.Model>(){{
+			add(result.toMapModel());
+		}});
+		
 	}
 
 

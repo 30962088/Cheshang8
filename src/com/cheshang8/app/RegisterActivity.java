@@ -13,15 +13,21 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 public class RegisterActivity extends BaseActivity implements OnClickListener{
-	public static void open(Context context){
-		context.startActivity(new Intent(context, RegisterActivity.class));
+	public static void open(Context context,String to){
+		Intent intent = new Intent(context, RegisterActivity.class);
+		intent.putExtra("to", to);
+		context.startActivity(intent);
 	}
 	
 	private TextView usernameView;
 	
+	
+	private String to;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		to = getIntent().getStringExtra("to");
 		setContentView(R.layout.register_layout);
 		usernameView = (TextView) findViewById(R.id.username);
 		findViewById(R.id.submit).setOnClickListener(this);
@@ -46,7 +52,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener{
 	private void submit() {
 		User user = new User(usernameView.getText().toString(),"18522112212", "菜鸟", "500");
 		new Preferences.Global(this).setUser(user);
-		MainActivity.open(this);
+		Intent intent = new Intent();
+		intent.setClassName(this, to);
+		intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP| Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
 		
 	}
 
