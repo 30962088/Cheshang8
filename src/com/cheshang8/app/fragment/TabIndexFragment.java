@@ -97,7 +97,7 @@ public class TabIndexFragment extends Fragment{
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
 				Model model = list.get(position-1);
-				DetailActivity.open(getActivity(), model.getId());
+				DetailActivity.open(getActivity(), model.getId(),false);
 				
 			}
 		});

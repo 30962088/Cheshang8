@@ -141,7 +141,7 @@ public class PaySuccessActivity extends BaseActivity {
 				public void onItemClick(AdapterView<?> arg0, View arg1,
 						int position, long arg3) {
 					
-					DetailActivity.open(context, model.models.get(position-1).getId());
+					DetailActivity.open(context, model.models.get(position-1).getId(),false);
 				}
 			});
 			adgrid.setAdapter(new AdIndexAdapter(context, model.adModels));

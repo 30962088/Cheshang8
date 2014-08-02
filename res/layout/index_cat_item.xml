@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="洗车"
-        android:textColor="#000"
+        android:textColor="#4c4948"
         android:textSize="14sp"/>
 
 </com.cheshang8.app.widget.SquareLinearLayout>

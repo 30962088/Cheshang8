@@ -23,10 +23,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
-public class SearchActivity extends BaseActivity implements TextWatcher{
+public class SearchActivity extends BaseActivity implements TextWatcher,OnItemClickListener{
 	
 	public static void open(Context context){
 		context.startActivity(new Intent(context, SearchActivity.class));
@@ -49,6 +52,7 @@ public class SearchActivity extends BaseActivity implements TextWatcher{
 		text = (EditText) findViewById(R.id.text);
 		adapter = new SearchItemAdapter(this, list);
 		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(this);
 		request();
 		text.addTextChangedListener(this);
 	}
@@ -86,6 +90,7 @@ public class SearchActivity extends BaseActivity implements TextWatcher{
 			adapter.notifyDataSetChanged();
 		}else{
 			if(results.size()>0){
+				list.clear();
 				list.add(results.get(0).toModel("人工洗车"));
 				adapter.notifyDataSetChanged();
 			}
@@ -107,6 +112,15 @@ public class SearchActivity extends BaseActivity implements TextWatcher{
 	@Override
 	public void onTextChanged(CharSequence s, int start, int before, int count) {
 		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+		Model model = list.get(position);
+		DetailActivity.open(this,model.getId(),true);
 		
 	}
 

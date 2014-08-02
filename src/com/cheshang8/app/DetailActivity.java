@@ -27,9 +27,10 @@ import android.widget.TextView;
 
 public class DetailActivity extends BaseActivity implements OnClickListener {
 
-	public static void open(Context context,String id){
+	public static void open(Context context,String id,boolean forService){
 		Intent intent = new Intent(context, DetailActivity.class);
 		intent.putExtra("id", id);
+		intent.putExtra("forService", forService);
 		context.startActivity(intent);
 	}
 	
@@ -47,12 +48,15 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 	
 	private View starBtn;
 	
+	private boolean forService;
+	
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		id = getIntent().getStringExtra("id");
+		forService = getIntent().getBooleanExtra("forService", false);
 		context = this;
 		setContentView(R.layout.detail_layout);
 		starBtn = findViewById(R.id.starBtn);
@@ -156,13 +160,18 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 				List<DetailServiceAdapter.Model> list = Service.toList(result.getServices());
 				DetailMainFragment.Model model = result.getShop().toModel();
 				fragments = new Fragment[] { DetailMainFragment.newInstance(context,model),
-						DetailServiceFragment.newInstance(context,list,result.getShop().getId()),
+						DetailServiceFragment.newInstance(context,list,result.getShop().getId(),forService),
 						new Fragment(),
 						DetailCommentFragment.newInstance(context,result.getShop().getId())};
 				tab2.setText("服务("+result.getShop().getServices_count()+")");
 				tab3.setText("商品("+result.getShop().getProducts_count()+")");
 				tab4.setText("评论("+result.getShop().getComment_count()+")");
-				tab2.performClick();
+				if(forService){
+					tab2.performClick();
+				}else{
+					tab1.performClick();
+				}
+				
 			}
 		});
 		

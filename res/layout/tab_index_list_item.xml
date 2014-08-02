@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="64dp"
-            android:paddingBottom="10dp"
+            android:paddingBottom="5dp"
             android:paddingLeft="4dp"
             android:paddingRight="20dp"
             android:paddingTop="10dp" >
@@ -80,7 +80,7 @@
             android:id="@+id/sep"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="#c9caca"/>
+            android:background="#efefef"/>
         
     </LinearLayout>
 

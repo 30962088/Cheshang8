@@ -50,8 +50,8 @@
 
                     <com.makeramen.PhotoView
                         android:id="@+id/avatar"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="27dp"
                         android:background="@drawable/ii_n10"
@@ -79,7 +79,7 @@
                         android:layout_alignTop="@id/avatar"
                         android:layout_marginLeft="26dp"
                         android:layout_marginRight="25dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_toRightOf="@id/avatar" >
 
                         <LinearLayout
@@ -93,7 +93,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="小苹果"
                                 android:textColor="#4c4948"
-                                android:textSize="14sp" />
+                                android:textSize="15sp" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -106,7 +106,7 @@
                                     android:layout_weight="1"
                                     android:text="养车等级：菜鸟"
                                     android:textColor="#4c4948"
-                                    android:textSize="14sp" />
+                                    android:textSize="15sp" />
                             </LinearLayout>
 
                             <TextView
@@ -115,7 +115,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="养车积分：500"
                                 android:textColor="#4c4948"
-                                android:textSize="14sp" />
+                                android:textSize="15sp" />
                         </LinearLayout>
 
                         <FrameLayout
@@ -165,7 +165,7 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="1dp"
+                       
                         android:layout_weight="1"
                         android:background="@drawable/shape_radius_gray"
                         android:gravity="center"
@@ -191,7 +191,7 @@
                         android:id="@+id/all_order2_btn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="1dp"
+                       
                         android:layout_weight="1"
                         android:background="@drawable/shape_radius_gray"
                         android:gravity="center"
@@ -217,7 +217,7 @@
                         android:id="@+id/all_order1_btn"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="1dp"
+                 
                         android:layout_weight="1"
                         android:background="@drawable/shape_radius_gray"
                         android:gravity="center"
@@ -305,7 +305,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="#c9caca" />
+                        android:background="#efefef" />
 
                     <LinearLayout
                         android:id="@+id/car_guanjia_btn"
@@ -337,7 +337,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="#c9caca" />
+                        android:background="#efefef" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -368,7 +368,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="#c9caca" />
+                        android:background="#efefef" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -399,7 +399,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="#c9caca" />
+                        android:background="#efefef" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -430,7 +430,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1px"
-                        android:background="#c9caca" />
+                        android:background="#efefef" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

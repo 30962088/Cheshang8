@@ -85,8 +85,8 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
-				Model model = list.get(position);
-				DetailActivity.open(ListActivity.this,model.getId());
+				Model model = list.get(position-1);
+				DetailActivity.open(ListActivity.this,model.getId(),true);
 			}
 		});
 		request();

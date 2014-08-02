@@ -29,10 +29,11 @@ import android.widget.ListView;
 public class DetailServiceFragment extends Fragment {
 
 	public static DetailServiceFragment newInstance(Context context,
-			List<Model> list,String shop_id) {
+			List<Model> list,String shop_id,boolean forService) {
 		DetailServiceFragment fragment = new DetailServiceFragment();
 		fragment.list = list;
 		fragment.shop_id = shop_id;
+		fragment.forService = forService;
 		return fragment;
 	}
 
@@ -43,6 +44,8 @@ public class DetailServiceFragment extends Fragment {
 	private List<Model> list;
 	
 	private DetailServiceAdapter adapter;
+	
+	private boolean forService;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -79,13 +82,15 @@ public class DetailServiceFragment extends Fragment {
 		adapter = new DetailServiceAdapter(getActivity(),
 				list);
 		listView.setAdapter(adapter);
-		
-		if(list.size() > 0){
-			List<Col> cols = list.get(0).getList();
-			if(cols.size()>0){
-				ServiceActivity.open(getActivity(),cols.get(0).getId(),shop_id);
+		if(forService){
+			if(list.size() > 0){
+				List<Col> cols = list.get(0).getList();
+				if(cols.size()>0){
+					ServiceActivity.open(getActivity(),cols.get(0).getId(),shop_id);
+				}
 			}
 		}
+		
 		
 	}
 

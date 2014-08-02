@@ -155,7 +155,7 @@ public class SliderFragment extends Fragment {
 				@Override
 				public void onClick(View v) {
 					if(context instanceof MainActivity){
-						DetailActivity.open(context, model.id);
+						DetailActivity.open(context, model.id,false);
 					}
 					
 					
