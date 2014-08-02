@@ -153,7 +153,10 @@ public class OrderField {
 						integer = 0;
 						
 					}
-					integer++;
+					if(!(result.getOrder().getStatusModel()==Status.已完成 && result.getCommented() == 1)){
+						integer++;
+					}
+					
 					map.put(result.getOrder().getStatusModel(), integer);
 				}
 				callback3.callback3(map);

@@ -175,6 +175,7 @@
                         android:paddingRight="20dp" >
 
                         <LinearLayout
+							android:tag="钱包"
                             android:layout_width="match_parent"
                             android:layout_height="54dp"
                             android:gravity="center_vertical" >
@@ -246,6 +247,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:tag="店铺"
                             android:layout_width="match_parent"
                             android:layout_height="54dp"
                             android:gravity="center_vertical" >
@@ -273,6 +275,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:tag="支付宝"
                             android:layout_width="match_parent"
                             android:layout_height="54dp"
                             android:gravity="center_vertical" >
@@ -300,6 +303,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:tag="微信"
                             android:layout_width="match_parent"
                             android:layout_height="54dp"
                             android:gravity="center_vertical" >
@@ -327,6 +331,7 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:tag="银行卡"
                             android:id="@+id/bank_btn"
                             android:layout_width="match_parent"
                             android:layout_height="54dp"

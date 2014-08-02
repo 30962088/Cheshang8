@@ -43,6 +43,10 @@ public class OrdersRequest extends BaseClient{
 			return shop;
 		}
 		
+		public int getCommented() {
+			return commented;
+		}
+		
 		public Order getOrder() {
 			return order;
 		}
@@ -52,7 +56,7 @@ public class OrdersRequest extends BaseClient{
 		}
 		
 		public PayActivity.Model toPayModel(){
-			return new PayActivity.Model(service.getName(), service.getDescription(), service.getPrice_discount(), service.getPrice_origin(), 0, 1,1,0, 0);
+			return new PayActivity.Model(service.getName(), service.getDescription(), service.getPrice_discount(), service.getPrice_origin(), 1,1);
 		}
 		
 		public SubmitActivity.Model toSubmitModel(){
@@ -78,8 +82,8 @@ public class OrdersRequest extends BaseClient{
 		
 		public OrderActivity.Model toOrderModel(){
 			Pay pay = null;
-			if(order.getPayment() != null){
-				pay = order.getPayment().toModel();
+			if(payment != null){
+				pay = payment.toModel();
 			}
 			Status st = order.getStatusModel();
 			if(st == Status.已完成 && commented == 1){

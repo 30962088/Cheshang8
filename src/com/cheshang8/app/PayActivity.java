@@ -13,6 +13,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.cheshang8.app.database.OrderField;
+import com.cheshang8.app.network.Order.Payment;
 import com.cheshang8.app.network.OrdersRequest.Result;
 import com.mengle.lib.wiget.WigetUtils;
 import com.mengle.lib.wiget.WigetUtils.OnItemClickListener;
@@ -41,7 +43,8 @@ public class PayActivity extends BaseActivity implements OnClickListener,TextWat
 		fapiaoPerson = findViewById(R.id.fapiao_person);
 		fapiaoCompany = findViewById(R.id.fapiao_company);
 		holder = new ViewHolder();
-		holder.setModel(result.toPayModel());
+		model = result.toPayModel();
+		holder.setModel(model);
 		findViewById(R.id.pay_btn).setOnClickListener(this);
 		ViewGroup pay_container = (ViewGroup)findViewById(R.id.pay_container);
 		WigetUtils.onChildViewClick(pay_container, new OnItemClickListener(){
@@ -92,27 +95,26 @@ public class PayActivity extends BaseActivity implements OnClickListener,TextWat
 		private String detail;
 		private int price;
 		private int price1;
-		private int price2;
 		private int price3;
 		private int price4;
-		private int price5;
-		private int price6;
-		public Model(String name, String detail, int price, int price1,
-				int price2, int price3, int price4, int price5, int price6) {
+		
+		
+		public Model(String name, String detail, int price, int price1,int price3, int price4) {
 			super();
 			this.name = name;
 			this.detail = detail;
 			this.price = price;
 			this.price1 = price1;
-			this.price2 = price2;
 			this.price3 = price3;
 			this.price4 = price4;
-			this.price5 = price5;
-			this.price6 = price6;
+		
+			
 		}
 		
 		
 	}
+	
+	private Model model;
 	
 	private class ViewHolder{
 		private TextView name;
@@ -137,15 +139,16 @@ public class PayActivity extends BaseActivity implements OnClickListener,TextWat
 		}
 		
 		public void setModel(Model model){
+			int total = (model.price-model.price3-model.price4);
 			name.setText(model.name);
 			detail.setText(model.detail);
 			price.setText(""+model.price);
-			price1.setText("原价：￥"+model.price1+"   节省：￥25");
-			price2.setText(""+model.price2);
+			price1.setText("原价：￥"+model.price1+"   节省：￥"+(model.price1-model.price));
+			price2.setText(""+model.price);
 			price3.setText(""+model.price3);
 			price4.setText(""+model.price4);
-			price5.setText(""+model.price5);
-			price6.setText(""+model.price6);
+			price5.setText(""+total);
+			price6.setText(""+total);
 		}
 		
 	}
@@ -155,6 +158,16 @@ public class PayActivity extends BaseActivity implements OnClickListener,TextWat
 		switch (v.getId()) {
 
 		case R.id.pay_btn:
+			String str = "";
+			if(fapiaoPerson.isSelected()){
+				str = person;
+			}else{
+				str  =company;
+			}
+			int total = (model.price-model.price3-model.price4);
+			Payment payment = new Payment(model.price,model.price3, model.price4, total, payView.getTag().toString(), str);
+			result.setPayment(payment);
+			OrderField.update(result);
 			if(payView.getId() == R.id.bank_btn){
 				PayBankActivity.open(this,result);
 			}else{

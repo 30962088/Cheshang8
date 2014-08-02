@@ -323,42 +323,8 @@
                             android:textSize="15sp" />
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#c9caca" />
+               
 
-                    <LinearLayout
-                        android:id="@+id/zhuanshu_btn"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_marginBottom="1dp"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp" >
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="match_parent"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/ii_n1" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="2dp"
-                            android:layout_weight="1"
-                            android:drawableRight="@drawable/ii_n7"
-                            android:gravity="center_vertical"
-                            android:text="专属保养"
-                            android:textColor="#4c4948"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1px"
-                        android:background="#c9caca" />
 
                     <View
                         android:layout_width="match_parent"

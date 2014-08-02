@@ -133,7 +133,7 @@ public class PaySuccessActivity extends BaseActivity {
 			PaySuccessActivity.this.model = model;
 			name.setText(model.header.name);
 			price.setText(""+model.header.price);
-			name.setText(model.header.no);
+			no.setText("消费编码："+model.header.no);
 			listView.setAdapter(new TabIndexAdapter(context, model.models));
 			listView.setOnItemClickListener(new OnItemClickListener() {
 

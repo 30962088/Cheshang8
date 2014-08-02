@@ -75,6 +75,7 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 		sortBtn = (TextView) findViewById(R.id.sort_btn);
 		listView = (BaseListView) findViewById(R.id.listview);
 		listView.setOnLoadListener(this);
+		listView.setLimit(20);
 		adapter = new SearchItemAdapter(this, list);
 
 		listView.setAdapter(adapter);
@@ -99,16 +100,19 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 	
 	private ArrayList<MapActivity.Model> mapList = new ArrayList<MapActivity.Model>();
 	
+	private List<Result> results;
+	
 	private void request(){
 		ShopsRequest request = new ShopsRequest(new ShopsRequest.Params(1,dist1,dist2,sort));
 		request.request(new SimpleRequestHandler(){
 			@Override
 			public void onSuccess(Object object) {
-				List<Result> results = (List<Result>) object;
+				results = (List<Result>) object;
 				mapList = Result.toMapList(results);
-				list.clear();
+				/*list.clear();
 				list.addAll(Result.toList(results,titleType));
-				adapter.notifyDataSetChanged();
+				adapter.notifyDataSetChanged();*/
+				listView.load(true);
 			}
 		});
 	}
@@ -196,15 +200,27 @@ public class ListActivity extends BaseActivity implements OnClickListener,
 		return R.id.nav_left_btn;
 	}
 
+	private int offset;
+	
+	private int size;
+	
 	@Override
 	public boolean onLoad(int offset, int limit) {
-		// TODO Auto-generated method stub
-		return false;
+		this.offset = offset;
+		size = results.size()-offset;
+		boolean more = size > limit;
+		size = size > limit ? limit :size;
+		return more;
 	}
 
 	@Override
 	public void onLoadSuccess() {
-		// TODO Auto-generated method stub
+		if(offset == 0){
+			list.clear();
+		}
+		
+		list.addAll(Result.toList(results.subList(offset, offset+size),titleType));
+		adapter.notifyDataSetChanged();
 		
 	}
 

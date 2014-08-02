@@ -69,7 +69,7 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 		view.findViewById(R.id.all_order3_btn).setOnClickListener(this);
 		view.findViewById(R.id.all_order1_btn).setOnClickListener(this);
 		view.findViewById(R.id.msg_btn).setOnClickListener(this);
-		view.findViewById(R.id.zhuanshu_btn).setOnClickListener(this);
+		
 		view.findViewById(R.id.my_car_btn).setOnClickListener(this);
 		view.findViewById(R.id.car_guanjia_btn).setOnClickListener(this);
 		view.findViewById(R.id.login_container).setOnClickListener(this);
@@ -195,12 +195,7 @@ public class TabZoneFragment extends Fragment implements OnClickListener{
 			}
 			
 			break;
-		case R.id.zhuanshu_btn:
-			if(checkLogin()){
-				ZhuanshubaoyangActivity.open(getActivity());
-			}
-			
-			break;
+	
 		case R.id.msg_btn:
 			if(checkLogin()){
 				MsgListActivity.open(getActivity());

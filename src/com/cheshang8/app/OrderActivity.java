@@ -108,6 +108,8 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 				PayActivity.open(this,result);
 			}else if(model.status == Status.已完成){
 				PublishCommentActivity.open(this,new Params(result.getShop().getId(),result.getOrder().getNo()));
+			}else if(model.status == Status.已评价){
+				CommentListActivity.open(context, result.getShop().getId());
 			}else if(model.status == Status.待体验){
 				//状态修改成退款完成
 				ConfirmDialog.open(this, "确认", "是否要退款？", new ConfirmDialog.OnClickListener() {
@@ -171,6 +173,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		private TextView price1;
 		private TextView price2;
 		private TextView price3;
+		private TextView price4;
 		private TextView pay_from;
 		private TextView fapiao;
 		public ViewHolder() {
@@ -191,6 +194,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 			price1 = (TextView) findViewById(R.id.price1);
 			price2 = (TextView) findViewById(R.id.price2);
 			price3 = (TextView) findViewById(R.id.price3);
+			price4 = (TextView) findViewById(R.id.price4);
 			pay_from = (TextView) findViewById(R.id.pay_from);
 			fapiao = (TextView) findViewById(R.id.fapiao);
 			pay_container = findViewById(R.id.pay_container);
@@ -198,8 +202,10 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		public void setModel(Model model){
 			if(model.status == Status.待支付){
 				rightBtn.setVisibility(View.VISIBLE);
+				consume_no.setVisibility(View.GONE);
 			}else{
 				rightBtn.setVisibility(View.GONE);
+				consume_no.setVisibility(View.VISIBLE);
 			}
 			BitmapLoader.displayImage(context, model.thumbnail, thumbnail);
 			time.setText("订单日期："+model.time);
@@ -216,7 +222,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 			service_detail.setText(model.service_detail);
 			price.setText(""+model.price);
 			price0.setText("原价："+model.price0+"      节省："+model.price0_0);
-			if(model.pay == null){
+			if(model.pay == null || model.status == Status.待支付){
 				pay_container.setVisibility(View.GONE);
 			}else{
 				pay_container.setVisibility(View.VISIBLE);
@@ -224,6 +230,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 				price1.setText(""+pay.price1);
 				price2.setText(""+pay.price2);
 				price3.setText(""+pay.price3);
+				price4.setText(""+pay.price4);
 				pay_from.setText("支付方式："+pay.pay_from);
 				fapiao.setText("发票信息："+pay.fapiao);
 			}
@@ -239,17 +246,20 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 			private int price1;
 			private int price2;
 			private int price3;
+			private int price4;
 			private String pay_from;
 			private String fapiao;
-			public Pay(int price1, int price2, int price3, String pay_from,
-					String fapiao) {
+			public Pay(int price1, int price2, int price3, int price4,
+					String pay_from, String fapiao) {
 				super();
 				this.price1 = price1;
 				this.price2 = price2;
 				this.price3 = price3;
+				this.price4 = price4;
 				this.pay_from = pay_from;
 				this.fapiao = fapiao;
 			}
+			
 			
 			
 		}

@@ -2,6 +2,7 @@ package com.cheshang8.app.adapter;
 
 import java.util.List;
 
+import com.cheshang8.app.CommentListActivity;
 import com.cheshang8.app.PayActivity;
 import com.cheshang8.app.PublishCommentActivity;
 import com.cheshang8.app.R;
@@ -33,7 +34,7 @@ public class OrderAdapter extends BaseAdapter {
 			待支付("待支付","立即支付",Color.parseColor("#ff0000")),
 			待体验("待体验","立即退款",Color.parseColor("#f49e17")),
 			已完成("已完成","立即评价",Color.parseColor("#73e048")),
-			已评价("已评价",null,Color.parseColor("#73e048")),
+			已评价("已评价","查看评价",Color.parseColor("#73e048")),
 			退款中("退款中",null,Color.parseColor("#f49e17")),
 			退款完成("退款完成",null,Color.parseColor("#898989")),
 			退款失败("退款失败",null,Color.parseColor("#ff0000"));
@@ -195,6 +196,8 @@ public class OrderAdapter extends BaseAdapter {
 								PayActivity.open(context, result);
 							}else if(model.status == Status.已完成){
 								PublishCommentActivity.open(context,new PublishCommentActivity.Params(model.getShop_id(),model.getNo()));
+							}else if(model.status == Status.已评价){
+								CommentListActivity.open(context, result.getShop().getId());
 							}else if(model.status == Status.待体验){
 								//状态修改成退款完成
 								ConfirmDialog.open(context, "确认", "是否要退款？", new ConfirmDialog.OnClickListener() {
