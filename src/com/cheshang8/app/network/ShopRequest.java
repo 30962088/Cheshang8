@@ -83,12 +83,25 @@ public class ShopRequest extends BaseClient{
 	
 	private String id;
 	
+	private String lat;
 	
+	private String lon;
 	
 	public ShopRequest(String id) {
 		super();
 		this.id = id;
 	}
+	
+	
+
+	public ShopRequest(String id, String lat, String lon) {
+		super();
+		this.id = id;
+		this.lat = lat;
+		this.lon = lon;
+	}
+
+
 
 	@Override
 	public Object onSuccess(String str) {
@@ -112,6 +125,7 @@ public class ShopRequest extends BaseClient{
 	protected RequestParams getParams() {
 		RequestParams params = new RequestParams();
 		params.add("id", id);
+		
 		return params;
 	}
 

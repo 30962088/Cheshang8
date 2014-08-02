@@ -6,11 +6,20 @@ import org.json.JSONObject;
 
 import com.loopj.android.http.*;
 
+
 public abstract class BaseClient implements HttpResponseHandler{
 	private static final String BASE_URL = "http://huiyangche.duapp.com";
 
+	
+	
+	
 	private static AsyncHttpClient client = new AsyncHttpClient();
-
+	
+	static{
+		client.setMaxConnections(10);
+		client.setTimeout(30*1000);
+		
+	}
 	
 	
 	private  class ResponseHandler extends AsyncHttpResponseHandler{
