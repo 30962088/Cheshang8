@@ -9,6 +9,7 @@ import com.cheshang8.app.R;
 import com.cheshang8.app.ServiceActivity;
 import com.cheshang8.app.adapter.DetailServiceAdapter;
 import com.cheshang8.app.adapter.DetailServiceAdapter.Model;
+import com.cheshang8.app.adapter.DetailServiceAdapter.Model.Col;
 import com.cheshang8.app.adapter.DetailServiceAdapter.Render;
 
 import com.google.gson.Gson;
@@ -78,7 +79,14 @@ public class DetailServiceFragment extends Fragment {
 		adapter = new DetailServiceAdapter(getActivity(),
 				list);
 		listView.setAdapter(adapter);
-
+		
+		if(list.size() > 0){
+			List<Col> cols = list.get(0).getList();
+			if(cols.size()>0){
+				ServiceActivity.open(getActivity(),cols.get(0).getId(),shop_id);
+			}
+		}
+		
 	}
 
 }

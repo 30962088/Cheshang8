@@ -162,7 +162,7 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 				tab2.setText("服务("+result.getShop().getServices_count()+")");
 				tab3.setText("商品("+result.getShop().getProducts_count()+")");
 				tab4.setText("评论("+result.getShop().getComment_count()+")");
-				tab1.performClick();
+				tab2.performClick();
 			}
 		});
 		

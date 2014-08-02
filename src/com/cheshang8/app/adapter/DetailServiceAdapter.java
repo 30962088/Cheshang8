@@ -47,7 +47,9 @@ public class DetailServiceAdapter extends BaseAdapter {
 				this.name = name;
 				this.price = price;
 			}
-			
+			public String getId() {
+				return id;
+			}
 			
 
 		}
@@ -58,7 +60,9 @@ public class DetailServiceAdapter extends BaseAdapter {
 			this.icon = icon;
 			this.list = list;
 		}
-		
+		public List<Col> getList() {
+			return list;
+		}
 		
 
 	}
