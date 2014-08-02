@@ -24,7 +24,7 @@ public class CarGuanjiaActivity extends BaseActivity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.right_nav_btn:
-//			CarInfoActivity.open(this);
+			MyCarActivity.open(this);
 			break;
 		case R.id.baoyang:
 			ZhuanshubaoyangActivity.open(this);

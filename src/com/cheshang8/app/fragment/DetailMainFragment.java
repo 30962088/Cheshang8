@@ -2,6 +2,9 @@ package com.cheshang8.app.fragment;
 
 
 
+import java.util.ArrayList;
+
+import com.cheshang8.app.MapActivity;
 import com.cheshang8.app.R;
 import android.content.Context;
 import android.os.Bundle;
@@ -9,9 +12,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-public class DetailMainFragment extends Fragment{
+public class DetailMainFragment extends Fragment implements OnClickListener{
 
 	public static DetailMainFragment newInstance(Context context,Model model){
 		DetailMainFragment fragment  = new DetailMainFragment();
@@ -26,8 +30,19 @@ public class DetailMainFragment extends Fragment{
 		private String phone;
 		private String range;
 		private String detail;
+		private double x;
+		private double y;
+		private float star;
+		private int price;
+		
+		
+
+	
+
+
 		public Model(String title, String address, String time, String phone,
-				String range, String detail) {
+				String range, String detail, double x, double y, float star,
+				int price) {
 			super();
 			this.title = title;
 			this.address = address;
@@ -35,9 +50,18 @@ public class DetailMainFragment extends Fragment{
 			this.phone = phone;
 			this.range = range;
 			this.detail = detail;
+			this.x = x;
+			this.y = y;
+			this.star = star;
+			this.price = price;
 		}
+
 		public Model() {
 			
+		}
+		
+		public MapActivity.Model toMapModel(){
+			return new MapActivity.Model(x, y, title, star, price);
 		}
 		
 	}
@@ -73,6 +97,7 @@ public class DetailMainFragment extends Fragment{
 		phone = (TextView) view.findViewById(R.id.phone);
 		range = (TextView) view.findViewById(R.id.range);
 		detail = (TextView) view.findViewById(R.id.detail);
+		view.findViewById(R.id.address).setOnClickListener(this);
 		init();
 	}
 
@@ -83,6 +108,26 @@ public class DetailMainFragment extends Fragment{
 		phone.setText("预约电话："+model.phone);
 		range.setText(model.range);
 		detail.setText(model.detail);
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.address:
+			onMap();
+			break;
+
+		default:
+			break;
+		}
+		
+	}
+
+	private void onMap() {
+		MapActivity.open(getActivity(), new ArrayList<MapActivity.Model>(){{
+			add(model.toMapModel());
+		}});
 		
 	}
 	

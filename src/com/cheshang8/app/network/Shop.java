@@ -123,7 +123,7 @@ public class Shop implements Serializable{
 		}
 
 		return new DetailMainFragment.Model(shop_name, shop_address, time,
-				StringUtils.join(shop_phones," "), range, description);
+				StringUtils.join(shop_phones," "), range, description,longitude,latitude,rating,price_discount);
 	}
 
 	public String getLogo() {

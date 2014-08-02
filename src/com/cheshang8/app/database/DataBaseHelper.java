@@ -32,6 +32,8 @@ public class DataBaseHelper extends OrmLiteSqliteOpenHelper {
 			TableUtils.createTableIfNotExists(connectionSource, OrderField.class);
 			TableUtils.createTableIfNotExists(connectionSource, CommentField.class);
 			
+			TableUtils.createTableIfNotExists(connectionSource, OfflineDataField.class);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -48,6 +50,7 @@ public class DataBaseHelper extends OrmLiteSqliteOpenHelper {
 		try {
 			TableUtils.dropTable(connectionSource, OrderField.class, true);
 			TableUtils.dropTable(connectionSource, CommentField.class, true);
+			TableUtils.dropTable(connectionSource, OfflineDataField.class, true);
 			onCreate(database, connectionSource);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -74,6 +77,16 @@ public class DataBaseHelper extends OrmLiteSqliteOpenHelper {
 					OrderField.class);
 		}
 		return orderDao;
+	}
+	
+	private Dao<OfflineDataField, String> offlineDao;
+
+	public Dao<OfflineDataField, String> getOfflineDao() throws SQLException {
+		if (offlineDao == null) {
+			offlineDao = DaoManager.createDao(getConnectionSource(),
+					OfflineDataField.class);
+		}
+		return offlineDao;
 	}
 
 }

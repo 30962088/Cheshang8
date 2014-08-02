@@ -31,14 +31,14 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:visibility="gone"
+                    
                     android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableRight="@drawable/icon_loc_1"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:text="地址：朝阳区朝阳路太平庄甲1号(民航医院对面)"
+                    android:text="地址：朝阳区朝阳路太平庄甲1号(民航医院对面)院对面)院对面)院对面)"
                     android:textColor="#898989"
                     android:textSize="12sp" />
                 
