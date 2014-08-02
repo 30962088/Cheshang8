@@ -40,7 +40,7 @@ public class OrderRequest extends BaseClient{
 			return new OrderActivity.Model(order.getDateString(), order.getNo(),order.getConsume_no(), order.getStatusModel(), 
 					shop.getLogo(),(int)shop.getRating(), shop.getShop_name(), shop.getShop_address(), shop.getPhoneText(), service.getName(),
 					service.getDetail(), service.getPrice_origin(), service.getPrice_discount(), service.getPrice_origin()-service.getPrice_discount(), 
-					pay);
+					pay,order.getSuccessDateString());
 		}
 		
 		

@@ -30,99 +30,120 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/map"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" >
-    </FrameLayout>
 
-    <RelativeLayout
-        android:id="@+id/container"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:paddingBottom="15dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="27dp"
-        android:paddingTop="15dp" >
+        <FrameLayout
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </FrameLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:id="@+id/container"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_alignParentBottom="true"
+            android:background="#fff"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="17dp"
+            android:paddingTop="5dp"
+            android:visibility="gone"
+            android:gravity="center_vertical" >
 
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="1.车之友  朝阳路店"
-                android:textColor="#000"
-                android:textSize="16sp" />
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:layout_height="wrap_content"
+                    android:text="1.车之友  朝阳路店车之友  朝阳路店车之友  朝阳路店"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:gravity="bottom" >
+
+                    <com.cheshang8.app.widget.CarStarView
+                        android:id="@+id/star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+                    </com.cheshang8.app.widget.CarStarView>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1dp"
+                        android:layout_marginLeft="8dp" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="￥"
+                            android:textColor="#ff0000"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            
+                            android:text="20"
+                            android:textColor="#ff0000"
+                            android:textSize="20sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="bottom" >
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" >
 
-                <com.cheshang8.app.widget.CarStarView
-                    android:id="@+id/star"
+                <TextView
+                    android:id="@+id/route_btn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-                </com.cheshang8.app.widget.CarStarView>
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="17dp"
+                    android:background="@drawable/shape_radius_red"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="3dp"
+                    android:text="路线"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/nav_btn"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="￥"
-                        android:textColor="#ff0000"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:id="@+id/price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="20"
-                        android:textColor="#ff0000"
-                        android:textSize="30sp" />
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/shape_radius_red"
+                    android:paddingBottom="3dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="3dp"
+                    android:text="导航"
+                    android:textColor="#fff"
+                    android:textSize="14sp" />
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="17dp"
-                android:background="#ff0000"
-                android:padding="5dp"
-                android:text="路线"
-                android:textColor="#fff"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="17dp"
-                android:background="#ff0000"
-                android:padding="5dp"
-                android:text="导航"
-                android:textColor="#fff"
-                android:textSize="14sp" />
         </LinearLayout>
     </RelativeLayout>
 

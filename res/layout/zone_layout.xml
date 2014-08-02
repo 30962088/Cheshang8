@@ -60,7 +60,6 @@
                     </com.makeramen.PhotoView>
 
                     <TextView
-                        android:visibility="gone"
                         android:id="@+id/login_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -70,77 +69,90 @@
                         android:layout_toRightOf="@id/avatar"
                         android:text="点击登录"
                         android:textColor="#efefef"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"
+                        android:visibility="gone" />
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:id="@+id/login_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignTop="@id/avatar"
                         android:layout_marginLeft="26dp"
-                        android:layout_marginTop="5dp"
                         android:layout_marginRight="25dp"
-                        android:layout_toRightOf="@id/avatar"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:id="@+id/name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="小苹果"
-                            android:textColor="#4c4948"
-                            android:textSize="14sp" />
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/avatar" >
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" >
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" >
 
                             <TextView
-                                android:id="@+id/level"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
+                                android:id="@+id/name"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="养车等级：菜鸟"
+                                android:text="小苹果"
                                 android:textColor="#4c4948"
                                 android:textSize="14sp" />
-                            
-                            <RelativeLayout 
-                                android:id="@+id/msg_btn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                
-                                <ImageView
-                                    android:id="@+id/ssss" 
-                                    android:layout_width="wrap_content"
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" >
+
+                                <TextView
+                                    android:id="@+id/level"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/ii_msg"/>
-                                
-                                <TextView 
-                                    
-                                    android:layout_alignBottom="@id/ssss"
-                                    android:layout_alignRight="@id/ssss"
-                                    android:layout_width="10dp"
-                                    android:layout_height="10dp"
-                                    android:text="1"
-                                    android:background="@drawable/oval_red"
-                                    android:gravity="center"
-                                    android:textColor="#fff"
-                                    android:layout_marginBottom="-5dp"
-                                    android:layout_marginRight="-5dp"
-                                    android:textSize="8sp"/>
-                                
-                            </RelativeLayout>
-                            
+                                    android:layout_weight="1"
+                                    android:text="养车等级：菜鸟"
+                                    android:textColor="#4c4948"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/coin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="养车积分：500"
+                                android:textColor="#4c4948"
+                                android:textSize="14sp" />
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/coin"
+                        <FrameLayout
+                            android:id="@+id/msg_btn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="养车积分：500"
-                            android:textColor="#4c4948"
-                            android:textSize="14sp" />
-                    </LinearLayout>
+                            android:paddingLeft="20dp"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true" >
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <ImageView
+                                    android:id="@+id/ssss"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ii_msg" />
+
+                                <TextView
+                                    android:layout_width="10dp"
+                                    android:layout_height="10dp"
+                                    android:layout_alignBottom="@id/ssss"
+                                    android:layout_alignRight="@id/ssss"
+                                    android:layout_marginBottom="-5dp"
+                                    android:layout_marginRight="-5dp"
+                                    android:background="@drawable/oval_red"
+                                    android:gravity="center"
+                                    android:text="1"
+                                    android:textColor="#fff"
+                                    android:textSize="8sp" />
+                            </RelativeLayout>
+                        </FrameLayout>
+                    </RelativeLayout>
                 </RelativeLayout>
 
                 <LinearLayout
@@ -245,7 +257,6 @@
                             android:textSize="12sp" />
 
                         <TextView
-                            
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="全部订单"
@@ -322,9 +333,6 @@
                             android:textColor="#4c4948"
                             android:textSize="15sp" />
                     </LinearLayout>
-
-               
-
 
                     <View
                         android:layout_width="match_parent"

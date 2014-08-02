@@ -31,12 +31,13 @@ public class OrderAdapter extends BaseAdapter {
 	public static class Model {
 		
 		public enum Status {
+			已取消("已取消",null,Color.parseColor("#898989")),
 			待支付("待支付","立即支付",Color.parseColor("#ff0000")),
 			待体验("待体验","立即退款",Color.parseColor("#f49e17")),
 			已完成("已完成","立即评价",Color.parseColor("#73e048")),
 			已评价("已评价","查看评价",Color.parseColor("#73e048")),
 			退款中("退款中",null,Color.parseColor("#f49e17")),
-			退款完成("退款完成",null,Color.parseColor("#898989")),
+			退款完成("已退款",null,Color.parseColor("#898989")),
 			退款失败("退款失败",null,Color.parseColor("#ff0000"));
 			
 			private String id;

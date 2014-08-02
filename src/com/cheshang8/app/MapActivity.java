@@ -4,9 +4,10 @@ package com.cheshang8.app;
 
 
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+
 
 
 import com.baidu.location.BDLocation;
@@ -28,6 +29,20 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.BaiduMap.OnMarkerClickListener;
 import com.baidu.mapapi.map.MyLocationConfigeration.LocationMode;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.navi.BaiduMapAppNotSupportNaviException;
+import com.baidu.mapapi.navi.BaiduMapNavigation;
+import com.baidu.mapapi.navi.NaviPara;
+import com.baidu.mapapi.overlayutil.DrivingRouteOvelray;
+import com.baidu.mapapi.overlayutil.OverlayManager;
+import com.baidu.mapapi.search.core.RouteLine;
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.route.DrivingRoutePlanOption;
+import com.baidu.mapapi.search.route.DrivingRouteResult;
+import com.baidu.mapapi.search.route.OnGetRoutePlanResultListener;
+import com.baidu.mapapi.search.route.PlanNode;
+import com.baidu.mapapi.search.route.RoutePlanSearch;
+import com.baidu.mapapi.search.route.TransitRouteResult;
+import com.baidu.mapapi.search.route.WalkingRouteResult;
 import com.cheshang8.app.widget.CarStarView;
 
 
@@ -37,9 +52,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
-public class MapActivity extends BaseActivity {
+public class MapActivity extends BaseActivity implements OnGetRoutePlanResultListener,OnClickListener{
 	
 	
 	public static void open(Context context,ArrayList<Model> list){
@@ -64,13 +81,17 @@ public class MapActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		list =(ArrayList<MapActivity.Model>)getIntent().getSerializableExtra("list");
 		setContentView(R.layout.map_layout);
+		findViewById(R.id.route_btn).setOnClickListener(this);
+		findViewById(R.id.nav_btn).setOnClickListener(this);
 		containerView = findViewById(R.id.container);
 		nameView = (TextView) findViewById(R.id.name);
 		priceView = (TextView) findViewById(R.id.price);
 		starView = (CarStarView) findViewById(R.id.star);
-		
-		mMapView = new MapView(this, new BaiduMapOptions());
-		
+		BaiduMapOptions mapOptions = new BaiduMapOptions();
+		mapOptions.zoomControlsEnabled(false);
+		mMapView = new MapView(this,mapOptions);
+		mSearch = RoutePlanSearch.newInstance();
+		mSearch.setOnGetRoutePlanResultListener(this);
 		((ViewGroup)findViewById(R.id.map)).addView(mMapView);
 		
 		mBaiduMap = mMapView.getMap();
@@ -96,11 +117,14 @@ public class MapActivity extends BaseActivity {
 		
 	}
 	
+	private BDLocation currentLocation;
+	
 	public class MyLocationListenner implements BDLocationListener {
 
 		@Override
 		public void onReceiveLocation(BDLocation location) {
 			// map view 销毁后不在处理新接收的位置
+			location = new BDLocation(116.404, 39.915,0);
 			if (location == null || mMapView == null)
 				return;
 			MyLocationData locData = new MyLocationData.Builder()
@@ -116,6 +140,7 @@ public class MapActivity extends BaseActivity {
 				MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
 				mBaiduMap.animateMapStatus(u);
 			}
+			currentLocation = location;
 		}
 
 		public void onReceivePoi(BDLocation poiLocation) {
@@ -150,18 +175,24 @@ public class MapActivity extends BaseActivity {
 		
 	}
 	
+	private Marker currentMarker;
+	
 	private void onMakerClick(Marker marker){
-		Model model = (Model) marker.getExtraInfo().get("model");
+		currentMarker = marker;
+		if(marker != null){
+			Model model = (Model) marker.getExtraInfo().get("model");
+			
+			containerView.setVisibility(View.VISIBLE);
+			
+			nameView.setText(model.name);
+			
+			priceView.setText(""+model.price);
+			
+			starView.setStar(model.star);
+			
+			mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newLatLng(new LatLng(model.x, model.y)),300);
+		}
 		
-		containerView.setVisibility(View.VISIBLE);
-		
-		nameView.setText(model.name);
-		
-		priceView.setText(""+model.price);
-		
-		starView.setStar(model.star);
-		
-		mBaiduMap.animateMapStatus(MapStatusUpdateFactory.newLatLng(new LatLng(model.x, model.y)),300);
 	}
 	
 	public void initOverlay() throws Exception {
@@ -176,31 +207,43 @@ public class MapActivity extends BaseActivity {
 			LatLng latLng = new LatLng(model.x, model.y);
 			OverlayOptions ooA = new MarkerOptions().position(latLng).icon(BitmapDescriptorFactory.fromView(mapLocView))
 					.zIndex(9);
-			Marker marker = (Marker) (mBaiduMap.addOverlay(ooA));
+			final Marker marker = (Marker) (mBaiduMap.addOverlay(ooA));
 			Bundle bundle = new Bundle();
 			bundle.putSerializable("model", model);
 			marker.setExtraInfo(bundle);
 			if(i == 0){
-				onMakerClick(marker);
+				mapLocView.postDelayed(new Runnable() {
+					
+					@Override
+					public void run() {
+						onMakerClick(marker);
+						
+					}
+				}, 500);
+				
 			}
 		}
 		
 		
 		
-		mBaiduMap.setOnMarkerClickListener(new OnMarkerClickListener() {
-
-			@Override
-			public boolean onMarkerClick(Marker marker) {
-				
-				onMakerClick(marker);
-				
-				return true;
-			}
-			
-		});
+		mBaiduMap.setOnMarkerClickListener(myMarkerClickListener);
 
 		
 	}
+	
+	private MyMarkerClickListener myMarkerClickListener = new MyMarkerClickListener();
+	
+	private class MyMarkerClickListener implements OnMarkerClickListener{
+
+		@Override
+		public boolean onMarkerClick(Marker marker) {
+			onMakerClick(marker);
+			return true;
+		}
+		
+	}
+	
+	private RoutePlanSearch mSearch = null; 
 
 
 	@Override
@@ -225,12 +268,92 @@ public class MapActivity extends BaseActivity {
 		mMapView = null;
 		super.onDestroy();
 	}
+	
+	private void drive(){
+		if(routeOverlay != null){
+			routeOverlay.removeFromMap();
+			mBaiduMap.setOnMarkerClickListener(myMarkerClickListener);
+			routeOverlay = null;
+		}else{
+			if(currentMarker != null){
+				PlanNode enNode = PlanNode.withLocation(currentMarker.getPosition());
+				PlanNode stNode = PlanNode.withLocation(new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude()));
+				mSearch.drivingSearch((new DrivingRoutePlanOption())
+		                 .from(stNode)
+		                 .to(enNode));
+			}
+		}
+		
+		
+	}
 
 
 	@Override
 	protected Integer finishBtn() {
 		// TODO Auto-generated method stub
 		return R.id.nav_left_btn;
+	}
+	private OverlayManager routeOverlay = null;
+	@Override
+	public void onGetDrivingRouteResult(DrivingRouteResult result) {
+		if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
+            Toast.makeText(this, "抱歉，未找到结果", Toast.LENGTH_SHORT).show();
+        }
+		RouteLine route = result.getRouteLines().get(0);
+        DrivingRouteOvelray overlay = new DrivingRouteOvelray(mBaiduMap);
+        routeOverlay = overlay;
+        mBaiduMap.setOnMarkerClickListener(overlay);
+        overlay.setData(result.getRouteLines().get(0));
+        overlay.addToMap();
+        overlay.zoomToSpan();
+		
+	}
+
+	@Override
+	public void onGetTransitRouteResult(TransitRouteResult arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onGetWalkingRouteResult(WalkingRouteResult arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.route_btn:
+			drive();
+			break;
+		case R.id.nav_btn:
+			startNav();
+			break;
+		default:
+			break;
+		}
+		
+	}
+	
+	private void startNav(){
+		if(currentMarker != null){
+			// 构建 导航参数
+			NaviPara para = new NaviPara();
+			para.startPoint = new LatLng(currentLocation.getLatitude(),currentLocation.getLongitude());
+			para.startName = "从这里开始";
+			para.endPoint = currentMarker.getPosition();
+			para.endName = "到这里结束";
+			try {
+
+				BaiduMapNavigation.openBaiduMapNavi(para, this);
+
+			} catch (BaiduMapAppNotSupportNaviException e) {
+				BaiduMapNavigation.openWebBaiduMapNavi(para, this);
+			}
+		}
+
+		
 	}
 
 	

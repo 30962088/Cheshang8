@@ -1,5 +1,7 @@
 package com.cheshang8.app;
 
+import java.util.Date;
+
 import com.cheshang8.app.OrderActivity.Model.Pay;
 import com.cheshang8.app.PublishCommentActivity.Params;
 import com.cheshang8.app.adapter.OrderAdapter.Model.Status;
@@ -14,11 +16,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.mengle.lib.wiget.ConfirmDialog;
 
-public class OrderActivity extends BaseActivity implements OnClickListener{
+public class OrderActivity extends BaseActivity implements OnClickListener,OnLongClickListener{
 	public static void open(Context context,String id){
 		Intent intent = new Intent(context, OrderActivity.class);
 		if(context instanceof PaySuccessActivity){
@@ -60,7 +63,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		holder = new ViewHolder();
 		findViewById(R.id.right_nav_btn).setOnClickListener(this);
 		findViewById(R.id.pay_btn).setOnClickListener(this);
-		
+		findViewById(R.id.ccc).setOnLongClickListener(this);
 	}
 	
 	@Override
@@ -135,8 +138,10 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 				
 				@Override
 				public void onPositiveClick() {
-					OrderField.deleteOrder(id);
-					finish();
+					result.getOrder().setStatus(Status.已取消);
+					OrderField.update(result);
+					holder.setModel(result.toOrderModel());
+//					finish();
 					
 				}
 				
@@ -207,11 +212,13 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 				rightBtn.setVisibility(View.GONE);
 				consume_no.setVisibility(View.VISIBLE);
 			}
+			
+			
 			BitmapLoader.displayImage(context, model.thumbnail, thumbnail);
 			time.setText("订单日期："+model.time);
 			no.setText("订单编号："+model.no);
 			consume_no.setText("消费编码："+model.consume_no);
-			status.setText(model.status.getText());
+			status.setText(model.status.getText()+"  "+model.successDate);
 			status.setTextColor(model.status.getColor());
 			pay_btn.setText(model.status.getBtn());
 			pay_btn.setBackgroundColor(model.status.getColor());
@@ -222,7 +229,7 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 			service_detail.setText(model.service_detail);
 			price.setText(""+model.price);
 			price0.setText("原价："+model.price0+"      节省："+model.price0_0);
-			if(model.pay == null || model.status == Status.待支付){
+			if(model.pay == null || model.status == Status.待支付 || model.status == Status.已取消){
 				pay_container.setVisibility(View.GONE);
 			}else{
 				pay_container.setVisibility(View.VISIBLE);
@@ -280,10 +287,11 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 		private int price0;
 		private int price0_0;
 		private Pay pay;
+		private String successDate;
 		public Model(String time, String no, String consume_no, Status status,
 				String thumbnail, float star, String title, String address,
 				String phone, String service, String service_detail, int price,
-				int price0, int price0_0, Pay pay) {
+				int price0, int price0_0, Pay pay, String successDate) {
 			super();
 			this.time = time;
 			this.no = no;
@@ -300,7 +308,9 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 			this.price0 = price0;
 			this.price0_0 = price0_0;
 			this.pay = pay;
+			this.successDate = successDate;
 		}
+		
 		
 		
 		
@@ -316,6 +326,22 @@ public class OrderActivity extends BaseActivity implements OnClickListener{
 	protected Integer finishBtn() {
 		// TODO Auto-generated method stub
 		return R.id.nav_left_btn;
+	}
+
+	private void goSuccess(){
+		result.getOrder().setStatus(Status.已完成);
+		result.getOrder().setSuccessDate(new Date().getTime());
+		OrderField.update(result);
+		holder.setModel(result.toOrderModel());
+	}
+	
+	@Override
+	public boolean onLongClick(View v) {
+		if(result.getOrder().getStatusModel() == Status.待体验){
+			goSuccess();
+			return true;
+		}
+		return false;
 	}
 
 }

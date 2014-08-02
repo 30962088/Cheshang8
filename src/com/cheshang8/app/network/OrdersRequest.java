@@ -91,7 +91,7 @@ public class OrdersRequest extends BaseClient{
 			}
 			return new OrderActivity.Model(order.getDateString(), order.getNo(), order.getConsume_no(), st, shop.getLogo(), shop.getRating(), 
 					shop.getShop_name(), shop.getShop_address(), shop.getPhoneText(), service.getName(), service.getDetail(), 
-					service.getPrice_discount(), service.getPrice_origin(), service.getPrice_origin()-service.getPrice_discount(), pay);
+					service.getPrice_discount(), service.getPrice_origin(), service.getPrice_origin()-service.getPrice_discount(), pay,order.getSuccessDateString());
 		}
 		
 		public OrderAdapter.Model toModel(){

@@ -68,6 +68,7 @@ public class Order implements Serializable {
 	private int commented;
 	private Service service;
 	private Payment payment;
+	private long successDate;
 
 	public void setDate(long date) {
 		this.date = date;
@@ -85,7 +86,7 @@ public class Order implements Serializable {
 		this.consume_no = consume_no;
 	}
 
-	private static Status[] STATUS = new Status[] { Status.待支付, Status.待支付,
+	private static Status[] STATUS = new Status[] { Status.已取消, Status.待支付,
 			Status.已完成, Status.待体验, Status.已完成, Status.退款中, Status.退款完成,
 			Status.退款失败 };
 
@@ -127,6 +128,19 @@ public class Order implements Serializable {
 		return payment;
 	}
 
+	public void setSuccessDate(long successDate) {
+		this.successDate = successDate;
+	}
+	
+	public String getSuccessDateString() {
+		if(getStatusModel() == Status.已完成||getStatusModel()==Status.已评价){
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			return dateFormat.format(new Date(successDate));
+		}
+		return "";
+		
+	}
+	
 	public String getDateString() {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		return dateFormat.format(new Date(date));
