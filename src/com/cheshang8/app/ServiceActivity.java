@@ -72,7 +72,7 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 			}else{
 				CommentListActivity.open(this,shop_id);
 			}*/
-			
+			CommentListActivity.open(this,shop_id);
 			break;
 		default:
 			break;
@@ -120,6 +120,7 @@ public class ServiceActivity extends BaseActivity implements OnClickListener{
 				holder.setModel(result.toModel());
 			}
 		});
+		addRequestQueue(request);
 	}
 	
 	public static class Model{

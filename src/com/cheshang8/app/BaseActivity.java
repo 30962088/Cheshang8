@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.cheshang8.app.network.BaseClient;
 import com.google.gson.Gson;
 
 import android.support.v4.app.FragmentActivity;
@@ -59,9 +60,9 @@ public abstract class BaseActivity extends FragmentActivity{
 		case MotionEvent.ACTION_UP:
 			long deltaTime = new Date().getTime()-date;
 			float deltaX = ev.getX()-x;
-			
-			if(deltaTime < 200){
-				if(deltaX >100 && Math.abs(y-ev.getY())<10 && !isBoundInDisable(new Bound((int)x,(int)y,(int)ev.getX(),(int)ev.getY()))){
+			System.out.println("zzm:"+deltaX+","+(y-ev.getY())+","+deltaTime);
+			if(deltaTime < 300){
+				if(deltaX >50 && Math.abs(deltaX)> Math.abs(y-ev.getY()) && !isBoundInDisable(new Bound((int)x,(int)y,(int)ev.getX(),(int)ev.getY()))){
 					finish();
 				}
 			}
@@ -125,5 +126,21 @@ public abstract class BaseActivity extends FragmentActivity{
 	
 	abstract protected Integer finishBtn();
 	
+	private List<BaseClient> requestQueue =  new ArrayList<BaseClient>();
+	
+	public void addRequestQueue(BaseClient client){
+		requestQueue.add(client);
+	}
+	
+	protected boolean isDestory = false;
+	
+	@Override
+	protected void onDestroy() {
+		for(BaseClient client : requestQueue){
+			client.cancel(true);
+		}
+		super.onDestroy();
+		isDestory = true;
+	}
 	
 }

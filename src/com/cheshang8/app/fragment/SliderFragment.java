@@ -105,7 +105,7 @@ public class SliderFragment extends Fragment {
 			}
 		});
 		
-		if(models.size() > 0){
+		if(models != null && models.size() > 0){
 			titleView.setText(models.get(0).title);
 		}
 		
@@ -167,7 +167,7 @@ public class SliderFragment extends Fragment {
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return list.size();
+			return list == null ? 0 : list.size();
 		}
 		
 		@Override

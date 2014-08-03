@@ -123,8 +123,6 @@ public abstract class BaseClient implements HttpResponseHandler {
 				return;
 			}
 
-			
-
 		}
 		this.requestHandler = requestHandler;
 		Method method = getMethod();
@@ -144,14 +142,27 @@ public abstract class BaseClient implements HttpResponseHandler {
 		return "" + hash.hashCode();
 	}
 
+	private RequestHandle handle;
+
 	private void get(String url, RequestParams params,
 			HttpResponseHandler handler) {
-		client.get(getAbsoluteUrl(url), params, new ResponseHandler(handler));
+		handle = client.get(getAbsoluteUrl(url), params, new ResponseHandler(
+				handler));
+
 	}
 
 	private void post(String url, RequestParams params,
 			HttpResponseHandler handler) {
-		client.post(getAbsoluteUrl(url), params, new ResponseHandler(handler));
+
+		handle = client.post(getAbsoluteUrl(url), params, new ResponseHandler(
+				handler));
+	}
+
+	public void cancel(boolean mayInterruptIfRunning) {
+		if (handle != null && !handle.isFinished()) {
+			handle.cancel(mayInterruptIfRunning);
+		}
+
 	}
 
 	private static String getAbsoluteUrl(String relativeUrl) {

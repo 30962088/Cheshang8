@@ -81,6 +81,7 @@ public class MapActivity extends BaseActivity implements
 		list = (ArrayList<MapActivity.Model>) getIntent().getSerializableExtra(
 				"list");
 		setContentView(R.layout.map_layout);
+		disableBack(findViewById(R.id.map));
 		findViewById(R.id.route_btn).setOnClickListener(this);
 		findViewById(R.id.nav_btn).setOnClickListener(this);
 		containerView = findViewById(R.id.container);
@@ -121,7 +122,7 @@ public class MapActivity extends BaseActivity implements
 		@Override
 		public void onReceiveLocation(BDLocation location) {
 			// map view 销毁后不在处理新接收的位置
-			location = new BDLocation(116.404, 39.915, 0);
+//			location = new BDLocation(116.404, 39.915, 0);
 			if (location == null || mMapView == null)
 				return;
 			MyLocationData locData = new MyLocationData.Builder()
@@ -194,7 +195,7 @@ public class MapActivity extends BaseActivity implements
 
 	public void initOverlay() {
 		
-		
+		System.out.println("zzm:dddd");
 		mBaiduMap.clear();
 		for (int i = 0; i < list.size(); i++) {
 			Model model = list.get(i);

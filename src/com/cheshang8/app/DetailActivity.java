@@ -50,15 +50,19 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 	
 	private boolean forService;
 	
+	private View viewContainer;
+	
 	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		id = getIntent().getStringExtra("id");
 		forService = getIntent().getBooleanExtra("forService", false);
 		context = this;
 		setContentView(R.layout.detail_layout);
+		viewContainer = findViewById(R.id.container_ddd);
 		starBtn = findViewById(R.id.starBtn);
 		starBtn.setOnClickListener(this);
 		tab1 = (TextView) findViewById(R.id.tab1);
@@ -89,7 +93,7 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 			transaction.add(R.id.fragment_container, fragment);
 		} else {
 			transaction.show(fragment);
-			fragment.onResume();
+//			fragment.onResume();
 		}
 		transaction.commitAllowingStateLoss();
 		lastFragment = fragment;
@@ -153,24 +157,28 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 		request.request(new SimpleRequestHandler(){
 			@Override
 			public void onSuccess(Object object) {
-				ShopRequest.Result result = (Result) object;
-				getSupportFragmentManager().beginTransaction()
-				.replace(R.id.slider_container,
-						SliderFragment.newInstance(result.getShop().toSliderModel())).commit();
-				List<DetailServiceAdapter.Model> list = Service.toList(result.getServices());
-				DetailMainFragment.Model model = result.getShop().toModel();
-				fragments = new Fragment[] { DetailMainFragment.newInstance(context,model),
-						DetailServiceFragment.newInstance(context,list,result.getShop().getId(),forService),
-						new Fragment(),
-						DetailCommentFragment.newInstance(context,result.getShop().getId())};
-				tab2.setText("服务("+result.getShop().getServices_count()+")");
-				tab3.setText("商品("+result.getShop().getProducts_count()+")");
-				tab4.setText("评论("+result.getShop().getComment_count()+")");
-				if(forService){
-					tab2.performClick();
-				}else{
-					tab1.performClick();
+				if(!isDestory){
+					ShopRequest.Result result = (Result) object;
+					getSupportFragmentManager().beginTransaction()
+					.replace(R.id.slider_container,
+							SliderFragment.newInstance(result.getShop().toSliderModel())).commitAllowingStateLoss();
+					List<DetailServiceAdapter.Model> list = Service.toList(result.getServices());
+					DetailMainFragment.Model model = result.getShop().toModel();
+					fragments = new Fragment[] { DetailMainFragment.newInstance(context,model),
+							DetailServiceFragment.newInstance(context,list,result.getShop().getId(),forService),
+							new Fragment(),
+							DetailCommentFragment.newInstance(context,result.getShop().getId())};
+					tab2.setText("服务("+result.getShop().getServices_count()+")");
+					tab3.setText("商品("+result.getShop().getProducts_count()+")");
+					tab4.setText("评论("+result.getShop().getComment_count()+")");
+					if(forService){
+						tab2.performClick();
+					}else{
+						tab1.performClick();
+					}
+					viewContainer.setVisibility(View.VISIBLE);
 				}
+				
 				
 			}
 		});
