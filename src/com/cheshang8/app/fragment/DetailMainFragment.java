@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import com.cheshang8.app.MapActivity;
 import com.cheshang8.app.R;
+import com.google.gson.Gson;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +21,9 @@ public class DetailMainFragment extends Fragment implements OnClickListener{
 
 	public static DetailMainFragment newInstance(Context context,Model model){
 		DetailMainFragment fragment  = new DetailMainFragment();
-		fragment.model = model;
+		Bundle bundle = new Bundle();
+		bundle.putString("model", new Gson().toJson(model));
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 	
@@ -79,7 +83,13 @@ public class DetailMainFragment extends Fragment implements OnClickListener{
 	private TextView range;
 	
 	private TextView detail;
-	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		Bundle bundle = getArguments();
+		model = new Gson().fromJson(bundle.getString("model"), Model.class) ;
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {

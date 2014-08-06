@@ -11,6 +11,7 @@ import com.cheshang8.app.adapter.DetailServiceAdapter;
 import com.cheshang8.app.adapter.DetailServiceAdapter.Model;
 import com.cheshang8.app.adapter.DetailServiceAdapter.Model.Col;
 import com.cheshang8.app.adapter.DetailServiceAdapter.Render;
+import com.cheshang8.app.network.CategoriesRequest.Result;
 
 import com.google.gson.Gson;
 
@@ -31,9 +32,11 @@ public class DetailServiceFragment extends Fragment {
 	public static DetailServiceFragment newInstance(Context context,
 			List<Model> list,String shop_id,boolean forService) {
 		DetailServiceFragment fragment = new DetailServiceFragment();
-		fragment.list = list;
-		fragment.shop_id = shop_id;
-		fragment.forService = forService;
+		Bundle bundle = new Bundle();
+		bundle.putString("list", new Gson().toJson(list));
+		bundle.putString("shop_id", shop_id);
+		bundle.putBoolean("forService", forService);
+		fragment.setArguments(bundle);
 		return fragment;
 	}
 
@@ -46,6 +49,18 @@ public class DetailServiceFragment extends Fragment {
 	private DetailServiceAdapter adapter;
 	
 	private boolean forService;
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		Bundle bundle = getArguments();
+		list = new Gson().fromJson(bundle.getString("list"),
+				new TypeToken<List<Model>>() {
+				}.getType());
+		shop_id = bundle.getString("shop_id");
+		forService = bundle.getBoolean("forService");
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

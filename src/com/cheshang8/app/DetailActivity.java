@@ -6,6 +6,7 @@ import com.cheshang8.app.adapter.DetailServiceAdapter;
 import com.cheshang8.app.fragment.DetailCommentFragment;
 import com.cheshang8.app.fragment.DetailMainFragment;
 import com.cheshang8.app.fragment.DetailServiceFragment;
+import com.cheshang8.app.fragment.DetailShopFragment;
 import com.cheshang8.app.fragment.SliderFragment;
 import com.cheshang8.app.network.BaseClient.SimpleRequestHandler;
 import com.cheshang8.app.network.ShopRequest;
@@ -166,7 +167,7 @@ public class DetailActivity extends BaseActivity implements OnClickListener {
 					DetailMainFragment.Model model = result.getShop().toModel();
 					fragments = new Fragment[] { DetailMainFragment.newInstance(context,model),
 							DetailServiceFragment.newInstance(context,list,result.getShop().getId(),forService),
-							new Fragment(),
+							DetailShopFragment.newInstance(context),
 							DetailCommentFragment.newInstance(context,result.getShop().getId())};
 					tab2.setText("服务("+result.getShop().getServices_count()+")");
 					tab3.setText("商品("+result.getShop().getProducts_count()+")");

@@ -220,8 +220,14 @@ public class OrderActivity extends BaseActivity implements OnClickListener,OnLon
 			consume_no.setText("消费编码："+model.consume_no);
 			status.setText(model.status.getText()+"  "+model.successDate);
 			status.setTextColor(model.status.getColor());
-			pay_btn.setText(model.status.getBtn());
-			pay_btn.setBackgroundColor(model.status.getColor());
+			if(model.status.getBtn() == null){
+				pay_btn.setVisibility(View.GONE);
+			}else{
+				pay_btn.setVisibility(View.VISIBLE);
+				pay_btn.setText(model.status.getBtn());
+				pay_btn.setBackgroundColor(model.status.getColor());
+			}
+			
 			title.setText(model.title);
 			address.setText("地址："+model.address);
 			phone.setText("预约电话："+model.phone);
@@ -332,7 +338,8 @@ public class OrderActivity extends BaseActivity implements OnClickListener,OnLon
 		result.getOrder().setStatus(Status.已完成);
 		result.getOrder().setSuccessDate(new Date().getTime());
 		OrderField.update(result);
-		holder.setModel(result.toOrderModel());
+		model = result.toOrderModel();
+		holder.setModel(model);
 	}
 	
 	@Override
