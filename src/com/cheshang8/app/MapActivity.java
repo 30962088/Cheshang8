@@ -50,6 +50,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -266,7 +267,7 @@ public class MapActivity extends BaseActivity implements
 		mLocClient.stop();
 		// 关闭定位图层
 		mBaiduMap.setMyLocationEnabled(false);
-		mMapView.onDestroy();
+//		mMapView.onDestroy();
 		mMapView = null;
 		super.onDestroy();
 	}
@@ -361,8 +362,9 @@ public class MapActivity extends BaseActivity implements
 	}
 
 	@Override
-	public void onMapLongClick(LatLng latLng) {
+	public void onMapLongClick(final LatLng latLng) {
 		if (routeOverlay == null) {
+			
 			Shops2Request request = new Shops2Request(
 					latLng.latitude,latLng.longitude);
 			request.request(new SimpleRequestHandler() {
@@ -372,6 +374,20 @@ public class MapActivity extends BaseActivity implements
 					list = Result.toMapList(results);
 
 					initOverlay();
+					
+					View mapLocView = LayoutInflater.from(MapActivity.this).inflate(
+							R.layout.map_loc, null);
+					
+					TextView textView = (TextView) mapLocView.findViewById(R.id.text);
+					
+					textView.setText("");
+					
+					textView.setBackgroundResource(R.drawable.map_loc_blue);
+					
+					OverlayOptions ooA = new MarkerOptions().position(latLng)
+							.icon(BitmapDescriptorFactory.fromView(mapLocView))
+							.zIndex(9);
+					mBaiduMap.addOverlay(ooA);
 					
 				}
 			});

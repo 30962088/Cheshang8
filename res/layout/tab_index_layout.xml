@@ -55,7 +55,7 @@
 	    
 	</LinearLayout>
 	
-	<ListView 
+	<com.cheshang8.app.widget.MyListViewD 
 	    android:id="@+id/listview"
 	    android:layout_width="match_parent"
 	    android:layout_height="0dp"
@@ -65,7 +65,7 @@
 	    android:background="#fff"
 	    android:paddingBottom="5dp"
 	    android:scrollbarStyle="outsideOverlay"
-	    android:layout_weight="1"></ListView>
+	    android:layout_weight="1"></com.cheshang8.app.widget.MyListViewD>
     
     
 </LinearLayout>

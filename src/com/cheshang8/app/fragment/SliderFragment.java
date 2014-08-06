@@ -60,7 +60,7 @@ public class SliderFragment extends Fragment {
 		MyAdapter adapter = new MyAdapter(getActivity(), models);
 
 		viewPager.setAdapter(adapter);
-		viewPager.setOnTouchListener(new OnTouchListener() {
+		/*viewPager.setOnTouchListener(new OnTouchListener() {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
@@ -79,7 +79,7 @@ public class SliderFragment extends Fragment {
 				return false;
 			}
 
-		});
+		});*/
 		
 		indicator.setViewPager(viewPager);
 		indicator.setOnPageChangeListener(new OnPageChangeListener() {
